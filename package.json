@@ -8,7 +8,6 @@
     "test": "npm run eslint",
     "build": "webpack --mode production",
     "start": "webpack-dev-server"
-
   },
   "devDependencies": {
     "@babel/core": "7.10.2",
@@ -24,5 +23,9 @@
   },
   "engines": {
     "node": "10"
+  },
+  "dependencies": {
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
   }
 }
