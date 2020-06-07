@@ -1,12 +1,17 @@
 import React from "react";
+import PropTypes from "prop-types";
 import MainPage from "../main-page/main-page.jsx";
 
+const App = (props) => {
+  const {moviesList} = props;
 
-const App = () => {
   return (
-    <MainPage />
+    <MainPage moviesList = {moviesList} />
   );
 };
 
+App.propTypes = {
+  moviesList: PropTypes.array.isRequired,
+};
 
 export default App;
