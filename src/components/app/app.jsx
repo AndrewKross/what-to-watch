@@ -4,9 +4,7 @@ import MainPage from "../main-page/main-page.jsx";
 
 const movieTitleClickHandler = () => {};
 
-const App = (props) => {
-  const {moviesList} = props;
-
+const App = ({moviesList}) => {
   return (
     <MainPage
       moviesList = {moviesList}
