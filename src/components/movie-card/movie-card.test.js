@@ -1,11 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app.jsx";
+import MovieCard from "./movie-card.jsx";
 
-it(`Render App`, () => {
+it(`Should MovieCard render correctly`, () => {
   const tree = renderer
-    .create(<App
-      moviesList = {[{
+    .create(<MovieCard
+      movieData = {[{
         title: `Revenant`,
         src: `./img/revenant.jpg`,
         id: `1`,
@@ -20,6 +20,8 @@ it(`Render App`, () => {
         src: `./img/snatch.jpg`,
         id: `3`,
       }]}
+      onMovieCardMouseOver = {() => {}}
+      onMovieTitleClick = {() => {}}
     />)
     .toJSON();
 

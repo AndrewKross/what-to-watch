@@ -1,10 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app.jsx";
+import MoviesList from "./movies-list.jsx";
 
-it(`Render App`, () => {
+it(`Should MoviesList render correctly`, () => {
   const tree = renderer
-    .create(<App
+    .create(<MoviesList
       moviesList = {[{
         title: `Revenant`,
         src: `./img/revenant.jpg`,
@@ -20,6 +20,7 @@ it(`Render App`, () => {
         src: `./img/snatch.jpg`,
         id: `3`,
       }]}
+      onMovieTitleClick = {() => {}}
     />)
     .toJSON();
 

@@ -259,14 +259,15 @@ exports[`Render App 1`] = `
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="\${movieTitle}"
+              alt="\${movieData.title}"
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              src="./img/revenant.jpg"
               width="280"
             />
           </div>
@@ -278,20 +279,21 @@ exports[`Render App 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              First title
+              Revenant
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="\${movieTitle}"
+              alt="\${movieData.title}"
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              src="./img/war-of-the-worlds.jpg"
               width="280"
             />
           </div>
@@ -303,20 +305,21 @@ exports[`Render App 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Second title
+              War of the Worlds
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="\${movieTitle}"
+              alt="\${movieData.title}"
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              src="./img/snatch.jpg"
               width="280"
             />
           </div>
@@ -328,7 +331,7 @@ exports[`Render App 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Third title
+              Snatch
             </a>
           </h3>
         </article>

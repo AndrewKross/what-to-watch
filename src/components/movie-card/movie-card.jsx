@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const MovieCard = ({onMovieTitleClick, movieData, onMovieCardMouseOver}) => {
+const MovieCard = ({movieData, onMovieTitleClick, onMovieCardMouseOver}) => {
   return (
     <article className="small-movie-card catalog__movies-card"
       onMouseOver = {() => {
