@@ -6,13 +6,13 @@ exports[`Should MoviesList render correctly 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
       <img
-        alt="\${movieData.title}"
+        alt="\${title}"
         height="175"
         src="./img/revenant.jpg"
         width="280"
@@ -32,13 +32,13 @@ exports[`Should MoviesList render correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
       <img
-        alt="\${movieData.title}"
+        alt="\${title}"
         height="175"
         src="./img/war-of-the-worlds.jpg"
         width="280"
@@ -58,13 +58,13 @@ exports[`Should MoviesList render correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
       <img
-        alt="\${movieData.title}"
+        alt="\${title}"
         height="175"
         src="./img/snatch.jpg"
         width="280"

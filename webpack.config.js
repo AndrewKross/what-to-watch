@@ -8,8 +8,8 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, `public`),
-    compress: false,
     open: true,
+    inline: true,
     port: 1337,
   },
   module: {
@@ -23,5 +23,5 @@ module.exports = {
       }
     ],
   },
-  devtool: `source-map`
+  devtool: `source-map`,
 };

@@ -3,14 +3,15 @@
 exports[`Should MovieCard render correctly 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  onMouseOver={[Function]}
+  onMouseEnter={[Function]}
 >
   <div
     className="small-movie-card__image"
   >
     <img
-      alt="\${movieData.title}"
+      alt="\${title}"
       height="175"
+      src="./img/revenant.jpg"
       width="280"
     />
   </div>
@@ -21,7 +22,9 @@ exports[`Should MovieCard render correctly 1`] = `
     <a
       className="small-movie-card__link"
       href="movie-page.html"
-    />
+    >
+      Revenant
+    </a>
   </h3>
 </article>
 `;
