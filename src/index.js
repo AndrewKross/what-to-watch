@@ -5,6 +5,6 @@ import moviesData from "./mocks/movies.js";
 
 ReactDOM.render(
     <App
-      moviesList = {moviesData} />,
+      moviesList = {moviesData}/>,
     document.querySelector(`#root`)
 );

@@ -36,7 +36,10 @@ export default class MovieCard extends PureComponent {
               <img src={poster} alt="${title}" width="280" height="175" />
           }
         </div>
-        <h3 onClick={onMovieTitleClick} className="small-movie-card__title">
+        <h3 onClick={(evt) => {
+          evt.preventDefault();
+          onMovieTitleClick(id);
+        }} className="small-movie-card__title">
           <a className="small-movie-card__link" href="movie-page.html">{title}</a>
         </h3>
       </article>
