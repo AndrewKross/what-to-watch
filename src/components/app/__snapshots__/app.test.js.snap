@@ -9,8 +9,8 @@ Array [
       className="movie-card__bg"
     >
       <img
-        alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        alt="Revenant"
+        src="./img/revenant.jpg"
       />
     </div>
     <h1
@@ -69,9 +69,9 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="Revenant poster"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="./img/revenant.jpg"
             width="218"
           />
         </div>
@@ -81,7 +81,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            The Grand Budapest Hotel
+            Revenant
           </h2>
           <p
             className="movie-card__meta"
@@ -89,12 +89,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Drama
+              Action
             </span>
             <span
               className="movie-card__year"
             >
-              2014
+              2017
             </span>
           </p>
           <div
@@ -264,10 +264,12 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="\${title}"
               height="175"
+              src="./img/revenant.jpg"
               width="280"
             />
           </div>
@@ -290,10 +292,12 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="\${title}"
               height="175"
+              src="./img/war-of-the-worlds.jpg"
               width="280"
             />
           </div>
@@ -306,32 +310,6 @@ Array [
               href="movie-page.html"
             >
               War of the Worlds
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="\${title}"
-              height="175"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-            onClick={[Function]}
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Snatch
             </a>
           </h3>
         </article>

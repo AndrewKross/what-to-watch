@@ -15,31 +15,34 @@ export default class MovieCard extends PureComponent {
     const {movieData, onMovieTitleClick, onMovieCardHover} = this.props;
     const {id, title, poster, trailer} = movieData;
 
+    const renderVideoplayer = () => {
+      return this.state.hovered ? <Videoplayer
+        poster = {poster}
+        trailer = {trailer} /> :
+        <img src={poster} alt="${title}" width="280" height="175" />;
+    };
+
     return (
       <article className="small-movie-card catalog__movies-card"
         onMouseEnter = {() => {
           onMovieCardHover(id);
-          this.setState({
-            hovered: true
-          });
+          this.setState({hovered: true});
         }}
         onMouseLeave = {() => {
-          this.setState({
-            hovered: false
-          });
+          this.setState({hovered: false});
         }}>
-        <div className="small-movie-card__image">
-          {
-            this.state.hovered ? <Videoplayer
-              poster = {poster}
-              trailer = {trailer} /> :
-              <img src={poster} alt="${title}" width="280" height="175" />
-          }
+        <div className="small-movie-card__image"
+          onClick={(evt) => {
+            evt.preventDefault();
+            onMovieTitleClick(id);
+          }}>
+          {renderVideoplayer()}
         </div>
-        <h3 onClick={(evt) => {
-          evt.preventDefault();
-          onMovieTitleClick(id);
-        }} className="small-movie-card__title">
+        <h3 className="small-movie-card__title"
+          onClick={(evt) => {
+            evt.preventDefault();
+            onMovieTitleClick(id);
+          }}>
           <a className="small-movie-card__link" href="movie-page.html">{title}</a>
         </h3>
       </article>

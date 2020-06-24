@@ -1,11 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieCard from "./movie-card.jsx";
+import MoviePage from "./movie-page.jsx";
 
-it(`Should MovieCard render correctly`, () => {
+it(`Should MoviePage render correctly`, () => {
   const tree = renderer
-    .create(<MovieCard
-      movieData = {{
+    .create(<MoviePage
+      selectedMovie = {{
         id: `film-1`,
         title: `Revenant`,
         poster: `./img/revenant.jpg`,
@@ -18,8 +18,6 @@ it(`Should MovieCard render correctly`, () => {
         producer: `Wes Andreson`,
         actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
       }}
-      onMovieCardHover = {() => {}}
-      onMovieTitleClick = {() => {}}
     />)
     .toJSON();
 

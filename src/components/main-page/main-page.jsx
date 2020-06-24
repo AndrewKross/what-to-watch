@@ -1,7 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import MoviesList from "../movies-list/movies-list.jsx";
-import {getRandomInt} from "../../utils.js";
 
 export default class MainPage extends PureComponent {
   constructor(props) {
@@ -10,12 +9,12 @@ export default class MainPage extends PureComponent {
 
   render() {
     const {moviesList, onMovieTitleClick} = this.props;
-    const promoMovie = moviesList[getRandomInt(0, moviesList.length)];
+    const promoMovie = moviesList[0];
 
     return <>
         <section className="movie-card">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={promoMovie.poster} alt={promoMovie.title} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>

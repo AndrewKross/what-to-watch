@@ -2,6 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainPage from "../main-page/main-page.jsx";
+import MoviePage from "../movie-page/movie-page.jsx";
 
 class App extends PureComponent {
   constructor(props) {
@@ -19,13 +20,36 @@ class App extends PureComponent {
     this.setState({selectedMovie});
   }
 
-  render() {
+  _renderApp() {
     const {moviesList} = this.props;
+
+    if (this.state.selectedMovie) {
+      return (
+        <MoviePage
+          selectedMovie = {this.state.selectedMovie} />
+      );
+    }
+
     return (
       <MainPage
         moviesList = {moviesList}
         onMovieTitleClick = {this.movieTitleClickHandler} />
     );
+  }
+
+  render() {
+    const {moviesList} = this.props;
+
+    return <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          {this._renderApp()}
+        </Route>
+        <Route exact path="/movie-page">
+          <MoviePage selectedMovie={moviesList[0]}/>
+        </Route>
+      </Switch>
+    </BrowserRouter>;
   }
 }
 

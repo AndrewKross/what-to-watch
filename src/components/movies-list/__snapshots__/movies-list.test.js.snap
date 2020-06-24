@@ -11,10 +11,12 @@ exports[`Should MoviesList render correctly 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="\${title}"
         height="175"
+        src="./img/revenant.jpg"
         width="280"
       />
     </div>
@@ -37,10 +39,12 @@ exports[`Should MoviesList render correctly 1`] = `
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <img
         alt="\${title}"
         height="175"
+        src="./img/war-of-the-worlds.jpg"
         width="280"
       />
     </div>
@@ -53,32 +57,6 @@ exports[`Should MoviesList render correctly 1`] = `
         href="movie-page.html"
       >
         War of the Worlds
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <img
-        alt="\${title}"
-        height="175"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-      onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        Snatch
       </a>
     </h3>
   </article>
