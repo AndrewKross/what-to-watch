@@ -260,6 +260,7 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -267,7 +268,6 @@ Array [
             <img
               alt="\${title}"
               height="175"
-              src="./img/revenant.jpg"
               width="280"
             />
           </div>
@@ -286,6 +286,7 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -293,7 +294,6 @@ Array [
             <img
               alt="\${title}"
               height="175"
-              src="./img/war-of-the-worlds.jpg"
               width="280"
             />
           </div>
@@ -312,6 +312,7 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -319,7 +320,6 @@ Array [
             <img
               alt="\${title}"
               height="175"
-              src="./img/snatch.jpg"
               width="280"
             />
           </div>
