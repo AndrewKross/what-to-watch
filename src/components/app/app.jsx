@@ -15,8 +15,7 @@ class App extends PureComponent {
     this.movieTitleClickHandler = this.movieTitleClickHandler.bind(this);
   }
 
-  movieTitleClickHandler(id) {
-    const selectedMovie = this.props.moviesList.filter((film) => film.id === id)[0];
+  movieTitleClickHandler(selectedMovie) {
     this.setState({selectedMovie});
   }
 
@@ -33,7 +32,7 @@ class App extends PureComponent {
     return (
       <MainPage
         moviesList = {moviesList}
-        onMovieTitleClick = {this.movieTitleClickHandler} />
+        onMovieCardClick = {this.movieTitleClickHandler} />
     );
   }
 

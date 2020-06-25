@@ -8,13 +8,13 @@ export default class MainPage extends PureComponent {
   }
 
   render() {
-    const {moviesList, onMovieTitleClick} = this.props;
+    const {moviesList, onMovieCardClick} = this.props;
     const promoMovie = moviesList[0];
 
     return <>
         <section className="movie-card">
           <div className="movie-card__bg">
-            <img src={promoMovie.poster} alt={promoMovie.title} />
+            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -106,7 +106,7 @@ export default class MainPage extends PureComponent {
 
             <MoviesList
               moviesList = {moviesList}
-              onMovieTitleClick = {onMovieTitleClick}
+              onMovieCardClick = {onMovieCardClick}
             />
 
             <div className="catalog__more">
@@ -134,5 +134,5 @@ export default class MainPage extends PureComponent {
 
 MainPage.propTypes = {
   moviesList: PropTypes.array.isRequired,
-  onMovieTitleClick: PropTypes.func.isRequired,
+  onMovieCardClick: PropTypes.func.isRequired,
 };

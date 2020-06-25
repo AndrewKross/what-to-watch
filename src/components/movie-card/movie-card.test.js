@@ -18,8 +18,7 @@ it(`Should MovieCard render correctly`, () => {
         producer: `Wes Andreson`,
         actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
       }}
-      onMovieCardHover = {() => {}}
-      onMovieTitleClick = {() => {}}
+      onMovieCardClick = {() => {}}
     />)
     .toJSON();
 

@@ -32,7 +32,7 @@ it(`Should MoviesList render correctly`, () => {
         actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
       },
       ]}
-      onMovieTitleClick = {() => {}}
+      onMovieCardClick = {() => {}}
     />)
     .toJSON();
 

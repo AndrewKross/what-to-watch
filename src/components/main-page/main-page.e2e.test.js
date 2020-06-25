@@ -8,7 +8,7 @@ Enzyme.configure({
 });
 
 it(`Should movie title be pressed`, () => {
-  const onMovieTitleClick = jest.fn();
+  const onMovieCardClick = jest.fn();
 
   const mainPage = shallow(
       <MainPage
@@ -39,13 +39,13 @@ it(`Should movie title be pressed`, () => {
           actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
         },
         ]}
-        onMovieTitleClick = {onMovieTitleClick}
+        onMovieCardClick = {onMovieCardClick}
       />
   );
 
-  const movieTitles = mainPage.find(`.small-movie-card__title`);
+  const cardNode = mainPage.find(`article`);
 
-  movieTitles.forEach((title) => title.props().onClick());
+  cardNode.forEach((img) => img.simulate(`click`));
 
-  expect(onMovieTitleClick.mock.calls.length).toBe(movieTitles.length);
+  expect(onMovieCardClick.mock.calls.length).toBe(cardNode.length);
 });
