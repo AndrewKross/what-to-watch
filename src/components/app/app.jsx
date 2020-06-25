@@ -1,6 +1,5 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainPage from "../main-page/main-page.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 
@@ -37,18 +36,7 @@ export default class App extends PureComponent {
   }
 
   render() {
-    const {moviesList} = this.props;
-
-    return <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          {this._renderApp()}
-        </Route>
-        <Route exact path="/movie-page">
-          <MoviePage selectedMovie={moviesList[0]}/>
-        </Route>
-      </Switch>
-    </BrowserRouter>;
+    return this._renderApp();
   }
 }
 
