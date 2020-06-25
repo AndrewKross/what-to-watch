@@ -1,9 +1,10 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainPage from "../main-page/main-page.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 
-export default class App extends PureComponent {
+class App extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -36,10 +37,23 @@ export default class App extends PureComponent {
   }
 
   render() {
-    return this._renderApp();
+    const {moviesList} = this.props;
+
+    return <BrowserRouter>
+      <Switch>
+        <Route path="/">
+          {this._renderApp()}
+        </Route>
+        <Route path="/movie-page">
+          <MoviePage selectedMovie={moviesList[0]}/>
+        </Route>
+      </Switch>
+    </BrowserRouter>;
   }
 }
 
 App.propTypes = {
   moviesList: PropTypes.array.isRequired,
 };
+
+export default App;
