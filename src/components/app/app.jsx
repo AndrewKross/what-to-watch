@@ -4,7 +4,7 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainPage from "../main-page/main-page.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 
-class App extends PureComponent {
+export default class App extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -55,5 +55,3 @@ class App extends PureComponent {
 App.propTypes = {
   moviesList: PropTypes.array.isRequired,
 };
-
-export default App;
