@@ -15,6 +15,13 @@ export default class MovieCard extends PureComponent {
     const {movieData, onMovieCardClick} = this.props;
     const {title, poster, trailer} = movieData;
 
+    let timeoutHandler;
+    const onMouseEnterHandler = () => {
+      timeoutHandler = setTimeout(() => {
+        this.setState({isHovered: true});
+      }, 500);
+    };
+
     const renderVideoplayer = () => {
       return this.state.isHovered ? <Videoplayer
         poster = {poster}
@@ -24,11 +31,10 @@ export default class MovieCard extends PureComponent {
 
     return (
       <article className="small-movie-card catalog__movies-card"
-        onMouseEnter = {() => {
-          this.setState({isHovered: true});
-        }}
+        onMouseEnter = {onMouseEnterHandler}
         onMouseLeave = {() => {
           this.setState({isHovered: false});
+          clearTimeout(timeoutHandler);
         }}>
         <div className="small-movie-card__image"
           onClick={() => onMovieCardClick(movieData)}>

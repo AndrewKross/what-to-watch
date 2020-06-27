@@ -48,9 +48,21 @@ it(`State should change to "true" when mouse hover the card and to "false" when 
 
   const cardNode = movieCard.find(`article`);
 
-  expect(movieCard.state(`isHovered`)).toBe(false);
-  cardNode.simulate(`mouseEnter`);
-  expect(movieCard.state(`isHovered`)).toBe(true);
+  jest.useFakeTimers();
+
+  expect(movieCard.state(`isHovered`)).toBe(false); // проверяем дефолтный стейт
+
+  cardNode.simulate(`mouseEnter`); // наводимся мышкой
+
+  expect(setTimeout).toHaveBeenCalledTimes(1);
+  expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 500); // проверяем, запустился ли таймер
+
+  expect(movieCard.state(`isHovered`)).toBe(false); // проверяем что таймер еще идет и стейт не изменился
+
+  jest.runOnlyPendingTimers(); // проматываем таймер
+
+  expect(movieCard.state(`isHovered`)).toBe(true); // и проверяем что стейт изменился
+
   cardNode.simulate(`mouseLeave`);
   expect(movieCard.state(`isHovered`)).toBe(false);
 });

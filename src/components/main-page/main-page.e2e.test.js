@@ -7,7 +7,7 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-it(`Should movie title be pressed`, () => {
+it(`Should movie card be pressed`, () => {
   const onMovieCardClick = jest.fn();
 
   const mainPage = shallow(
@@ -22,8 +22,9 @@ it(`Should movie title be pressed`, () => {
           description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
           rating: `5,6`,
           votesCount: `278`,
-          producer: `Wes Andreson`,
+          director: `Wes Andreson`,
           actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+          runTime: `1h 35m`,
         },
         {
           id: `film-2`,
@@ -35,8 +36,9 @@ it(`Should movie title be pressed`, () => {
           description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
           rating: `5,6`,
           votesCount: `278`,
-          producer: `Wes Andreson`,
+          director: `Wes Andreson`,
           actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+          runTime: `1h 35m`,
         },
         ]}
         onMovieCardClick = {onMovieCardClick}

@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should Tabs render correctly 1`] = `
+<div
+  className="movie-card__wrap movie-card__translate-top"
+>
+  <div
+    className="movie-card__info"
+  >
+    <div
+      className="movie-card__poster movie-card__poster--big"
+    >
+      <img
+        alt="War of the Worlds poster"
+        height="327"
+        src="./img/war-of-the-worlds.jpg"
+        width="218"
+      />
+    </div>
+    <div
+      className="movie-card__desc"
+    >
+      <nav
+        className="movie-nav movie-card__nav"
+      >
+        <ul
+          className="movie-nav__list"
+        >
+          <li
+            className="movie-nav__item movie-nav__item--active"
+          >
+            <a
+              className="movie-nav__link"
+              href="#"
+              onClick={[Function]}
+            >
+              Overview
+            </a>
+          </li>
+          <li
+            className="movie-nav__item"
+          >
+            <a
+              className="movie-nav__link"
+              href="#"
+              onClick={[Function]}
+            >
+              Details
+            </a>
+          </li>
+          <li
+            className="movie-nav__item"
+          >
+            <a
+              className="movie-nav__link"
+              href="#"
+              onClick={[Function]}
+            >
+              Reviews
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div
+        className="movie-rating"
+      >
+        <div
+          className="movie-rating__score"
+        >
+          5,6
+        </div>
+        <p
+          className="movie-rating__meta"
+        >
+          <span
+            className="movie-rating__level"
+          >
+            Good
+          </span>
+          <span
+            className="movie-rating__count"
+          >
+            278
+             ratings
+          </span>
+        </p>
+      </div>
+      <div
+        className="movie-card__text"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <p
+          className="movie-card__director"
+        >
+          <strong>
+            Director: 
+            Wes Andreson
+          </strong>
+        </p>
+        <p
+          className="movie-card__starring"
+        >
+          <strong>
+            Starring: 
+            Bill Murray, Edward Norton, Jude Law, Willem Dafoe
+          </strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
