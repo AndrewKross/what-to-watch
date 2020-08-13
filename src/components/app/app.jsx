@@ -1,64 +1,70 @@
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import MainPage from "../main-page/main-page.jsx";
-import MoviePage from "../movie-page/movie-page.jsx";
+import FilmPage from "../film-page/film-page.jsx";
+import { filmsData } from "../../mocks/films.js";
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedMovie: null,
+      selectedFilm: null,
     };
 
-    this.movieTitleClickHandler = this.movieTitleClickHandler.bind(this);
+    this.filmTitleClickHandler = this.filmTitleClickHandler.bind(this);
   }
 
-  movieTitleClickHandler(selectedMovie) {
-    this.setState({selectedMovie});
+  filmTitleClickHandler(selectedFilm) {
+    this.setState({ selectedFilm });
   }
 
   _renderApp() {
-    const {moviesList} = this.props;
+    const { promoFilmData } = this.props;
 
-    if (this.state.selectedMovie) {
+    if (this.state.selectedFilm) {
       return (
-        <MoviePage
-          selectedMovie = {this.state.selectedMovie}
-          moviesList = {moviesList}
-          onMovieCardClick = {this.movieTitleClickHandler} />
+        <FilmPage
+          selectedFilm={this.state.selectedFilm}
+          filmsList={filmsData}
+          promoFilmData={promoFilmData}
+          onFilmCardClick={this.filmTitleClickHandler}
+        />
       );
     }
 
     return (
       <MainPage
-        moviesList = {moviesList}
-        onMovieCardClick = {this.movieTitleClickHandler} />
+        filmsList={filmsData}
+        promoFilmData={promoFilmData}
+        onFilmCardClick={this.filmTitleClickHandler}
+      />
     );
   }
 
   render() {
-    const {moviesList} = this.props;
-
-    return <BrowserRouter>
-      <Switch>
-        <Route path="/">
-          {this._renderApp()}
-        </Route>
-        <Route path="/movie-page">
-          <MoviePage
-            selectedMovie={moviesList[0]}
-            moviesList = {moviesList}
-            onMovieCardClick = {this.movieTitleClickHandler}/>
-        </Route>
-      </Switch>
-    </BrowserRouter>;
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderApp()}
+          </Route>
+          <Route exact path="/film-page">
+            <filmPage
+              selectedFilm={filmsData[0]}
+              filmsList={filmsData}
+              onFilmCardClick={this.filmTitleClickHandler}
+            />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
   }
 }
 
 App.propTypes = {
-  moviesList: PropTypes.array.isRequired,
+  promoFilmData: PropTypes.object.isRequired,
 };
 
 export default App;
