@@ -51,7 +51,7 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/film-page">
-            <filmPage
+            <FilmPage
               selectedFilm={filmsData[0]}
               filmsList={filmsData}
               onFilmCardClick={this.filmTitleClickHandler}
