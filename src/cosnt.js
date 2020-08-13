@@ -1,1 +1,1 @@
-export const NUMBER_OF_SIMILAR_MOVIES = 4;
+export const NUMBER_OF_SIMILAR_FILMS = 4;

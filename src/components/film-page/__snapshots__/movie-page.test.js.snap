@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should MoviePage render correctly 1`] = `
+exports[`Should filmPage render correctly 1`] = `
 Array [
   <section
     className="movie-card movie-card--full"

@@ -1,6 +1,6 @@
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import MoviesList from "../movies-list/movies-list.jsx";
+import FilmsList from "../films-list/films-list.jsx";
 
 export default class MainPage extends PureComponent {
   constructor(props) {
@@ -8,13 +8,18 @@ export default class MainPage extends PureComponent {
   }
 
   render() {
-    const {moviesList, onMovieCardClick} = this.props;
-    const promoMovie = moviesList[0];
+    const { filmsList, onFilmCardClick, promoFilmData } = this.props;
 
-    return <>
+    const { title, genre, date } = promoFilmData;
+
+    return (
+      <React.Fragment>
         <section className="movie-card">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img
+              src="img/bg-the-grand-budapest-hotel.jpg"
+              alt="The Grand Budapest Hotel"
+            />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -30,7 +35,12 @@ export default class MainPage extends PureComponent {
 
             <div className="user-block">
               <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                <img
+                  src="img/avatar.jpg"
+                  alt="User avatar"
+                  width="63"
+                  height="63"
+                />
               </div>
             </div>
           </header>
@@ -38,24 +48,35 @@ export default class MainPage extends PureComponent {
           <div className="movie-card__wrap">
             <div className="movie-card__info">
               <div className="movie-card__poster">
-                <img src={promoMovie.poster} alt={promoMovie.title + ` poster`} width="218" height="327" />
+                <img
+                  src="img/the-grand-budapest-hotel-poster.jpg"
+                  alt="The Grand Budapest Hotel poster"
+                  width={218}
+                  height={327}
+                />
               </div>
 
               <div className="movie-card__desc">
-                <h2 className="movie-card__title">{promoMovie.title}</h2>
+                <h2 className="movie-card__title">{title}</h2>
                 <p className="movie-card__meta">
-                  <span className="movie-card__genre">{promoMovie.genre}</span>
-                  <span className="movie-card__year">{promoMovie.releaseYear}</span>
+                  <span className="movie-card__genre">{genre}</span>
+                  <span className="movie-card__year">{date}</span>
                 </p>
 
                 <div className="movie-card__buttons">
-                  <button className="btn btn--play movie-card__button" type="button">
+                  <button
+                    className="btn btn--play movie-card__button"
+                    type="button"
+                  >
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use href="#play-s"></use>
                     </svg>
                     <span>Play</span>
                   </button>
-                  <button className="btn btn--list movie-card__button" type="button">
+                  <button
+                    className="btn btn--list movie-card__button"
+                    type="button"
+                  >
                     <svg viewBox="0 0 19 20" width="19" height="20">
                       <use href="#add"></use>
                     </svg>
@@ -73,44 +94,66 @@ export default class MainPage extends PureComponent {
 
             <ul className="catalog__genres-list">
               <li className="catalog__genres-item catalog__genres-item--active">
-                <a href="#" className="catalog__genres-link">All genres</a>
+                <a href="#" className="catalog__genres-link">
+                  All genres
+                </a>
               </li>
               <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Comedies</a>
+                <a href="#" className="catalog__genres-link">
+                  Comedies
+                </a>
               </li>
               <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Crime</a>
+                <a href="#" className="catalog__genres-link">
+                  Crime
+                </a>
               </li>
               <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Documentary</a>
+                <a href="#" className="catalog__genres-link">
+                  Documentary
+                </a>
               </li>
               <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Dramas</a>
+                <a href="#" className="catalog__genres-link">
+                  Dramas
+                </a>
               </li>
               <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Horror</a>
+                <a href="#" className="catalog__genres-link">
+                  Horror
+                </a>
               </li>
               <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Kids & Family</a>
+                <a href="#" className="catalog__genres-link">
+                  Kids & Family
+                </a>
               </li>
               <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Romance</a>
+                <a href="#" className="catalog__genres-link">
+                  Romance
+                </a>
               </li>
               <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Sci-Fi</a>
+                <a href="#" className="catalog__genres-link">
+                  Sci-Fi
+                </a>
               </li>
               <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Thrillers</a>
+                <a href="#" className="catalog__genres-link">
+                  Thrillers
+                </a>
               </li>
             </ul>
 
-            <MoviesList
-              moviesList = {moviesList}
-              onMovieCardClick = {onMovieCardClick}
+            <FilmsList
+              filmsList={filmsList}
+              onFilmCardClick={onFilmCardClick}
             />
 
             <div className="catalog__more">
-              <button className="catalog__button" type="button">Show more</button>
+              <button className="catalog__button" type="button">
+                Show more
+              </button>
             </div>
           </section>
 
@@ -128,11 +171,12 @@ export default class MainPage extends PureComponent {
             </div>
           </footer>
         </div>
-    </>;
+      </React.Fragment>
+    );
   }
 }
 
 MainPage.propTypes = {
-  moviesList: PropTypes.array.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired,
+  filmsList: PropTypes.array.isRequired,
+  onFilmCardClick: PropTypes.func.isRequired,
 };
