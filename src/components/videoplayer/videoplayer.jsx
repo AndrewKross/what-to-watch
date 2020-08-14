@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Videoplayer = ({ preview, poster }) => {
+const Videoplayer = ({ preview, cover }) => {
   return (
     <video
       autoPlay={true}
       src={preview}
       muted={true}
-      poster={poster}
+      cover={cover}
       height={`100%`}
       width={`100%`}
     ></video>
@@ -16,7 +16,7 @@ const Videoplayer = ({ preview, poster }) => {
 
 Videoplayer.propTypes = {
   preview: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
+  cover: PropTypes.string.isRequired,
 };
 
 export default Videoplayer;

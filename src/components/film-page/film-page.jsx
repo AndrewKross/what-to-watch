@@ -21,7 +21,7 @@ export default class FilmPage extends PureComponent {
     }
 
     return (
-      <>
+      <React.Fragment>
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
             <div className="movie-card__bg">
@@ -113,7 +113,7 @@ export default class FilmPage extends PureComponent {
             </div>
           </footer>
         </div>
-      </>
+      </React.Fragment>
     );
   }
 }

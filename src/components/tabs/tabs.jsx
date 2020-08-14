@@ -16,7 +16,7 @@ export default class Tabs extends PureComponent {
   _renderTab(selectedTab) {
     const {
       rating,
-      votesCount,
+      votes,
       director,
       actors,
       description,
@@ -34,7 +34,7 @@ export default class Tabs extends PureComponent {
               <span className="movie-rating__level">
                 {getRatingLevel(rating)}
               </span>
-              <span className="movie-rating__count">{votesCount} ratings</span>
+              <span className="movie-rating__count">{votes} ratings</span>
             </p>
           </div>
 
@@ -296,7 +296,7 @@ Tabs.propTypes = {
   film: PropTypes.shape({
     id: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
-    votesCount: PropTypes.number.isRequired,
+    votes: PropTypes.number.isRequired,
     director: PropTypes.string.isRequired,
     actors: PropTypes.array.isRequired,
     description: PropTypes.string.isRequired,

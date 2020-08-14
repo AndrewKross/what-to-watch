@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import Videoplayer from "../videoplayer/videoplayer.jsx";
+import { PREVIEW_DELAY } from "../../cosnt.js"
 
 export default class FilmCard extends PureComponent {
   constructor(props) {
@@ -13,21 +14,21 @@ export default class FilmCard extends PureComponent {
 
   render() {
     const { filmData, onFilmCardClick } = this.props;
-    const { title, poster, preview } = filmData;
+    const { title, cover, preview } = filmData;
 
     let timeoutHandler;
     const onMouseEnterHandler = () => {
       timeoutHandler = setTimeout(() => {
         this.setState({ isHovered: true });
-      }, 500);
+      }, PREVIEW_DELAY);
     };
 
     const renderVideoplayer = () => {
       return this.state.isHovered ? (
-        <Videoplayer poster={poster} preview={preview} />
+        <Videoplayer cover={cover} preview={preview} />
       ) : (
-        <img src={poster} alt="${title}" width="280" height="175" />
-      );
+          <img src={cover} alt="${title}" width="280" height="175" />
+        );
     };
 
     return (
@@ -64,7 +65,7 @@ export default class FilmCard extends PureComponent {
 FilmCard.propTypes = {
   filmData: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired,
   }).isRequired,
