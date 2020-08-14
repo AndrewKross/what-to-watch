@@ -1,51 +1,51 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import Videoplayer from "../videoplayer/videoplayer.jsx";
-import { PREVIEW_DELAY } from "../../cosnt.js"
+import VideoPlayer from "../video-player/video-player.jsx";
+import { PREVIEW_DELAY } from "../../cosnt.js";
 
 export default class FilmCard extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      isHovered: false,
+      isPlaying: false,
     };
+
+    this._isCardHovered = false;
   }
 
   render() {
-    const { filmData, onFilmCardClick } = this.props;
+    const { filmData, onFilmCardClick, onCardHover } = this.props;
     const { title, cover, preview } = filmData;
 
-    let timeoutHandler;
-    const onMouseEnterHandler = () => {
-      timeoutHandler = setTimeout(() => {
-        this.setState({ isHovered: true });
-      }, PREVIEW_DELAY);
+    const onMouseEnterHandler = (evt) => {
+      this._isCardHovered = true;
+      onCardHover(filmData, evt.target);
+      this._startPlaying();
     };
 
-    const renderVideoplayer = () => {
-      return this.state.isHovered ? (
-        <Videoplayer cover={cover} preview={preview} />
-      ) : (
-          <img src={cover} alt="${title}" width="280" height="175" />
-        );
+    const onMouseLeaveHandler = () => {
+      this._isCardHovered = false;
+      this._stopPlaying();
     };
 
     return (
       <article
         className="small-movie-card catalog__movies-card"
         onMouseEnter={onMouseEnterHandler}
-        onMouseLeave={() => {
-          this.setState({ isHovered: false });
-          clearTimeout(timeoutHandler);
-        }}
+        onMouseLeave={onMouseLeaveHandler}
       >
         <div
           className="small-movie-card__image"
           onClick={() => onFilmCardClick(filmData)}
         >
-          {renderVideoplayer()}
+          <VideoPlayer
+            cover={cover}
+            preview={preview}
+            isPlaying={this.state.isPlaying}
+          />
         </div>
+
         <h3
           className="small-movie-card__title"
           onClick={(evt) => {
@@ -59,6 +59,22 @@ export default class FilmCard extends PureComponent {
         </h3>
       </article>
     );
+  }
+
+  _startPlaying() {
+    setTimeout(() => {
+      if (this._isCardHovered === true) {
+        this.setState({
+          isPlaying: true,
+        });
+      }
+    }, PREVIEW_DELAY);
+  }
+
+  _stopPlaying() {
+    this.setState({
+      isPlaying: false,
+    });
   }
 }
 
