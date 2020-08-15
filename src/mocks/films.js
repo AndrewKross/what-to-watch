@@ -78,7 +78,7 @@ const ReleaseRange = {
 };
 
 const RatingRange = {
-  MIN: 0,
+  MIN: 0.5,
   MAX: 10,
 };
 

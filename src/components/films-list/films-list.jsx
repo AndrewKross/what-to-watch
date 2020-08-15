@@ -12,10 +12,10 @@ export default class FilmsList extends PureComponent {
   }
 
   render() {
-    const { filmsList, onFilmCardClick } = this.props;
+    const { films, onFilmCardClick } = this.props;
     return (
       <div className="catalog__movies-list">
-        {filmsList.map((film) => (
+        {films.map((film) => (
           <FilmCard
             key={film.id}
             filmData={film}
@@ -35,7 +35,7 @@ export default class FilmsList extends PureComponent {
 }
 
 FilmsList.propTypes = {
-  filmsList: PropTypes.arrayOf(
+  films: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
     })

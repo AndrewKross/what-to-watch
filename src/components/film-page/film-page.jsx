@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs.jsx";
 import FilmsList from "../films-list/films-list.jsx";
-import { NUMBER_OF_SIMILAR_FILMS } from "../../cosnt.js";
+import { NUMBER_OF_SIMILAR_FILMS } from "../../const.js";
 
 export default class FilmPage extends PureComponent {
   constructor(props) {
@@ -10,9 +10,9 @@ export default class FilmPage extends PureComponent {
   }
 
   render() {
-    const { filmsList, selectedFilm, onFilmCardClick } = this.props;
+    const { films, selectedFilm, onFilmCardClick } = this.props;
     const { title, poster, genre, release } = selectedFilm;
-    let similarFilms = filmsList.filter(
+    let similarFilms = films.filter(
       (film) => selectedFilm.genre === film.genre
     );
 
@@ -93,10 +93,7 @@ export default class FilmPage extends PureComponent {
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
 
-            <FilmsList
-              filmsList={similarFilms}
-              onFilmCardClick={onFilmCardClick}
-            />
+            <FilmsList films={similarFilms} onFilmCardClick={onFilmCardClick} />
           </section>
 
           <footer className="page-footer">
@@ -125,6 +122,6 @@ FilmPage.propTypes = {
     genre: PropTypes.string.isRequired,
     release: PropTypes.string.isRequired,
   }).isRequired,
-  filmsList: PropTypes.array.isRequired,
+  films: PropTypes.array.isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
 };

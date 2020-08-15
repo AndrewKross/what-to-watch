@@ -27,8 +27,7 @@ class App extends PureComponent {
       return (
         <FilmPage
           selectedFilm={this.state.selectedFilm}
-          filmsList={filmsData}
-          promoFilmData={promoFilmData}
+          films={filmsData}
           onFilmCardClick={this.filmCardClickHandler}
         />
       );
@@ -36,7 +35,7 @@ class App extends PureComponent {
 
     return (
       <MainPage
-        filmsList={filmsData}
+        films={filmsData}
         promoFilmData={promoFilmData}
         onFilmCardClick={this.filmCardClickHandler}
       />
@@ -53,7 +52,7 @@ class App extends PureComponent {
           <Route exact path="/film-page">
             <FilmPage
               selectedFilm={filmsData[0]}
-              filmsList={filmsData}
+              films={filmsData}
               onFilmCardClick={this.filmCardClickHandler}
             />
           </Route>

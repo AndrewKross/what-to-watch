@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import VideoPlayer from "../video-player/video-player.jsx";
-import { PREVIEW_DELAY } from "../../cosnt.js";
+import { PREVIEW_DELAY } from "../../const.js";
 
 export default class FilmCard extends PureComponent {
   constructor(props) {
@@ -12,6 +12,7 @@ export default class FilmCard extends PureComponent {
     };
 
     this._isCardHovered = false;
+    this._playerTimeout = null;
   }
 
   render() {
@@ -61,8 +62,12 @@ export default class FilmCard extends PureComponent {
     );
   }
 
+  componentWillUnmount() {
+    clearTimeout(this._playerTimeout);
+  }
+
   _startPlaying() {
-    setTimeout(() => {
+    this._playerTimeout = setTimeout(() => {
       if (this._isCardHovered === true) {
         this.setState({
           isPlaying: true,
@@ -72,6 +77,7 @@ export default class FilmCard extends PureComponent {
   }
 
   _stopPlaying() {
+    clearTimeout(this._playerTimeout);
     this.setState({
       isPlaying: false,
     });
@@ -80,10 +86,28 @@ export default class FilmCard extends PureComponent {
 
 FilmCard.propTypes = {
   filmData: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    release: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    votes: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    actors: PropTypes.arrayOf(PropTypes.string),
+    runTime: PropTypes.number.isRequired,
+    reviews: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        userName: PropTypes.string.isRequired,
+        date: PropTypes.instanceOf(Date).isRequired,
+      })
+    ).isRequired,
   }).isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
 };

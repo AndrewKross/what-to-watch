@@ -80,7 +80,6 @@ exports[`Should Tabs render correctly 1`] = `
           <span
             className="movie-rating__count"
           >
-            278
              ratings
           </span>
         </p>
