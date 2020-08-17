@@ -42,7 +42,7 @@ export const reviews = Array(REVIEWS_COUNT)
     return ({
       id: nanoid(ID_LENGTH),
       text: getRandomArrayItem(TEXTS),
-      rating: getRandomIntegerNumber(RatingRange.MIN, RatingRange.MAX),
+      rating: +(Math.random() * RatingRange.MAX).toPrecision(2),
       userName: getRandomArrayItem(USER_NAMES),
       date: getRandomDate()
     });

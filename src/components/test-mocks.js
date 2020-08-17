@@ -7,7 +7,7 @@ export const PromoFilmData = {
 const GENRE = `drama`;
 const RELEASE = `2020`;
 const RATING = 9;
-const VOTES = 228;
+const ratingsCount = 228;
 const DIRECTOR = `Otto Bathurst`;
 const PREVIEW = `https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm`;
 const RUN_TIME = 140;
@@ -69,7 +69,7 @@ export const films = TITLES.map((title, index) => {
     genre: GENRE,
     release: RELEASE,
     rating: RATING,
-    votes: VOTES,
+    ratingsCount: ratingsCount,
     description: DESCRRIPTION,
     director: DIRECTOR,
     actors: ACTORS,

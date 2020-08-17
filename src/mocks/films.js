@@ -78,11 +78,11 @@ const ReleaseRange = {
 };
 
 const RatingRange = {
-  MIN: 0.5,
+  MIN: 0,
   MAX: 10,
 };
 
-const VotesRange = {
+const ratingsCountRange = {
   MIN: 0,
   MAX: 1000,
 };
@@ -104,10 +104,10 @@ export const filmsData = TITLES.map((title, index) => {
       ReleaseRange.MIN,
       ReleaseRange.MAX
     ).toString(),
-    rating: getRandomIntegerNumber(RatingRange.MIN, RatingRange.MAX),
-    votes: getRandomIntegerNumber(
-      VotesRange.MIN,
-      VotesRange.MAX
+    rating: +(Math.random() * RatingRange.MAX).toPrecision(2),
+    ratingsCount: getRandomIntegerNumber(
+      ratingsCountRange.MIN,
+      ratingsCountRange.MAX
     ),
     description: DESCRRIPTION,
     director: getRandomArrayItem(DIRECTORS),

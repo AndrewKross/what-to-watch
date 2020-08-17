@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import VideoPlayer from "../video-player/video-player.jsx";
 import { PREVIEW_DELAY } from "../../const.js";
 
-export default class FilmCard extends PureComponent {
+export default class FilmCard extends React.Component {
   constructor(props) {
     super(props);
 
@@ -36,15 +36,8 @@ export default class FilmCard extends PureComponent {
         onMouseEnter={onMouseEnterHandler}
         onMouseLeave={onMouseLeaveHandler}
       >
-        <div
-          className="small-movie-card__image"
-          onClick={() => onFilmCardClick(filmData)}
-        >
-          <VideoPlayer
-            cover={cover}
-            preview={preview}
-            isPlaying={this.state.isPlaying}
-          />
+        <div className="small-movie-card__image" onClick={() => onFilmCardClick(filmData)}>
+          <VideoPlayer cover={cover} preview={preview} isPlaying={this.state.isPlaying} />
         </div>
 
         <h3
@@ -94,7 +87,7 @@ FilmCard.propTypes = {
     genre: PropTypes.string.isRequired,
     release: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
-    votes: PropTypes.number.isRequired,
+    ratingsCount: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
     actors: PropTypes.arrayOf(PropTypes.string),

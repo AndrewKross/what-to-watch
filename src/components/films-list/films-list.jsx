@@ -1,8 +1,8 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import FilmCard from "../film-card/film-card.jsx";
 
-export default class FilmsList extends PureComponent {
+export default class FilmsList extends Component {
   constructor(props) {
     super(props);
 

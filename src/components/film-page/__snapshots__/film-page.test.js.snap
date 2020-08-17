@@ -21,7 +21,7 @@ exports[`Should filmPage render correctly 1`] = `
         "release": "2017",
         "runTime": "1h 35m",
         "title": "Revenant",
-        "votesCount": "278",
+        "ratingsCountCount": "278",
       },
     ]
   }
@@ -44,7 +44,7 @@ exports[`Should filmPage render correctly 1`] = `
       "release": "2017",
       "runTime": "1h 35m",
       "title": "Revenant",
-      "votesCount": "278",
+      "ratingsCountCount": "278",
     }
   }
 />

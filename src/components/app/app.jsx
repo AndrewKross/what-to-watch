@@ -1,11 +1,11 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import MainPage from "../main-page/main-page.jsx";
 import FilmPage from "../film-page/film-page.jsx";
 import { filmsData } from "../../mocks/films.js";
 
-class App extends PureComponent {
+class App extends Component {
   constructor(props) {
     super(props);
 

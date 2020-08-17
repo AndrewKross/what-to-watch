@@ -1,10 +1,12 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs.jsx";
 import FilmsList from "../films-list/films-list.jsx";
 import { NUMBER_OF_SIMILAR_FILMS } from "../../const.js";
+import Header from "../header/header.jsx";
+import Footer from "../footer/footer.jsx";
 
-export default class FilmPage extends PureComponent {
+export default class FilmPage extends Component {
   constructor(props) {
     super(props);
   }
@@ -12,13 +14,11 @@ export default class FilmPage extends PureComponent {
   render() {
     const { films, selectedFilm, onFilmCardClick } = this.props;
     const { title, poster, genre, release } = selectedFilm;
-    let similarFilms = films.filter(
-      (film) => selectedFilm.genre === film.genre
-    );
-
-    if (similarFilms.lenght > NUMBER_OF_SIMILAR_FILMS) {
-      similarFilms = similarFilms.slice(0, NUMBER_OF_SIMILAR_FILMS);
-    }
+    const similarFilms = films
+      .filter(
+        (film) => selectedFilm.genre === film.genre && selectedFilm !== film
+      )
+      .slice(0, NUMBER_OF_SIMILAR_FILMS);
 
     return (
       <React.Fragment>
@@ -30,26 +30,7 @@ export default class FilmPage extends PureComponent {
 
             <h1 className="visually-hidden">WTW</h1>
 
-            <header className="page-header movie-card__head">
-              <div className="logo">
-                <a href="/" className="logo__link">
-                  <span className="logo__letter logo__letter--1">W</span>
-                  <span className="logo__letter logo__letter--2">T</span>
-                  <span className="logo__letter logo__letter--3">W</span>
-                </a>
-              </div>
-
-              <div className="user-block">
-                <div className="user-block__avatar">
-                  <img
-                    src="img/avatar.jpg"
-                    alt="User avatar"
-                    width="63"
-                    height="63"
-                  />
-                </div>
-              </div>
-            </header>
+            <Header />
 
             <div className="movie-card__wrap">
               <div className="movie-card__desc">
@@ -86,7 +67,22 @@ export default class FilmPage extends PureComponent {
             </div>
           </div>
 
-          <Tabs film={selectedFilm} />
+          <div className="movie-card__wrap movie-card__translate-top">
+            <div className="movie-card__info">
+              <div className="movie-card__poster movie-card__poster--big">
+                <img
+                  src={poster}
+                  alt={title + ` poster`}
+                  width="218"
+                  height="327"
+                />
+              </div>
+
+              <div className="movie-card__desc">
+                <Tabs film={selectedFilm} />
+              </div>
+            </div>
+          </div>
         </section>
 
         <div className="page-content">
@@ -96,19 +92,7 @@ export default class FilmPage extends PureComponent {
             <FilmsList films={similarFilms} onFilmCardClick={onFilmCardClick} />
           </section>
 
-          <footer className="page-footer">
-            <div className="logo">
-              <a href="main.html" className="logo__link logo__link--light">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
-
-            <div className="copyright">
-              <p>© 2019 What to watch Ltd.</p>
-            </div>
-          </footer>
+          <Footer />
         </div>
       </React.Fragment>
     );

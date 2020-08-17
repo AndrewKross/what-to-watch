@@ -11,7 +11,7 @@ const mockFilm = {
   release: `2017`,
   description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
   rating: `5,6`,
-  votesCount: `278`,
+  ratingsCountCount: `278`,
   director: `Wes Andreson`,
   actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
   runTime: `1h 35m`,
@@ -22,7 +22,7 @@ it(`Should filmPage render correctly`, () => {
     .create(
       <filmPage
         selectedFilm={mockFilm}
-        onFilmCardClick={() => {}}
+        onFilmCardClick={() => { }}
         filmsList={[mockFilm]}
       />
     )

@@ -21,7 +21,7 @@ exports[`Should filmsList render correctly 1`] = `
         "release": "2017",
         "runTime": "1h 35m",
         "title": "Revenant",
-        "votesCount": "278",
+        "ratingsCountCount": "278",
       },
       Object {
         "actors": Array [
@@ -40,7 +40,7 @@ exports[`Should filmsList render correctly 1`] = `
         "release": "2017",
         "runTime": "1h 35m",
         "title": "War of the Worlds",
-        "votesCount": "278",
+        "ratingsCountCount": "278",
       },
     ]
   }
