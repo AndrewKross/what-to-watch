@@ -8,7 +8,7 @@ it(`Should VideoPlayer render correctly`, () => {
       <VideoPlayer
         poster={`./img/war-of-the-worlds.jpg`}
         preview={`https://download.blender.org/durian/preview/sintel_preview-480p.mp4`}
-      />
+      />,
     )
     .toJSON();
 

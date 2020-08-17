@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import VideoPlayer from "../video-player/video-player.jsx";
-import { PREVIEW_DELAY } from "../../const.js";
+import { PREVIEW_DELAY } from "../../const";
 
-export default class FilmCard extends React.Component {
+export default class FilmCard extends Component {
   constructor(props) {
     super(props);
 
@@ -99,8 +99,9 @@ FilmCard.propTypes = {
         rating: PropTypes.number.isRequired,
         userName: PropTypes.string.isRequired,
         date: PropTypes.instanceOf(Date).isRequired,
-      })
+      }),
     ).isRequired,
   }).isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
+  onCardHover: PropTypes.func.isRequired,
 };

@@ -3,8 +3,8 @@ import {
   getRandomIntegerNumber,
   getRandomArrayItem,
   getRandomArrayItems,
-} from "../utils/common.js";
-import { reviews } from "./reviews.js";
+} from "../utils/common";
+import reviews from "./reviews";
 
 const ID_LENGTH = 8;
 
@@ -92,27 +92,27 @@ const RunTimeRange = {
   MAX: 240,
 };
 
-export const filmsData = TITLES.map((title, index) => {
-  return {
-    id: nanoid(ID_LENGTH),
-    title,
-    cover: COVERS[index],
-    poster: COVERS[index],
-    preview: getRandomArrayItem(PREVIEWS),
-    genre: getRandomArrayItem(GENRES),
-    release: getRandomIntegerNumber(
-      ReleaseRange.MIN,
-      ReleaseRange.MAX
-    ).toString(),
-    rating: +(Math.random() * RatingRange.MAX).toPrecision(2),
-    ratingsCount: getRandomIntegerNumber(
-      ratingsCountRange.MIN,
-      ratingsCountRange.MAX
-    ),
-    description: DESCRRIPTION,
-    director: getRandomArrayItem(DIRECTORS),
-    actors: getRandomArrayItems(ACTORS),
-    runTime: getRandomIntegerNumber(RunTimeRange.MIN, RunTimeRange.MAX),
-    reviews,
-  };
-});
+const filmsData = TITLES.map((title, index) => ({
+  id: nanoid(ID_LENGTH),
+  title,
+  cover: COVERS[index],
+  poster: COVERS[index],
+  preview: getRandomArrayItem(PREVIEWS),
+  genre: getRandomArrayItem(GENRES),
+  release: getRandomIntegerNumber(
+    ReleaseRange.MIN,
+    ReleaseRange.MAX,
+  ).toString(),
+  rating: +(Math.random() * RatingRange.MAX).toPrecision(2),
+  ratingsCount: getRandomIntegerNumber(
+    ratingsCountRange.MIN,
+    ratingsCountRange.MAX,
+  ),
+  description: DESCRRIPTION,
+  director: getRandomArrayItem(DIRECTORS),
+  actors: getRandomArrayItems(ACTORS),
+  runTime: getRandomIntegerNumber(RunTimeRange.MIN, RunTimeRange.MAX),
+  reviews,
+}));
+
+export default filmsData;

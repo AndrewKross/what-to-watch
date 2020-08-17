@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { getRandomIntegerNumber, getRandomArrayItem } from "../utils/common.js";
+import { getRandomIntegerNumber, getRandomArrayItem } from "../utils/common";
 
 const ID_LENGTH = 8;
 const DATA_DIFF = 100;
@@ -22,28 +22,28 @@ const TEXTS = [
   Budapest Hotel"; is no different, except that he has added a hint of
   gravitas to the mix, improving the recipe.`,
   `I didn't find it amusing, and while I can appreciate the creativity,
-  it's an hour and 40 minutes I wish I could take back.`
+  it's an hour and 40 minutes I wish I could take back.`,
 ];
 
 const USER_NAMES = [
   `Kate Muir`,
   `Bill Goodykoontz`,
-  `Amanda Greever`
+  `Amanda Greever`,
 ];
 
 const RatingRange = {
   MIN: 0,
-  MAX: 10
+  MAX: 10,
 };
 
-export const reviews = Array(REVIEWS_COUNT)
+const reviews = Array(REVIEWS_COUNT)
   .fill()
-  .map(() => {
-    return ({
-      id: nanoid(ID_LENGTH),
-      text: getRandomArrayItem(TEXTS),
-      rating: +(Math.random() * RatingRange.MAX).toPrecision(2),
-      userName: getRandomArrayItem(USER_NAMES),
-      date: getRandomDate()
-    });
-  });
+  .map(() => ({
+    id: nanoid(ID_LENGTH),
+    text: getRandomArrayItem(TEXTS),
+    rating: +(Math.random() * RatingRange.MAX).toPrecision(2),
+    userName: getRandomArrayItem(USER_NAMES),
+    date: getRandomDate(),
+  }));
+
+export default reviews;

@@ -38,7 +38,7 @@ FilmsList.propTypes = {
   films: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-    })
+    }),
   ).isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
 };

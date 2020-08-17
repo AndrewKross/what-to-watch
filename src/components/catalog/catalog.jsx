@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { GENRES } from "../../const.js";
+import { GENRES } from "../../const";
 import FilmsList from "../films-list/films-list.jsx";
 
-const getActiveGenre = (index) =>
-  index === 0 ? `catalog__genres-item--active` : ``;
+const getActiveGenre = (index) => (index === 0 ? `catalog__genres-item--active` : ``);
 
 const Catalog = ({ films, onFilmCardClick }) => (
   <section className="catalog">

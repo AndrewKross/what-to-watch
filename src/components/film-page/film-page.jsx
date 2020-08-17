@@ -2,21 +2,19 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs.jsx";
 import FilmsList from "../films-list/films-list.jsx";
-import { NUMBER_OF_SIMILAR_FILMS } from "../../const.js";
+import { NUMBER_OF_SIMILAR_FILMS } from "../../const";
 import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
 
 export default class FilmPage extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { films, selectedFilm, onFilmCardClick } = this.props;
-    const { title, poster, genre, release } = selectedFilm;
+    const {
+      title, poster, genre, release,
+    } = selectedFilm;
     const similarFilms = films
       .filter(
-        (film) => selectedFilm.genre === film.genre && selectedFilm !== film
+        (film) => selectedFilm.genre === film.genre && selectedFilm !== film,
       )
       .slice(0, NUMBER_OF_SIMILAR_FILMS);
 
@@ -72,7 +70,7 @@ export default class FilmPage extends Component {
               <div className="movie-card__poster movie-card__poster--big">
                 <img
                   src={poster}
-                  alt={title + ` poster`}
+                  alt={`${title} poster`}
                   width="218"
                   height="327"
                 />

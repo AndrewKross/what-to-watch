@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
 const PromoFilm = ({ promoFilmData: { title, genre, date } }) => (
   <div className="movie-card__wrap">
@@ -45,6 +45,6 @@ PromoFilm.propTypes = {
     genre: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
   }).isRequired,
-}
+};
 
 export default PromoFilm;

@@ -7,9 +7,9 @@ import {
   REVIEW_DATE_SERVICE_FORMAT,
   TabsNames,
   TabsData,
-} from "../../const.js";
-import { getFormatedRunTime } from "../../utils/common.js";
-import { getRatingGrade } from "../../utils/filmcard.js";
+} from "../../const";
+import { getFormatedRunTime } from "../../utils/common";
+import { getRatingGrade } from "../../utils/filmcard";
 
 export default class Tabs extends Component {
   constructor(props) {
@@ -56,7 +56,9 @@ export default class Tabs extends Component {
   }
 
   _getOverviewTab = () => {
-    const { rating, ratingsCount, director, actors, description } = this.props.film;
+    const {
+      rating, ratingsCount, director, actors, description,
+    } = this.props.film;
 
     return (
       <React.Fragment>
@@ -82,7 +84,9 @@ export default class Tabs extends Component {
   };
 
   _getDetailsTab = () => {
-    const { director, actors, runTime, genre, release } = this.props.film;
+    const {
+      director, actors, runTime, genre, release,
+    } = this.props.film;
 
     return (
       <div className="movie-card__text movie-card__row">
@@ -125,35 +129,37 @@ export default class Tabs extends Component {
   _getReviewsTab() {
     const { reviews } = this.props.film;
 
+    const getReviewMarkup = (review) => {
+      const {
+        id, text, rating, userName, date,
+      } = review;
+      const reviewDateInHumanFormat = moment(date).format(REVIEW_DATE_HUMAN_FORMAT);
+      const reviewDateInServiceFormat = moment(date).format(REVIEW_DATE_SERVICE_FORMAT);
+
+      return (
+        <div key={id} className="review">
+          <blockquote className="review__quote">
+            <p className="review__text">{text}</p>
+            <footer className="review__details">
+              <cite className="review__author">{userName}</cite>
+              <time className="review__date" dateTime={reviewDateInServiceFormat}>
+                {reviewDateInHumanFormat}
+              </time>
+            </footer>
+          </blockquote>
+          <div className="review__rating">{rating}</div>
+        </div>
+      );
+    };
+
     return (
       <div className="movie-card__reviews movie-card__row">
         <div className="movie-card__reviews-col">
-          {reviews.slice(0, REVIEWS_IN_COLUMN_COUNT).map((review) => this._getReviewMarkup(review))}
+          {reviews.slice(0, REVIEWS_IN_COLUMN_COUNT).map((review) => getReviewMarkup(review))}
         </div>
         <div className="movie-card__reviews-col">
-          {reviews.slice(REVIEWS_IN_COLUMN_COUNT).map((review) => this._getReviewMarkup(review))}
+          {reviews.slice(REVIEWS_IN_COLUMN_COUNT).map((review) => getReviewMarkup(review))}
         </div>
-      </div>
-    );
-  }
-
-  _getReviewMarkup(review) {
-    const { id, text, rating, userName, date } = review;
-    const reviewDateInHumanFormat = moment(date).format(REVIEW_DATE_HUMAN_FORMAT);
-    const reviewDateInServiceFormat = moment(date).format(REVIEW_DATE_SERVICE_FORMAT);
-
-    return (
-      <div key={id} className="review">
-        <blockquote className="review__quote">
-          <p className="review__text">{text}</p>
-          <footer className="review__details">
-            <cite className="review__author">{userName}</cite>
-            <time className="review__date" dateTime={reviewDateInServiceFormat}>
-              {reviewDateInHumanFormat}
-            </time>
-          </footer>
-        </blockquote>
-        <div className="review__rating">{rating}</div>
       </div>
     );
   }
@@ -197,7 +203,7 @@ Tabs.propTypes = {
         rating: PropTypes.number.isRequired,
         userName: PropTypes.string.isRequired,
         date: PropTypes.instanceOf(Date).isRequired,
-      })
+      }),
     ).isRequired,
   }).isRequired,
 };

@@ -21,7 +21,7 @@ it(`Should Tabs render correctly`, () => {
           runTime: `1h 35m`,
         }}
         onFilmCardClick={() => {}}
-      />
+      />,
     )
     .toJSON();
 

@@ -9,7 +9,7 @@ export const RatingRange = {
   MAX_BAD: 3,
   MAX_NORMAL: 5,
   MAX_GOOD: 8,
-  MAX: 10
+  MAX: 10,
 };
 
 export const RatingGrade = {
@@ -17,12 +17,12 @@ export const RatingGrade = {
   NORMAL: `Normal`,
   GOOD: `Good`,
   VERY_GOOD: `Very good`,
-  AWESOME: `Awesome`
+  AWESOME: `Awesome`,
 };
 
 export const Screen = {
   MAIN: `main`,
-  CARD: `card`
+  CARD: `card`,
 };
 
 export const GENRES = [
@@ -35,17 +35,25 @@ export const GENRES = [
   `Kids & Family`,
   `Romance`,
   `Sci-Fi`,
-  `Thrillers`
+  `Thrillers`,
 ];
 
 export const TabsNames = {
   OVERVIEW: `overview`,
   DETAILS: `details`,
-  REVIEWS: `reviews`
+  REVIEWS: `reviews`,
 };
 
-export const TabsData = [
-  { name: TabsNames.OVERVIEW, content: `Overview` },
-  { name: TabsNames.DETAILS, content: `Details` },
-  { name: TabsNames.REVIEWS, content: `Reviews` }
+export const TabsData = [{
+  name: TabsNames.OVERVIEW,
+  content: `Overview`,
+},
+{
+  name: TabsNames.DETAILS,
+  content: `Details`,
+},
+{
+  name: TabsNames.REVIEWS,
+  content: `Reviews`,
+},
 ];
