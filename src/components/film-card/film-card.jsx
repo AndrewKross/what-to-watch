@@ -16,12 +16,12 @@ export default class FilmCard extends Component {
   }
 
   render() {
-    const { filmData, onFilmCardClick, onCardHover } = this.props;
+    const { filmData, onFilmCardClick, onFilmCardHover } = this.props;
     const { title, cover, preview } = filmData;
 
     const onMouseEnterHandler = (evt) => {
       this._isCardHovered = true;
-      onCardHover(filmData, evt.target);
+      onFilmCardHover(filmData, evt.target);
       this._startPlaying();
     };
 
@@ -35,9 +35,16 @@ export default class FilmCard extends Component {
         className="small-movie-card catalog__movies-card"
         onMouseEnter={onMouseEnterHandler}
         onMouseLeave={onMouseLeaveHandler}
+        onClick={() => onFilmCardClick(filmData)}
       >
-        <div className="small-movie-card__image" onClick={() => onFilmCardClick(filmData)}>
-          <VideoPlayer cover={cover} preview={preview} isPlaying={this.state.isPlaying} />
+        <div className="small-movie-card__image">
+
+          <VideoPlayer
+            cover={cover}
+            preview={preview}
+            isPlaying={this.state.isPlaying}
+          />
+
         </div>
 
         <h3
@@ -103,5 +110,5 @@ FilmCard.propTypes = {
     ).isRequired,
   }).isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
-  onCardHover: PropTypes.func.isRequired,
+  onFilmCardHover: PropTypes.func.isRequired,
 };

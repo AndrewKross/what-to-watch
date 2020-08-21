@@ -1,16 +1,22 @@
-env:
+env: 
   browser: true
+  es6: true
+  commonjs: true
+  jest: true
   es2020: true
-extends:
-  - 'plugin:react/recommended'
-  - airbnb-base
+
+extends: ['plugin:react/recommended', 'airbnb-base']
+
 parser: 'babel-eslint'
-parserOptions:
-  ecmaFeatures:
+
+parserOptions: 
+  ecmaFeatures: 
     jsx: true
   ecmaVersion: 11
   sourceType: module
-plugins:
-  - react
-rules: {}
-ignorePatterns: ['*.test.js']
+  
+plugins: ['react', 'jest']
+
+settings: 
+  react:
+    version: 'detect'

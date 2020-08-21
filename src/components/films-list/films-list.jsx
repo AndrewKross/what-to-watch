@@ -19,7 +19,7 @@ export default class FilmsList extends Component {
           <FilmCard
             key={film.id}
             filmData={film}
-            onCardHover={this._handlerCardHover}
+            onFilmCardHover={this._handlerCardHover}
             onFilmCardClick={onFilmCardClick}
           />
         ))}

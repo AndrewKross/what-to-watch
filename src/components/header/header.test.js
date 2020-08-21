@@ -1,10 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Footer from "./footer.jsx";
+import Header from "./header.jsx";
 
-test(`Footer should render correctly`, () => {
+test(`Header should render correctly`, () => {
   const tree = renderer
-    .create(<Footer />)
+    .create(<Header />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

@@ -1,6 +1,6 @@
-import { RatingRange, RatingGrade } from "../const.js"
+import { RatingRange, RatingGrade } from "../const";
 
-export const getRatingGrade = (rating) => {
+const getRatingGrade = (rating) => {
   switch (true) {
     case rating >= RatingRange.MIN && rating < RatingRange.MAX_BAD:
       return RatingGrade.BAD;
@@ -21,3 +21,6 @@ export const getRatingGrade = (rating) => {
       return RatingGrade.BAD;
   }
 };
+
+// eslint-disable-next-line import/prefer-default-export
+export { getRatingGrade };

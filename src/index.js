@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import { reducer } from "./reducer/reducer.js";
+import { reducer } from "./reducer/reducer";
 import App from "./components/app/app.jsx";
+import filmsData from "./mocks/films";
 
 const store = createStore(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__
-    ? window.__REDUX_DEVTOOLS_EXTENSION__()
-    : (f) => f
+  && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
 const promoFilmData = {
@@ -20,7 +20,10 @@ const promoFilmData = {
 
 ReactDOM.render(
   <Provider store={store}>
-    <App promoFilmData={promoFilmData} />
+    <App
+      promoFilmData={promoFilmData}
+      filmsData={filmsData}
+    />
   </Provider>,
-  document.querySelector(`#root`)
+  document.querySelector(`#root`),
 );
