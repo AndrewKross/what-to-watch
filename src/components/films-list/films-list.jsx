@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { ActionCreator } from "../../reducer/reducer";
 import FilmCard from "../film-card/film-card.jsx";
 
-export default class FilmsList extends Component {
+class FilmsList extends Component {
   constructor(props) {
     super(props);
 
@@ -34,6 +36,10 @@ export default class FilmsList extends Component {
   };
 }
 
+const mapStateToProps = (state) => ({
+  films: state.films,
+});
+
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(
     PropTypes.shape({
@@ -42,3 +48,6 @@ FilmsList.propTypes = {
   ).isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
 };
+
+export { FilmsList };
+export default connect(mapStateToProps)(FilmsList);

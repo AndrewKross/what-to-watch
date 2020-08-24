@@ -9,7 +9,7 @@ import {
   TabsData,
 } from "../../const";
 import { getFormatedRunTime } from "../../utils/common";
-import { getRatingGrade } from "../../utils/filmcard";
+import { getRatingGrade } from "../../utils/films";
 
 export default class Tabs extends Component {
   constructor(props) {

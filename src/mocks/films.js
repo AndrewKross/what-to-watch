@@ -17,6 +17,9 @@ const TITLES = [
   `What We Do in the Shadows`,
   `Revenant`,
   `Johnny English`,
+  `Agent 007`,
+  `Batman`,
+  `John Wick`,
 ];
 
 const COVERS = [
@@ -28,6 +31,9 @@ const COVERS = [
   `img/what-we-do-in-the-shadows.jpg`,
   `img/revenant.jpg`,
   `img/johnny-english.jpg`,
+  `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+  `img/bohemian-rhapsody.jpg`,
+  `img/macbeth.jpg`,
 ];
 
 const PREVIEWS = [
@@ -36,12 +42,13 @@ const PREVIEWS = [
 
 const GENRES = [
   `comedy`,
-  `drama`,
-  `melodrama`,
-  `horror`,
   `crime`,
   `documentary`,
+  `drama`,
+  `horror`,
+  `kids & family`,
   `romance`,
+  `sci-fi`,
   `thriller`,
 ];
 

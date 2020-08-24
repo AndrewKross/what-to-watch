@@ -1,6 +1,8 @@
-import { RatingRange, RatingGrade } from "../const";
+import {
+  RatingRange, RatingGrade, GENRES, GenresForFilms,
+} from "../const";
 
-const getRatingGrade = (rating) => {
+export const getRatingGrade = (rating) => {
   switch (true) {
     case rating >= RatingRange.MIN && rating < RatingRange.MAX_BAD:
       return RatingGrade.BAD;
@@ -22,5 +24,6 @@ const getRatingGrade = (rating) => {
   }
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export { getRatingGrade };
+export const getFilteredFilmsByGenre = (films, genre) => {
+  return genre === GENRES[0] ? films : films.filter((film) => film.genre === GenresForFilms[genre]);
+};
