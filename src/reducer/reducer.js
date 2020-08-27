@@ -11,7 +11,6 @@ const initialState = {
 
 const ActionType = {
   CHANGE_CURRENT_GENRE: `CHANGE_CURRENT_GENRE`,
-  FILTER_FILMS_BY_GENRE: `FILTER_FILMS_BY_GENRE`,
   SHOW_MORE_FILMS: `SHOW_MORE_FILMS`,
 };
 
@@ -19,9 +18,6 @@ const ActionCreator = {
   changeCurrentGenre: (genre) => ({
     type: ActionType.CHANGE_CURRENT_GENRE,
     payload: genre,
-  }),
-  filterFilmsByGenre: () => ({
-    type: ActionType.FILTER_FILMS_BY_GENRE,
   }),
   showMoreFilms: () => ({
     type: ActionType.SHOW_MORE_FILMS,
@@ -34,13 +30,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         currentGenre: action.payload,
-        filteredFilms: getFilteredFilmsByGenre(initialState.filteredFilms, action.payload),
-        filmsOnScreen: initialState.filmsOnScreen,
-      };
-    case ActionType.FILTER_FILMS_BY_GENRE:
-      return {
-        ...state,
-        filteredFilms: getFilteredFilmsByGenre(initialState.filteredFilms, state.currentGenre),
+        filteredFilms: getFilteredFilmsByGenre(state.allFilms, action.payload),
+        filmsOnScreen: FILMS_ON_START_SCREEN,
       };
     case ActionType.SHOW_MORE_FILMS:
       return {
@@ -52,4 +43,6 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export { reducer, ActionCreator };
+export {
+  reducer, ActionCreator, initialState, ActionType,
+};
