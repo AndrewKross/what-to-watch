@@ -2,6 +2,7 @@ export const NUMBER_OF_SIMILAR_FILMS = 4;
 export const PREVIEW_DELAY = 1000;
 export const REVIEWS_IN_COLUMN_COUNT = 3;
 export const FILMS_ON_START_SCREEN = 8;
+export const FILMS_ON_SHOW_MORE_BUTTON = 20;
 export const REVIEW_DATE_HUMAN_FORMAT = `MMMM D, YYYY`;
 export const REVIEW_DATE_SERVICE_FORMAT = `YYYY-MM-DD`;
 

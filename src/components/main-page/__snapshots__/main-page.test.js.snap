@@ -156,6 +156,7 @@ Array [
       >
         <li
           className="catalog__genres-item catalog__genres-item--active"
+          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
@@ -166,6 +167,7 @@ Array [
         </li>
         <li
           className="catalog__genres-item "
+          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
@@ -176,6 +178,7 @@ Array [
         </li>
         <li
           className="catalog__genres-item "
+          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
@@ -186,6 +189,7 @@ Array [
         </li>
         <li
           className="catalog__genres-item "
+          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
@@ -196,6 +200,7 @@ Array [
         </li>
         <li
           className="catalog__genres-item "
+          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
@@ -206,6 +211,7 @@ Array [
         </li>
         <li
           className="catalog__genres-item "
+          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
@@ -216,6 +222,7 @@ Array [
         </li>
         <li
           className="catalog__genres-item "
+          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
@@ -226,6 +233,7 @@ Array [
         </li>
         <li
           className="catalog__genres-item "
+          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
@@ -236,6 +244,7 @@ Array [
         </li>
         <li
           className="catalog__genres-item "
+          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
@@ -246,6 +255,7 @@ Array [
         </li>
         <li
           className="catalog__genres-item "
+          onClick={[Function]}
         >
           <a
             className="catalog__genres-link"
@@ -490,16 +500,6 @@ Array [
             </a>
           </h3>
         </article>
-      </div>
-      <div
-        className="catalog__more"
-      >
-        <button
-          className="catalog__button"
-          type="button"
-        >
-          Show more
-        </button>
       </div>
     </section>
     <footer

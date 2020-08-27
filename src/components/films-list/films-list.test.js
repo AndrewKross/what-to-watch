@@ -1,13 +1,15 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import { films } from "../../test-mocks";
-import FilmsList from "./films-list.jsx";
+import { FilmsListComponent } from "./films-list.jsx";
+import { FILMS_ON_START_SCREEN } from '../../const';
 
-it(`FilmsList should render correctly`, () => {
+test(`FilmsList should render correctly`, () => {
   const tree = renderer
     .create(
-      <FilmsList
-          films={films}
+      <FilmsListComponent
+          filteredFilms={films}
+          filmsOnScreen={FILMS_ON_START_SCREEN}
           onFilmCardClick={() => {}}
       />, {
         createNodeMock: () => ({}),

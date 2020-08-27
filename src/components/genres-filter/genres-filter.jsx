@@ -34,5 +34,5 @@ GenresFilter.propTypes = {
   onGenreChangeClick: PropTypes.func.isRequired,
 };
 
-export { GenresFilter };
+export { GenresFilter as GenresFilterComponent };
 export default connect(mapStateToProps, mapDispatchToProps)(GenresFilter);

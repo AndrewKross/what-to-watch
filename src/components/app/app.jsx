@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import { Screen } from "../../const";
 import MainPage from "../main-page/main-page.jsx";
 import FilmPage from "../film-page/film-page.jsx";
@@ -73,9 +74,14 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  filmsData: state.allFilms,
+});
+
 App.propTypes = {
   promoFilmData: PropTypes.object.isRequired,
   filmsData: PropTypes.array.isRequired,
 };
 
-export default App;
+export { App as AppComponent };
+export default connect(mapStateToProps)(App);

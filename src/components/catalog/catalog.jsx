@@ -8,16 +8,10 @@ const Catalog = ({ onFilmCardClick }) => (
     <h2 className="catalog__title visually-hidden">Catalog</h2>
     <GenresFilter />
     <FilmsList onFilmCardClick={onFilmCardClick} />
-    <div className="catalog__more">
-      <button className="catalog__button" type="button">
-        Show more
-      </button>
-    </div>
   </section>
 );
 
 Catalog.propTypes = {
-  films: PropTypes.array.isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
 };
 

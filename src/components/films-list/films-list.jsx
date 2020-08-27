@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { ActionCreator } from "../../reducer/reducer";
 import FilmCard from "../film-card/film-card.jsx";
+import ShowMore from '../show-more/show-more.jsx';
 
 class FilmsList extends Component {
   constructor(props) {
@@ -14,18 +14,21 @@ class FilmsList extends Component {
   }
 
   render() {
-    const { films, onFilmCardClick } = this.props;
+    const { filteredFilms, filmsOnScreen, onFilmCardClick } = this.props;
     return (
-      <div className="catalog__movies-list">
-        {films.map((film) => (
-          <FilmCard
-            key={film.id}
-            filmData={film}
-            onFilmCardHover={this._handlerCardHover}
-            onFilmCardClick={onFilmCardClick}
-          />
-        ))}
-      </div>
+      <React.Fragment>
+        <div className="catalog__movies-list">
+          {filteredFilms.slice(0, filmsOnScreen).map((film) => (
+              <FilmCard
+                  key={film.id}
+                  filmData={film}
+                  onFilmCardHover={this._handlerCardHover}
+                  onFilmCardClick={onFilmCardClick}
+              />
+          ))}
+        </div>
+        {filmsOnScreen < filteredFilms.length && <ShowMore />}
+      </React.Fragment>
     );
   }
 
@@ -37,11 +40,13 @@ class FilmsList extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  films: state.films,
+  filteredFilms: state.filteredFilms,
+  filmsOnScreen: state.filmsOnScreen,
 });
 
 FilmsList.propTypes = {
-  films: PropTypes.arrayOf(
+  filmsOnScreen: PropTypes.number.isRequired,
+  filteredFilms: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
     }),
@@ -49,5 +54,5 @@ FilmsList.propTypes = {
   onFilmCardClick: PropTypes.func.isRequired,
 };
 
-export { FilmsList };
+export { FilmsList as FilmsListComponent };
 export default connect(mapStateToProps)(FilmsList);

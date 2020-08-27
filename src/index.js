@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { reducer } from "./reducer/reducer";
 import App from "./components/app/app.jsx";
-import filmsData from "./mocks/films";
 
 const store = createStore(
   reducer,
@@ -22,7 +21,6 @@ ReactDOM.render(
   <Provider store={store}>
     <App
       promoFilmData={promoFilmData}
-      filmsData={filmsData}
     />
   </Provider>,
   document.querySelector(`#root`),
