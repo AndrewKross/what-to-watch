@@ -5,7 +5,7 @@ import PromoFilm from "../promo-film/promo-film.jsx";
 import Catalog from "../catalog/catalog.jsx";
 import Footer from "../footer/footer.jsx";
 
-const MainPage = ({ films, onFilmCardClick, promoFilmData }) => (
+const MainPage = ({ films, promoFilmData, filmsOnScreen }) => (
   <React.Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -20,7 +20,7 @@ const MainPage = ({ films, onFilmCardClick, promoFilmData }) => (
     </section>
 
     <div className="page-content">
-      <Catalog films={films} onFilmCardClick={onFilmCardClick} />
+      <Catalog films={films} filmsOnScreen={filmsOnScreen} />
       <Footer />
     </div>
   </React.Fragment>
@@ -28,8 +28,8 @@ const MainPage = ({ films, onFilmCardClick, promoFilmData }) => (
 
 MainPage.propTypes = {
   films: PropTypes.array.isRequired,
-  onFilmCardClick: PropTypes.func.isRequired,
   promoFilmData: PropTypes.object.isRequired,
+  filmsOnScreen: PropTypes.number.isRequired,
 };
 
 export default MainPage;

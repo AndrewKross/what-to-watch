@@ -1,85 +1,43 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { Screen } from "../../const";
+import { AppRoute } from "../../const";
 import MainPage from "../main-page/main-page.jsx";
 import FilmPage from "../film-page/film-page.jsx";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeScreen: Screen.MAIN,
-    };
-
-    this.activeFilm = null;
-  }
-
-  render() {
-    const { filmsData } = this.props;
-
-    return (
-      <BrowserRouter>
-        <Switch>
-          <Route path="/">
-            {this._renderScreen()}
-          </Route>
-          <Route path="/film-page">
+const App = ({ filmsData, filmsOnScreen }) => (
+  <BrowserRouter>
+    <Switch>
+      <Route exact path={AppRoute.MAIN}>
+        <MainPage
+          films={filmsData}
+          filmsOnScreen={filmsOnScreen}
+          promoFilmData={filmsData[0]}
+        />
+      </Route>
+      <Route exact path={`${AppRoute.FILM}:id`}
+        render={({ match }) => {
+          const selectedFilm = filmsData.find((film) => film.id === +match.params.id);
+          return (
             <FilmPage
-              selectedFilm={filmsData[0]}
+              selectedFilm={selectedFilm}
               films={filmsData}
-              onFilmCardClick={this.filmCardClickHandler}
+              filmsOnScreen={filmsOnScreen}
             />
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    );
-  }
-
-  filmCardClickHandler = (film) => {
-    this.setState({
-      activeScreen: Screen.CARD,
-    });
-
-    this.activeFilm = film;
-  }
-
-  _renderScreen() {
-    const { promoFilmData, filmsData } = this.props;
-
-    switch (this.state.activeScreen) {
-      case Screen.MAIN:
-        return (
-          <MainPage
-            films={filmsData}
-            promoFilmData={promoFilmData}
-            onFilmCardClick={this.filmCardClickHandler}
-          />
-        );
-
-      case Screen.CARD:
-        return (
-          <FilmPage
-            selectedFilm={this.activeFilm}
-            films={filmsData}
-            onFilmCardClick={this.filmCardClickHandler}
-          />
-        );
-
-      default:
-        return null;
-    }
-  }
-}
+          );
+        }} />
+    </Switch>
+  </BrowserRouter>
+);
 
 const mapStateToProps = (state) => ({
   filmsData: state.allFilms,
+  filmsOnScreen: state.filmsOnScreen,
 });
 
 App.propTypes = {
-  promoFilmData: PropTypes.object.isRequired,
+  filmsOnScreen: PropTypes.number.isRequired,
   filmsData: PropTypes.array.isRequired,
 };
 

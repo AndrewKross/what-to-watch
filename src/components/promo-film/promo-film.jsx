@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const PromoFilm = ({ promoFilmData: { title, genre, date } }) => (
+const PromoFilm = ({ promoFilmData: { title, genre, release } }) => (
   <div className="movie-card__wrap">
     <div className="movie-card__info">
       <div className="movie-card__poster">
@@ -16,8 +16,8 @@ const PromoFilm = ({ promoFilmData: { title, genre, date } }) => (
       <div className="movie-card__desc">
         <h2 className="movie-card__title">{title}</h2>
         <p className="movie-card__meta">
-          <span className="movie-card__genre">{genre}</span>
-          <span className="movie-card__year">{date}</span>
+          <span className="movie-card__genre">{genre[0].toUpperCase() + genre.slice(1)}</span>
+          <span className="movie-card__year">{release}</span>
         </p>
 
         <div className="movie-card__buttons">
@@ -43,7 +43,7 @@ PromoFilm.propTypes = {
   promoFilmData: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
+    release: PropTypes.string.isRequired,
   }).isRequired,
 };
 

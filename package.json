@@ -42,6 +42,7 @@
     "node": "10"
   },
   "dependencies": {
+    "history": "^5.0.0",
     "moment": "2.27.0",
     "moment-locales-webpack-plugin": "1.2.0",
     "nanoid": "3.1.12",

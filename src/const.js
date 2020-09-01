@@ -22,9 +22,9 @@ export const RatingGrade = {
   AWESOME: `Awesome`,
 };
 
-export const Screen = {
-  MAIN: `main`,
-  CARD: `card`,
+export const AppRoute = {
+  MAIN: `/`,
+  FILM: `/film/`,
 };
 
 export const GENRES = [

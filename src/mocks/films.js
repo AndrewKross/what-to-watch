@@ -1,12 +1,9 @@
-import { nanoid } from "nanoid";
 import {
   getRandomIntegerNumber,
   getRandomArrayItem,
   getRandomArrayItems,
 } from "../utils/common";
 import reviews from "./reviews";
-
-const ID_LENGTH = 8;
 
 const TITLES = [
   `Fantastic Beasts: The Crimes of Grindelwald`,
@@ -23,17 +20,17 @@ const TITLES = [
 ];
 
 const COVERS = [
-  `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-  `img/bohemian-rhapsody.jpg`,
-  `img/macbeth.jpg`,
-  `img/aviator.jpg`,
-  `img/we-need-to-talk-about-kevin.jpg`,
-  `img/what-we-do-in-the-shadows.jpg`,
-  `img/revenant.jpg`,
-  `img/johnny-english.jpg`,
-  `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-  `img/bohemian-rhapsody.jpg`,
-  `img/macbeth.jpg`,
+  `/img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+  `/img/bohemian-rhapsody.jpg`,
+  `/img/macbeth.jpg`,
+  `/img/aviator.jpg`,
+  `/img/we-need-to-talk-about-kevin.jpg`,
+  `/img/what-we-do-in-the-shadows.jpg`,
+  `/img/revenant.jpg`,
+  `/img/johnny-english.jpg`,
+  `/img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+  `/img/bohemian-rhapsody.jpg`,
+  `/img/macbeth.jpg`,
 ];
 
 const PREVIEWS = [
@@ -100,7 +97,7 @@ const RunTimeRange = {
 };
 
 const filmsData = TITLES.map((title, index) => ({
-  id: nanoid(ID_LENGTH),
+  id: index,
   title,
   cover: COVERS[index],
   poster: COVERS[index],

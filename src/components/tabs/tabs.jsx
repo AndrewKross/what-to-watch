@@ -115,7 +115,7 @@ export default class Tabs extends Component {
           </p>
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Genre</strong>
-            <span className="movie-card__details-value">{genre}</span>
+            <span className="movie-card__details-value">{genre[0].toUpperCase() + genre.slice(1)}</span>
           </p>
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Released</strong>

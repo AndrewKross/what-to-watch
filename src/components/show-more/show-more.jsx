@@ -6,14 +6,12 @@ import { ActionCreator } from '../../reducer/reducer';
 const ShowMore = ({ onShowMoreButtonClick }) => (
   <div className="catalog__more">
     <button className="catalog__button"
-            type="button"
-            onClick={onShowMoreButtonClick}>
+      type="button"
+      onClick={onShowMoreButtonClick}>
       Show more
     </button>
   </div>
 );
-
-const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch) => ({
   onShowMoreButtonClick: () => dispatch(ActionCreator.showMoreFilms()),
@@ -24,4 +22,4 @@ ShowMore.propTypes = {
 };
 
 export { ShowMore as ShowMoreComponent };
-export default connect(mapStateToProps, mapDispatchToProps)(ShowMore);
+export default connect(null, mapDispatchToProps)(ShowMore);

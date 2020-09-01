@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 import VideoPlayer from "../video-player/video-player.jsx";
 import { PREVIEW_DELAY } from "../../const";
 
-export default class FilmCard extends Component {
+class FilmCard extends Component {
   constructor(props) {
     super(props);
 
@@ -16,26 +17,15 @@ export default class FilmCard extends Component {
   }
 
   render() {
-    const { filmData, onFilmCardClick, onFilmCardHover } = this.props;
+    const { filmData } = this.props;
     const { title, cover, preview } = filmData;
-
-    const onMouseEnterHandler = (evt) => {
-      this._isCardHovered = true;
-      onFilmCardHover(filmData, evt.target);
-      this._startPlaying();
-    };
-
-    const onMouseLeaveHandler = () => {
-      this._isCardHovered = false;
-      this._stopPlaying();
-    };
 
     return (
       <article
         className="small-movie-card catalog__movies-card"
-        onMouseEnter={onMouseEnterHandler}
-        onMouseLeave={onMouseLeaveHandler}
-        onClick={() => onFilmCardClick(filmData)}
+        onMouseEnter={this._onMouseEnterHandler}
+        onMouseLeave={this._onMouseLeaveHandler}
+        onClick={this._filmCardClickHandler}
       >
         <div className="small-movie-card__image">
 
@@ -51,7 +41,7 @@ export default class FilmCard extends Component {
           className="small-movie-card__title"
           onClick={(evt) => {
             evt.preventDefault();
-            onFilmCardClick(filmData);
+            this._filmCardClickHandler();
           }}
         >
           <a className="small-movie-card__link" href="film-page.html">
@@ -62,9 +52,23 @@ export default class FilmCard extends Component {
     );
   }
 
+  _filmCardClickHandler = () => {
+    this.props.history.push(`/film/${this.props.filmData.id}`);
+  }
+
   componentWillUnmount() {
     clearTimeout(this._playerTimeout);
   }
+
+  _onMouseEnterHandler = () => {
+    this._isCardHovered = true;
+    this._startPlaying();
+  };
+
+  _onMouseLeaveHandler = () => {
+    this._isCardHovered = false;
+    this._stopPlaying();
+  };
 
   _startPlaying() {
     this._playerTimeout = setTimeout(() => {
@@ -86,7 +90,7 @@ export default class FilmCard extends Component {
 
 FilmCard.propTypes = {
   filmData: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
@@ -109,6 +113,7 @@ FilmCard.propTypes = {
       }),
     ).isRequired,
   }).isRequired,
-  onFilmCardClick: PropTypes.func.isRequired,
-  onFilmCardHover: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
 };
+
+export default withRouter(FilmCard);

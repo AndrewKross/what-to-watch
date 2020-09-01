@@ -11,17 +11,11 @@ const store = createStore(
   && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
-const promoFilmData = {
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  date: `2014`,
-};
-
 ReactDOM.render(
   <Provider store={store}>
-    <App
-      promoFilmData={promoFilmData}
-    />
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
   </Provider>,
   document.querySelector(`#root`),
 );

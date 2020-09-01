@@ -8,7 +8,7 @@ import Footer from "../footer/footer.jsx";
 
 export default class FilmPage extends Component {
   render() {
-    const { films, selectedFilm, onFilmCardClick } = this.props;
+    const { films, selectedFilm } = this.props;
     const {
       title, poster, genre, release,
     } = selectedFilm;
@@ -34,7 +34,7 @@ export default class FilmPage extends Component {
               <div className="movie-card__desc">
                 <h2 className="movie-card__title">{title}</h2>
                 <p className="movie-card__meta">
-                  <span className="movie-card__genre">{genre}</span>
+                  <span className="movie-card__genre">{genre[0].toUpperCase() + genre.slice(1)}</span>
                   <span className="movie-card__year">{release}</span>
                 </p>
 
@@ -87,7 +87,11 @@ export default class FilmPage extends Component {
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
 
-            <FilmsList films={similarFilms} onFilmCardClick={onFilmCardClick} />
+            <FilmsList
+              filteredFilms={similarFilms}
+              filmsOnScreen={NUMBER_OF_SIMILAR_FILMS}
+            />
+
           </section>
 
           <Footer />
@@ -105,5 +109,4 @@ FilmPage.propTypes = {
     release: PropTypes.string.isRequired,
   }).isRequired,
   films: PropTypes.array.isRequired,
-  onFilmCardClick: PropTypes.func.isRequired,
 };
