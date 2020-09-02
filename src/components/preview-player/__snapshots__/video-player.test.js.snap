@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VideoPlayer should render correctly 1`] = `
+exports[`PreviewPlayer should render correctly 1`] = `
 <video
   height={175}
   muted={true}

@@ -25,6 +25,7 @@ export const RatingGrade = {
 export const AppRoute = {
   MAIN: `/`,
   FILM: `/film/`,
+  PLAYER: `/player/`,
 };
 
 export const GENRES = [

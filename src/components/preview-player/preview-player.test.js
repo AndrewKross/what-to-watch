@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import VideoPlayer from "./video-player.jsx";
-import { films } from "../../test-mocks";
+import PreviewPlayer from "./preview-player.jsx";
+import { films } from "../../mocks/test-mocks";
 
 const [film] = films;
 const { preview, cover } = film;
@@ -9,7 +9,7 @@ const { preview, cover } = film;
 test(`VideoPlayer should render correctly`, () => {
   const tree = renderer
     .create(
-      <VideoPlayer
+      <PreviewPlayer
           preview={preview}
           cover={cover}
           isPlaying={false}

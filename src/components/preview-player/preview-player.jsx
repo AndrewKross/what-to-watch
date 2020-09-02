@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-export default class VideoPlayer extends Component {
+export default class PreviewPlayer extends Component {
   constructor(props) {
     super(props);
 
@@ -57,7 +57,7 @@ export default class VideoPlayer extends Component {
   }
 }
 
-VideoPlayer.propTypes = {
+PreviewPlayer.propTypes = {
   preview: PropTypes.string.isRequired,
   cover: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired,

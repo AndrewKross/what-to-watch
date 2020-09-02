@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
-import VideoPlayer from "../video-player/video-player.jsx";
+import PreviewPlayer from "../preview-player/preview-player.jsx";
 import { PREVIEW_DELAY } from "../../const";
 
 class FilmCard extends Component {
@@ -29,7 +29,7 @@ class FilmCard extends Component {
       >
         <div className="small-movie-card__image">
 
-          <VideoPlayer
+          <PreviewPlayer
             cover={cover}
             preview={preview}
             isPlaying={this.state.isPlaying}
@@ -44,7 +44,7 @@ class FilmCard extends Component {
             this._filmCardClickHandler();
           }}
         >
-          <a className="small-movie-card__link" href="film-page.html">
+          <a className="small-movie-card__link">
             {title}
           </a>
         </h3>

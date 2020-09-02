@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { films } from "../../test-mocks";
+import { films } from "../../mocks/test-mocks";
 import Tabs from "./tabs.jsx";
 
 const [film] = films;

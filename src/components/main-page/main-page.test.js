@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import configureStore from "redux-mock-store";
 import { Provider } from 'react-redux';
-import { PromoFilmData, mockStore } from "../../test-mocks";
+import { PromoFilmData, mockStore } from "../../mocks/test-mocks";
 import MainPage from "./main-page.jsx";
 
 test(`Main should render correctly`, () => {
@@ -14,7 +14,7 @@ test(`Main should render correctly`, () => {
           <MainPage
               promoFilmData={PromoFilmData}
               films={mockStore.filteredFilms}
-              onFilmCardClick={() => {}}
+              filmsOnScreen={mockStore.filmsOnScreen}
           />
         </Provider>, {
           createNodeMock: () => ({}),

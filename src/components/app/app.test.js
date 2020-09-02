@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
-import { PromoFilmData, films, mockStore } from "../../test-mocks";
+import { PromoFilmData, films, mockStore } from "../../mocks/test-mocks";
 import { AppComponent } from "./app.jsx";
 
 test(`App should render correctly`, () => {
@@ -13,7 +13,9 @@ test(`App should render correctly`, () => {
         <Provider store={store}>
           <AppComponent
             promoFilmData={PromoFilmData}
-            filmsData={films}
+            allFilms={films}
+            filteredFilms={films}
+            filmsOnScreen={mockStore.filmsOnScreen}
           />
         </Provider>, {
           createNodeMock: () => ({}),

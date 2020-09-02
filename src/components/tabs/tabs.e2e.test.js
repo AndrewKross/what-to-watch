@@ -1,7 +1,7 @@
 import React from "react";
 import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import { films, TABS_DATA } from "../../test-mocks";
+import { films, TABS_DATA } from "../../mocks/test-mocks";
 import Tabs from "./tabs.jsx";
 
 Enzyme.configure({

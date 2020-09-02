@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { PromoFilmData } from "../../test-mocks";
+import { PromoFilmData } from "../../mocks/test-mocks";
 import PromoFilm from "./promo-film.jsx";
 
 test(`PromoCard should render correctly`, () => {

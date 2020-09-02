@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import FilmPage from "./film-page.jsx";
-import { mockStore } from "../../test-mocks";
+import { mockStore } from "../../mocks/test-mocks";
 
 test(`FilmPage should render correctly`, () => {
   const mockStoreConfig = configureStore([]);

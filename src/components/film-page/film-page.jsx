@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 import Tabs from "../tabs/tabs.jsx";
 import FilmsList from "../films-list/films-list.jsx";
-import { NUMBER_OF_SIMILAR_FILMS } from "../../const";
+import { AppRoute, NUMBER_OF_SIMILAR_FILMS } from '../../const';
 import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
 
-export default class FilmPage extends Component {
+class FilmPage extends Component {
   render() {
-    const { films, selectedFilm } = this.props;
+    const { films, selectedFilm, history } = this.props;
     const {
-      title, poster, genre, release,
+      title, poster, genre, release, id,
     } = selectedFilm;
     const similarFilms = films
       .filter(
@@ -42,9 +43,10 @@ export default class FilmPage extends Component {
                   <button
                     className="btn btn--play movie-card__button"
                     type="button"
+                    onClick={() => { history.push(AppRoute.PLAYER + id); }}
                   >
                     <svg viewBox="0 0 19 19" width="19" height="19">
-                      <use href="#play-s"></use>
+                      <use href="#play-s"/>
                     </svg>
                     <span>Play</span>
                   </button>
@@ -53,11 +55,11 @@ export default class FilmPage extends Component {
                     type="button"
                   >
                     <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use href="#add"></use>
+                      <use href="#add"/>
                     </svg>
                     <span>My list</span>
                   </button>
-                  <a href="add-review.html" className="btn movie-card__button">
+                  <a className="btn movie-card__button">
                     Add review
                   </a>
                 </div>
@@ -107,6 +109,10 @@ FilmPage.propTypes = {
     poster: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     release: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
   films: PropTypes.array.isRequired,
+  history: PropTypes.object.isRequired,
 };
+
+export default withRouter(FilmPage);
