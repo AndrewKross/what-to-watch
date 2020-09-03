@@ -1,3 +1,4 @@
+import moment from 'moment';
 import {
   RatingRange, RatingGrade, GENRES, GenresForFilms,
 } from "../const";
@@ -26,4 +27,8 @@ export const getRatingGrade = (rating) => {
 
 export const getFilteredFilmsByGenre = (films, genre) => {
   return genre === GENRES[0] ? films : films.filter((film) => film.genre === GenresForFilms[genre]);
+};
+
+export const formatVideoElapsed = (runtimeBySecond) => {
+  return moment.utc(runtimeBySecond * 1000).format(`HH:mm:ss`);
 };

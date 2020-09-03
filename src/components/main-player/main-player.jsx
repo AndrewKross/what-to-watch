@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
+import { formatVideoElapsed } from "../../utils/films";
 
 class MainPlayer extends Component {
   constructor(props) {
@@ -8,9 +9,12 @@ class MainPlayer extends Component {
 
     this.state = {
       isPlaying: false,
+      time: 0,
     };
 
     this._videoRef = React.createRef();
+    this._progress = 0;
+    this._duration = 0;
   }
 
   componentDidMount() {
@@ -18,21 +22,37 @@ class MainPlayer extends Component {
 
     this._video.onpause = () => {
       this._video.load();
+      this.setState({ isPlaying: false });
+      this._progress = 0;
+    };
+
+    this._video.onplay = () => {
+      this.setState({
+        isPlaying: true,
+      });
     };
 
     this._video.play();
-    if (!this._video.paused) {
-      this.setState({ isPlaying: true });
-    }
+    this._video.oncanplaythrough = () => {
+      this._duration = this._video.duration;
+    };
+
+    this._video.ontimeupdate = () => {
+      this._progress = Math.ceil((this._video.currentTime / this._duration) * 100);
+      this.setState({ time: Math.floor(this._video.currentTime) });
+    };
   }
 
   componentWillUnmount() {
     this._video.onpause = null;
     this._video.src = ``;
+    this._video.oncanplaythrough = null;
+    this._video.onplay = null;
+    this._video.ontimeupdate = null;
   }
 
   render() {
-    const { preview, cover } = this.props.film;
+    const { preview, cover, title } = this.props.film;
 
     const renderPlayButton = () => {
       if (this.state.isPlaying) {
@@ -64,17 +84,17 @@ class MainPlayer extends Component {
         <div className="player__controls">
           <div className="player__controls-row">
             <div className="player__time">
-              <progress className="player__progress" value="30" max="100"/>
-              <div className="player__toggler" style={{ left: `30%` }}>Toggler</div>
+              <progress className="player__progress" value={this._progress} max="100"/>
+              <div className="player__toggler" style={{ left: `${this._progress}%` }}>Toggler</div>
             </div>
-            <div className="player__time-value">1:30:29</div>
+            <div className="player__time-value">{formatVideoElapsed(this.state.time)}</div>
           </div>
 
           <div className="player__controls-row">
 
             {renderPlayButton()}
 
-            <div className="player__name">Transpotting</div>
+            <div className="player__name">{title}</div>
 
             <button type="button" className="player__full-screen" onClick={() => {
               this._video.requestFullscreen();
@@ -107,6 +127,7 @@ class MainPlayer extends Component {
 
 MainPlayer.propTypes = {
   film: PropTypes.shape({
+    title: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired,
   }).isRequired,
