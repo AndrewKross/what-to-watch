@@ -5,7 +5,7 @@ import { AppRoute } from '../../const';
 
 const PromoFilm = ({
   promoFilmData: {
-    title, genre, release, id,
+    title, genre, released, id, posterImage,
   },
   history,
 }) => (
@@ -13,8 +13,8 @@ const PromoFilm = ({
     <div className="movie-card__info">
       <div className="movie-card__poster">
         <img
-          src="/img/the-grand-budapest-hotel-poster.jpg"
-          alt="The Grand Budapest Hotel poster"
+          src={posterImage}
+          alt={title}
           width={218}
           height={327}
         />
@@ -23,8 +23,8 @@ const PromoFilm = ({
       <div className="movie-card__desc">
         <h2 className="movie-card__title">{title}</h2>
         <p className="movie-card__meta">
-          <span className="movie-card__genre">{genre[0].toUpperCase() + genre.slice(1)}</span>
-          <span className="movie-card__year">{release}</span>
+          <span className="movie-card__genre">{genre}</span>
+          <span className="movie-card__year">{released}</span>
         </p>
 
         <div className="movie-card__buttons">
@@ -51,8 +51,9 @@ PromoFilm.propTypes = {
   promoFilmData: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    release: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
     id: PropTypes.number.isRequired,
+    posterImage: PropTypes.string.isRequired,
   }).isRequired,
   history: PropTypes.object.isRequired,
 };

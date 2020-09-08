@@ -26,7 +26,7 @@ export const getRatingGrade = (rating) => {
 };
 
 export const getFilteredFilmsByGenre = (films, genre) => {
-  return genre === GENRES[0] ? films : films.filter((film) => film.genre === GenresForFilms[genre]);
+  return genre === `All genres` ? films : films.filter((film) => film.genre === genre);
 };
 
 export const formatVideoElapsed = (runtimeBySecond) => {

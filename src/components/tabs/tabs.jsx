@@ -57,7 +57,7 @@ export default class Tabs extends Component {
 
   _getOverviewTab = () => {
     const {
-      rating, ratingsCount, director, actors, description,
+      rating, ratingsCount, director, starring, description,
     } = this.props.film;
 
     return (
@@ -76,7 +76,7 @@ export default class Tabs extends Component {
             <strong>Director: {director}</strong>
           </p>
           <p className="movie-card__starring">
-            <strong>Starring: {actors.join(`, `)}</strong>
+            <strong>Starring: {starring.join(`, `)}</strong>
           </p>
         </div>
       </React.Fragment>
@@ -85,7 +85,7 @@ export default class Tabs extends Component {
 
   _getDetailsTab = () => {
     const {
-      director, actors, runTime, genre, release,
+      director, starring, runTime, genre, released,
     } = this.props.film;
 
     return (
@@ -98,7 +98,7 @@ export default class Tabs extends Component {
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Starring</strong>
             <span className="movie-card__details-value">
-              {actors.map((actor) => (
+              {starring.map((actor) => (
                 <React.Fragment key={actor}>
                   {actor}
                   <br />
@@ -115,11 +115,11 @@ export default class Tabs extends Component {
           </p>
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Genre</strong>
-            <span className="movie-card__details-value">{genre[0].toUpperCase() + genre.slice(1)}</span>
+            <span className="movie-card__details-value">{genre}</span>
           </p>
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Released</strong>
-            <span className="movie-card__details-value">{release}</span>
+            <span className="movie-card__details-value">{released}</span>
           </p>
         </div>
       </div>

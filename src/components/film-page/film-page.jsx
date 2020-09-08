@@ -11,7 +11,7 @@ class FilmPage extends Component {
   render() {
     const { films, selectedFilm, history } = this.props;
     const {
-      title, poster, genre, release, id,
+      title, posterImage, genre, released, id, backgroundImage,
     } = selectedFilm;
     const similarFilms = films
       .filter(
@@ -24,7 +24,7 @@ class FilmPage extends Component {
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
             <div className="movie-card__bg">
-              <img src={poster} alt={title} />
+              <img src={backgroundImage} alt={title} />
             </div>
 
             <h1 className="visually-hidden">WTW</h1>
@@ -35,8 +35,8 @@ class FilmPage extends Component {
               <div className="movie-card__desc">
                 <h2 className="movie-card__title">{title}</h2>
                 <p className="movie-card__meta">
-                  <span className="movie-card__genre">{genre[0].toUpperCase() + genre.slice(1)}</span>
-                  <span className="movie-card__year">{release}</span>
+                  <span className="movie-card__genre">{genre}</span>
+                  <span className="movie-card__year">{released}</span>
                 </p>
 
                 <div className="movie-card__buttons">
@@ -71,7 +71,7 @@ class FilmPage extends Component {
             <div className="movie-card__info">
               <div className="movie-card__poster movie-card__poster--big">
                 <img
-                  src={poster}
+                  src={posterImage}
                   alt={`${title} poster`}
                   width="218"
                   height="327"
@@ -106,9 +106,9 @@ class FilmPage extends Component {
 FilmPage.propTypes = {
   selectedFilm: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
+    posterImage: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    release: PropTypes.string.isRequired,
+    released: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
   }).isRequired,
   films: PropTypes.array.isRequired,

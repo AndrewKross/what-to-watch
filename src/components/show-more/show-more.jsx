@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { ActionCreator } from '../../reducer/reducer';
+import { ActionCreator as AppStateActionCreator } from '../../reducer/app-state/app-state';
 
 const ShowMore = ({ onShowMoreButtonClick }) => (
   <div className="catalog__more">
@@ -14,7 +14,7 @@ const ShowMore = ({ onShowMoreButtonClick }) => (
 );
 
 const mapDispatchToProps = (dispatch) => ({
-  onShowMoreButtonClick: () => dispatch(ActionCreator.showMoreFilms()),
+  onShowMoreButtonClick: () => dispatch(AppStateActionCreator.showMoreFilms()),
 });
 
 ShowMore.propTypes = {

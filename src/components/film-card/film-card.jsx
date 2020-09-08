@@ -18,7 +18,7 @@ class FilmCard extends Component {
 
   render() {
     const { filmData } = this.props;
-    const { title, cover, preview } = filmData;
+    const { title, previewImage, previewVideo } = filmData;
 
     return (
       <article
@@ -30,9 +30,9 @@ class FilmCard extends Component {
         <div className="small-movie-card__image">
 
           <PreviewPlayer
-            cover={cover}
-            preview={preview}
-            isPlaying={this.state.isPlaying}
+              previewImage={previewImage}
+              previewVideo={previewVideo}
+              isPlaying={this.state.isPlaying}
           />
 
         </div>
@@ -92,26 +92,8 @@ FilmCard.propTypes = {
   filmData: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    cover: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    release: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    ratingsCount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    actors: PropTypes.arrayOf(PropTypes.string),
-    runTime: PropTypes.number.isRequired,
-    reviews: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        text: PropTypes.string.isRequired,
-        rating: PropTypes.number.isRequired,
-        userName: PropTypes.string.isRequired,
-        date: PropTypes.instanceOf(Date).isRequired,
-      }),
-    ).isRequired,
+    previewImage: PropTypes.string.isRequired,
+    previewVideo: PropTypes.string.isRequired,
   }).isRequired,
   history: PropTypes.object.isRequired,
 };

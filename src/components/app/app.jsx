@@ -6,15 +6,19 @@ import { AppRoute } from "../../const";
 import MainPage from "../main-page/main-page.jsx";
 import FilmPage from "../film-page/film-page.jsx";
 import MainPlayer from '../main-player/main-player.jsx';
+import { getFilteredFilms, getPromoFilm } from '../../reducer/data/selectors';
+import { getFilmsOnScreen } from '../../reducer/app-state/selectors';
 
-const App = ({ allFilms, filteredFilms, filmsOnScreen }) => (
+const App = ({
+  filteredFilms, filmsOnScreen, promoFilm,
+}) => (
   <BrowserRouter>
     <Switch>
       <Route exact path={AppRoute.MAIN}>
         <MainPage
           films={filteredFilms}
           filmsOnScreen={filmsOnScreen}
-          promoFilmData={allFilms[0]}
+          promoFilmData={promoFilm}
         />
       </Route>
       <Route exact path={`${AppRoute.FILM}:id`}
@@ -42,15 +46,15 @@ const App = ({ allFilms, filteredFilms, filmsOnScreen }) => (
 );
 
 const mapStateToProps = (state) => ({
-  allFilms: state.allFilms,
-  filteredFilms: state.filteredFilms,
-  filmsOnScreen: state.filmsOnScreen,
+  filteredFilms: getFilteredFilms(state),
+  filmsOnScreen: getFilmsOnScreen(state),
+  promoFilm: getPromoFilm(state),
 });
 
 App.propTypes = {
   filmsOnScreen: PropTypes.number.isRequired,
   filteredFilms: PropTypes.array.isRequired,
-  allFilms: PropTypes.array.isRequired,
+  promoFilm: PropTypes.object.isRequired,
 };
 
 export { App as AppComponent };

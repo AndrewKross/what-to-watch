@@ -41,16 +41,16 @@ export default class PreviewPlayer extends Component {
   }
 
   render() {
-    const { preview, cover } = this.props;
+    const { previewVideo, previewImage } = this.props;
 
     return (
       <video
         key={Math.random()}
         ref={this._videoRef}
-        src={preview}
+        src={previewVideo}
         width={280}
         height={175}
-        poster={cover}
+        poster={previewImage}
         muted
       />
     );
@@ -58,7 +58,7 @@ export default class PreviewPlayer extends Component {
 }
 
 PreviewPlayer.propTypes = {
-  preview: PropTypes.string.isRequired,
-  cover: PropTypes.string.isRequired,
+  previewVideo: PropTypes.string.isRequired,
+  previewImage: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired,
 };

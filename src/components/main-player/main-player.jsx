@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { formatVideoElapsed } from "../../utils/films";
+import { AppRoute } from '../../const';
 
 class MainPlayer extends Component {
   constructor(props) {
@@ -52,7 +53,9 @@ class MainPlayer extends Component {
   }
 
   render() {
-    const { preview, cover, title } = this.props.film;
+    const {
+      videoMain, backgroundImage, title, id,
+    } = this.props.film;
 
     const renderPlayButton = () => {
       if (this.state.isPlaying) {
@@ -77,9 +80,11 @@ class MainPlayer extends Component {
 
     return (
       <div className="player">
-        <video className="player__video" ref={this._videoRef} src={preview} poster={cover}/>
+        <video className="player__video" ref={this._videoRef} src={videoMain} poster={backgroundImage}/>
 
-        <button type="button" className="player__exit" onClick={this.props.history.goBack}>Exit</button>
+        <button type="button" className="player__exit" onClick={
+          () => this.props.history.push(AppRoute.FILM + id)
+        }>Exit</button>
 
         <div className="player__controls">
           <div className="player__controls-row">
@@ -127,9 +132,10 @@ class MainPlayer extends Component {
 
 MainPlayer.propTypes = {
   film: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired,
-    cover: PropTypes.string.isRequired,
+    videoMain: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
   }).isRequired,
   history: PropTypes.object.isRequired,
 };
