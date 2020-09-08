@@ -6,8 +6,8 @@ import { AppRoute } from "../../const";
 import MainPage from "../main-page/main-page.jsx";
 import FilmPage from "../film-page/film-page.jsx";
 import MainPlayer from '../main-player/main-player.jsx';
-import { getFilteredFilms, getPromoFilm } from '../../reducer/data/selectors';
-import { getFilmsOnScreen } from '../../reducer/app-state/selectors';
+import { getPromoFilm } from '../../reducer/data/selectors';
+import { getFilmsOnScreen, getFilteredFilms } from '../../reducer/app-state/selectors';
 
 const App = ({
   filteredFilms, filmsOnScreen, promoFilm,

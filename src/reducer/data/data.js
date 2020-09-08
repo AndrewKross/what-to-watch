@@ -1,23 +1,15 @@
 import { filmsAdapter } from '../../adapters/film-adapter';
-import { getFilteredFilmsByGenre } from '../../utils/films';
 
 const initialState = {
   allFilms: [],
-  currentGenre: `All genres`,
-  filteredFilms: [],
   promoFilm: {},
 };
 
 const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
-  CHANGE_CURRENT_GENRE: `CHANGE_CURRENT_GENRE`,
 };
 
 const ActionCreator = {
-  changeCurrentGenre: (genre) => ({
-    type: ActionType.CHANGE_CURRENT_GENRE,
-    payload: genre,
-  }),
   loadFilms: (loadedFilms) => ({
     type: ActionType.LOAD_FILMS,
     payload: loadedFilms,
@@ -36,12 +28,6 @@ const Operation = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.CHANGE_CURRENT_GENRE:
-      return {
-        ...state,
-        currentGenre: action.payload,
-        filteredFilms: getFilteredFilmsByGenre(state.allFilms, action.payload),
-      };
     case ActionType.LOAD_FILMS:
       return {
         ...state,

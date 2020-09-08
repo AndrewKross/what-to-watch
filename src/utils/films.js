@@ -1,7 +1,5 @@
 import moment from 'moment';
-import {
-  RatingRange, RatingGrade, GENRES, GenresForFilms,
-} from "../const";
+import { RatingRange, RatingGrade } from "../const";
 
 export const getRatingGrade = (rating) => {
   switch (true) {
@@ -25,7 +23,7 @@ export const getRatingGrade = (rating) => {
   }
 };
 
-export const getFilteredFilmsByGenre = (films, genre) => {
+export const getFilmsFilteredByGenre = (films, genre) => {
   return genre === `All genres` ? films : films.filter((film) => film.genre === genre);
 };
 

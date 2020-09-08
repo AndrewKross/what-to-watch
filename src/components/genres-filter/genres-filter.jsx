@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { ActionCreator as DataActionCreator } from "../../reducer/data/data";
 import { ActionCreator as AppStateActionCreator } from '../../reducer/app-state/app-state';
-import { getCurrentGenre, getFilms } from '../../reducer/data/selectors';
+import { getFilms } from '../../reducer/data/selectors';
+import { getCurrentGenre } from '../../reducer/app-state/selectors';
 
 const GenresFilter = ({ films, currentGenre, onGenreChangeClick }) => {
   const allGenres = films.map((film) => film.genre);
@@ -33,7 +33,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreChangeClick: (genre) => {
-    dispatch(DataActionCreator.changeCurrentGenre(genre));
+    dispatch(AppStateActionCreator.changeCurrentGenre(genre));
     dispatch(AppStateActionCreator.resetShowingFilmsCount());
   },
 });
