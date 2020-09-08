@@ -127,7 +127,7 @@ export default class Tabs extends Component {
   };
 
   _getReviewsTab() {
-    const { reviews } = this.props.film;
+    const { comments } = this.props;
 
     const getReviewMarkup = (review) => {
       const {
@@ -155,10 +155,10 @@ export default class Tabs extends Component {
     return (
       <div className="movie-card__reviews movie-card__row">
         <div className="movie-card__reviews-col">
-          {reviews.slice(0, REVIEWS_IN_COLUMN_COUNT).map((review) => getReviewMarkup(review))}
+          {comments.slice(0, REVIEWS_IN_COLUMN_COUNT).map((review) => getReviewMarkup(review))}
         </div>
         <div className="movie-card__reviews-col">
-          {reviews.slice(REVIEWS_IN_COLUMN_COUNT).map((review) => getReviewMarkup(review))}
+          {comments.slice(REVIEWS_IN_COLUMN_COUNT).map((review) => getReviewMarkup(review))}
         </div>
       </div>
     );
@@ -183,27 +183,22 @@ export default class Tabs extends Component {
 
 Tabs.propTypes = {
   film: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    cover: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    release: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     ratingsCount: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
-    actors: PropTypes.arrayOf(PropTypes.string),
+    starring: PropTypes.arrayOf(PropTypes.string),
+    description: PropTypes.string.isRequired,
     runTime: PropTypes.number.isRequired,
-    reviews: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        text: PropTypes.string.isRequired,
-        rating: PropTypes.number.isRequired,
-        userName: PropTypes.string.isRequired,
-        date: PropTypes.instanceOf(Date).isRequired,
-      }),
-    ).isRequired,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
   }).isRequired,
+  comments: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      text: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+      userName: PropTypes.string.isRequired,
+      date: PropTypes.instanceOf(Date).isRequired,
+    }),
+  ).isRequired,
 };

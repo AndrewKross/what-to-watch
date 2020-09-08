@@ -8,20 +8,29 @@ import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
 
 class FilmPage extends Component {
+  componentDidMount() {
+    this.props.loadComments(this.props.selectedFilm.id);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.selectedFilm !== this.props.selectedFilm) {
+      this.props.loadComments(this.props.selectedFilm.id);
+    }
+  }
+
   render() {
-    const { films, selectedFilm, history } = this.props;
     const {
-      title, posterImage, genre, released, id, backgroundImage,
+      films, selectedFilm, history, comments,
+    } = this.props;
+    const {
+      title, posterImage, genre, released, id, backgroundImage, backgroundColor,
     } = selectedFilm;
     const similarFilms = films
-      .filter(
-        (film) => selectedFilm.genre === film.genre && selectedFilm !== film,
-      )
-      .slice(0, NUMBER_OF_SIMILAR_FILMS);
+      .filter((film) => selectedFilm.genre === film.genre && selectedFilm !== film);
 
     return (
       <React.Fragment>
-        <section className="movie-card movie-card--full">
+        <section className="movie-card movie-card--full" style={{ backgroundColor: `${backgroundColor}` }}>
           <div className="movie-card__hero">
             <div className="movie-card__bg">
               <img src={backgroundImage} alt={title} />
@@ -79,7 +88,7 @@ class FilmPage extends Component {
               </div>
 
               <div className="movie-card__desc">
-                <Tabs film={selectedFilm} />
+                <Tabs film={selectedFilm} comments={comments} />
               </div>
             </div>
           </div>
@@ -90,7 +99,7 @@ class FilmPage extends Component {
             <h2 className="catalog__title">More like this</h2>
 
             <FilmsList
-              filteredFilms={similarFilms}
+              films={similarFilms}
               filmsOnScreen={NUMBER_OF_SIMILAR_FILMS}
             />
 
@@ -107,12 +116,16 @@ FilmPage.propTypes = {
   selectedFilm: PropTypes.shape({
     title: PropTypes.string.isRequired,
     posterImage: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    released: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
     id: PropTypes.number.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
   }).isRequired,
   films: PropTypes.array.isRequired,
   history: PropTypes.object.isRequired,
+  comments: PropTypes.array.isRequired,
+  loadComments: PropTypes.func.isRequired,
 };
 
 export default withRouter(FilmPage);

@@ -6,11 +6,12 @@ import { AppRoute } from "../../const";
 import MainPage from "../main-page/main-page.jsx";
 import FilmPage from "../film-page/film-page.jsx";
 import MainPlayer from '../main-player/main-player.jsx';
-import { getPromoFilm } from '../../reducer/data/selectors';
+import { Operation as DataOperation } from '../../reducer/data/data';
+import { getComments, getPromoFilm } from '../../reducer/data/selectors';
 import { getFilmsOnScreen, getFilteredFilms } from '../../reducer/app-state/selectors';
 
 const App = ({
-  filteredFilms, filmsOnScreen, promoFilm,
+  filteredFilms, filmsOnScreen, promoFilm, comments, loadComments,
 }) => (
   <BrowserRouter>
     <Switch>
@@ -27,6 +28,8 @@ const App = ({
           return (
             <FilmPage
               selectedFilm={selectedFilm}
+              comments={comments}
+              loadComments={loadComments}
               films={filteredFilms}
               filmsOnScreen={filmsOnScreen}
             />
@@ -49,13 +52,22 @@ const mapStateToProps = (state) => ({
   filteredFilms: getFilteredFilms(state),
   filmsOnScreen: getFilmsOnScreen(state),
   promoFilm: getPromoFilm(state),
+  comments: getComments(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadComments(filmId) {
+    dispatch(DataOperation.loadComments(filmId));
+  },
 });
 
 App.propTypes = {
   filmsOnScreen: PropTypes.number.isRequired,
   filteredFilms: PropTypes.array.isRequired,
   promoFilm: PropTypes.object.isRequired,
+  comments: PropTypes.array.isRequired,
+  loadComments: PropTypes.func.isRequired,
 };
 
 export { App as AppComponent };
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
