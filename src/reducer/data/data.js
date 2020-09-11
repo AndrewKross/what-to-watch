@@ -25,11 +25,12 @@ const ActionCreator = {
     type: ActionType.LOAD_COMMENTS,
     payload: loadedComments,
   }),
-  changeCommentsLoadState: () => ({
+  changeCommentsLoadState: (bool) => ({
     type: ActionType.CHANGE_COMMENTS_LOAD_STATE,
+    payload: bool,
   }),
   changeFilmsLoadState: () => ({
-    type: ActionType.CHANGE_COMMENTS_LOAD_STATE,
+    type: ActionType.CHANGE_FILMS_LOAD_STATE,
   }),
 };
 
@@ -46,9 +47,8 @@ const Operation = {
     return api.get(`/comments/${filmId}`)
       .then((response) => {
         const adaptedComments = convertCommentsFromServer(response.data);
-
         dispatch(ActionCreator.loadComments(adaptedComments));
-        dispatch(ActionCreator.changeCommentsLoadState());
+        dispatch(ActionCreator.changeCommentsLoadState(true));
       });
   },
 };
@@ -69,7 +69,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.CHANGE_COMMENTS_LOAD_STATE:
       return {
         ...state,
-        isCommentsLoaded: true,
+        isCommentsLoaded: action.payload,
       };
     case ActionType.CHANGE_FILMS_LOAD_STATE:
       return {

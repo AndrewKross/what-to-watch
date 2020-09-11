@@ -6,9 +6,10 @@ import { AppRoute } from "../../const";
 import MainPage from "../main-page/main-page.jsx";
 import FilmPage from "../film-page/film-page.jsx";
 import MainPlayer from '../main-player/main-player.jsx';
-import { Operation as DataOperation } from '../../reducer/data/data';
+import { ActionCreator as DataActionCreator, Operation as DataOperation } from '../../reducer/data/data';
 import { getComments, getPromoFilm } from '../../reducer/data/selectors';
 import { getFilmsOnScreen, getFilteredFilms } from '../../reducer/app-state/selectors';
+import SignIn from "../sign-in/sign-in.jsx";
 
 const App = ({
   filteredFilms, filmsOnScreen, promoFilm, comments, loadComments,
@@ -44,6 +45,7 @@ const App = ({
           );
         }}
       />
+      <Route exact path={AppRoute.LOGIN} component={SignIn} />
     </Switch>
   </BrowserRouter>
 );
@@ -57,6 +59,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   loadComments(filmId) {
+    dispatch(DataActionCreator.changeCommentsLoadState(false));
     dispatch(DataOperation.loadComments(filmId));
   },
 });

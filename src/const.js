@@ -26,6 +26,7 @@ export const AppRoute = {
   MAIN: `/`,
   FILM: `/film/`,
   PLAYER: `/player/`,
+  LOGIN: `/login`,
 };
 
 export const GENRES = [
