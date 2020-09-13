@@ -4,7 +4,6 @@ const Error = {
   UNAUTHORIZED: 401,
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export const createAPI = (onUnauthorized) => {
   const api = axios.create({
     baseURL: `https://4.react.pages.academy/wtw`,

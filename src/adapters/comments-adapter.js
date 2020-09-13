@@ -8,7 +8,6 @@ const convertCommentFromServer = (comment) => {
   });
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export const convertCommentsFromServer = (comments) => {
   return comments.map((comment) => convertCommentFromServer(comment));
 };

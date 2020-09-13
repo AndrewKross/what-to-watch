@@ -9,7 +9,7 @@ cache:
   - node_modules
 
 script:
-  webpack --mode development
+  npm run build
 
 deploy:
   provider: pages

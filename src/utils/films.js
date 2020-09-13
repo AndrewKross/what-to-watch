@@ -30,3 +30,7 @@ export const getFilmsFilteredByGenre = (films, genre) => {
 export const formatVideoElapsed = (runtimeBySecond) => {
   return moment.utc(runtimeBySecond * 1000).format(`HH:mm:ss`);
 };
+
+export const getFilmFromRoute = (filmsData, match) => {
+  return filmsData.find((film) => film.id === +match.params.id);
+};

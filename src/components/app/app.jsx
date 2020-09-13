@@ -10,6 +10,8 @@ import { ActionCreator as DataActionCreator, Operation as DataOperation } from '
 import { getComments, getPromoFilm } from '../../reducer/data/selectors';
 import { getFilmsOnScreen, getFilteredFilms } from '../../reducer/app-state/selectors';
 import SignIn from "../sign-in/sign-in.jsx";
+import { getFilmFromRoute } from '../../utils/films';
+import { AddReview } from "../add-review/add-review.jsx";
 
 const App = ({
   filteredFilms, filmsOnScreen, promoFilm, comments, loadComments,
@@ -25,10 +27,9 @@ const App = ({
       </Route>
       <Route exact path={`${AppRoute.FILM}:id`}
         render={({ match }) => {
-          const selectedFilm = filteredFilms.find((film) => film.id === +match.params.id);
           return (
             <FilmPage
-              selectedFilm={selectedFilm}
+              selectedFilm={getFilmFromRoute(filteredFilms, match)}
               comments={comments}
               loadComments={loadComments}
               films={filteredFilms}
@@ -37,11 +38,18 @@ const App = ({
           );
         }}
       />
+      <Route exact path={`${AppRoute.FILM}:id/review`}
+        render={({ match }) => {
+          return (
+            <AddReview
+              selectedFilm={getFilmFromRoute(filteredFilms, match)}
+            />
+          );
+        }}/>
       <Route exact path={`${AppRoute.PLAYER}:id`}
         render={({ match }) => {
-          const selectedFilm = filteredFilms.find((film) => film.id === +match.params.id);
           return (
-              <MainPlayer film={selectedFilm} />
+              <MainPlayer film={getFilmFromRoute(filteredFilms, match)} />
           );
         }}
       />

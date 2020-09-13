@@ -2,15 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
-import { getAuthorizationStatus } from '../../reducer/user/selectors';
+import { getAuthorizationStatus, getUserInfo } from '../../reducer/user/selectors';
 import { AppRoute } from '../../const';
 
-const Header = ({ isAuthorized }) => {
+const Header = ({ isAuthorized, userInfo }) => {
   const userBlockMarkup = (isUserAuthorized) => {
     if (isUserAuthorized) {
       return (
         <div className="user-block__avatar">
-          <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
+          <img src={userInfo.avatar} alt="User avatar" width="63" height="63" />
         </div>
       );
     }
@@ -21,11 +21,11 @@ const Header = ({ isAuthorized }) => {
   return (
   <header className="page-header movie-card__head">
     <div className="logo">
-      <a href="/" className="logo__link">
+      <Link to={AppRoute.MAIN} className="logo__link">
         <span className="logo__letter logo__letter--1">W</span>
         <span className="logo__letter logo__letter--2">T</span>
         <span className="logo__letter logo__letter--3">W</span>
-      </a>
+      </Link>
     </div>
 
     <div className="user-block">
@@ -39,10 +39,14 @@ const Header = ({ isAuthorized }) => {
 
 const mapStateToProps = (state) => ({
   isAuthorized: getAuthorizationStatus(state),
+  userInfo: getUserInfo(state),
 });
 
 Header.propTypes = {
   isAuthorized: PropTypes.bool.isRequired,
+  userInfo: PropTypes.shape({
+    avatar: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps)(Header);
