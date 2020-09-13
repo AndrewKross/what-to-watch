@@ -7,14 +7,16 @@ import MainPage from "../main-page/main-page.jsx";
 import FilmPage from "../film-page/film-page.jsx";
 import MainPlayer from '../main-player/main-player.jsx';
 import { ActionCreator as DataActionCreator, Operation as DataOperation } from '../../reducer/data/data';
-import { getComments, getPromoFilm } from '../../reducer/data/selectors';
+import { getComments, getFilmsLoadingStatus, getPromoFilm } from '../../reducer/data/selectors';
 import { getFilmsOnScreen, getFilteredFilms } from '../../reducer/app-state/selectors';
 import SignIn from "../sign-in/sign-in.jsx";
 import { getFilmFromRoute } from '../../utils/films';
 import { AddReview } from "../add-review/add-review.jsx";
+import { getAuthorizationStatus } from '../../reducer/user/selectors';
+import Loading from "../loading/loading.jsx";
 
 const App = ({
-  filteredFilms, filmsOnScreen, promoFilm, comments, loadComments,
+  filteredFilms, filmsOnScreen, promoFilm, comments, loadComments, isAuthorized, isFilmsLoaded,
 }) => (
   <BrowserRouter>
     <Switch>
@@ -27,30 +29,35 @@ const App = ({
       </Route>
       <Route exact path={`${AppRoute.FILM}:id`}
         render={({ match }) => {
-          return (
-            <FilmPage
-              selectedFilm={getFilmFromRoute(filteredFilms, match)}
-              comments={comments}
-              loadComments={loadComments}
-              films={filteredFilms}
-              filmsOnScreen={filmsOnScreen}
-            />
-          );
+          if (isFilmsLoaded) {
+            return (<FilmPage
+                  selectedFilm={getFilmFromRoute(filteredFilms, match)}
+                  comments={comments}
+                  loadComments={loadComments}
+                  films={filteredFilms}
+                  filmsOnScreen={filmsOnScreen}
+                  isAuthorized={isAuthorized}
+                />);
+          }
+          return <Loading />;
         }}
       />
       <Route exact path={`${AppRoute.FILM}:id/review`}
         render={({ match }) => {
-          return (
-            <AddReview
-              selectedFilm={getFilmFromRoute(filteredFilms, match)}
-            />
-          );
+          if (isFilmsLoaded) {
+            if (isAuthorized) {
+              return <AddReview film={getFilmFromRoute(filteredFilms, match)} />;
+            }
+            return <SignIn />;
+          }
+          return <Loading />;
         }}/>
       <Route exact path={`${AppRoute.PLAYER}:id`}
         render={({ match }) => {
-          return (
-              <MainPlayer film={getFilmFromRoute(filteredFilms, match)} />
-          );
+          if (isFilmsLoaded) {
+            return <MainPlayer film={getFilmFromRoute(filteredFilms, match)} />;
+          }
+          return <Loading />;
         }}
       />
       <Route exact path={AppRoute.LOGIN} component={SignIn} />
@@ -63,6 +70,8 @@ const mapStateToProps = (state) => ({
   filmsOnScreen: getFilmsOnScreen(state),
   promoFilm: getPromoFilm(state),
   comments: getComments(state),
+  isAuthorized: getAuthorizationStatus(state),
+  isFilmsLoaded: getFilmsLoadingStatus(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -78,6 +87,8 @@ App.propTypes = {
   promoFilm: PropTypes.object.isRequired,
   comments: PropTypes.array.isRequired,
   loadComments: PropTypes.func.isRequired,
+  isAuthorized: PropTypes.bool.isRequired,
+  isFilmsLoaded: PropTypes.bool.isRequired,
 };
 
 export { App as AppComponent };

@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from 'redux-thunk';
 import { createAPI } from './api';
-import { Operation } from './reducer/data/data';
+import { Operation as DataOperation } from './reducer/data/data';
 import reducer from './reducer/reducer';
 import App from "./components/app/app.jsx";
 
@@ -18,7 +18,7 @@ const store = createStore(
   ),
 );
 
-store.dispatch(Operation.loadFilms());
+store.dispatch(DataOperation.loadFilms());
 
 ReactDOM.render(
   <Provider store={store}>

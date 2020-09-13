@@ -13,3 +13,7 @@ export const getPromoFilm = (state) => {
 export const getComments = (state) => {
   return state[NAME_SPACE].comments;
 };
+
+export const getFilmsLoadingStatus = (state) => {
+  return state[NAME_SPACE].isFilmsLoaded;
+};

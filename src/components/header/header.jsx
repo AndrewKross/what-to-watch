@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { getAuthorizationStatus, getUserInfo } from '../../reducer/user/selectors';
 import { AppRoute } from '../../const';
 
-const Header = ({ isAuthorized, userInfo }) => {
+const Header = ({ isAuthorized, userInfo, children }) => {
   const userBlockMarkup = (isUserAuthorized) => {
     if (isUserAuthorized) {
       return (
@@ -28,6 +28,8 @@ const Header = ({ isAuthorized, userInfo }) => {
       </Link>
     </div>
 
+    {children}
+
     <div className="user-block">
 
       {userBlockMarkup(isAuthorized)}
@@ -45,8 +47,9 @@ const mapStateToProps = (state) => ({
 Header.propTypes = {
   isAuthorized: PropTypes.bool.isRequired,
   userInfo: PropTypes.shape({
-    avatar: PropTypes.string.isRequired,
-  }).isRequired,
+    avatar: PropTypes.string,
+  }),
+  children: PropTypes.node,
 };
 
 export default connect(mapStateToProps)(Header);

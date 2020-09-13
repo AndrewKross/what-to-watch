@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from 'react-router-dom';
 import Tabs from "../tabs/tabs.jsx";
 import FilmsList from "../films-list/films-list.jsx";
 import { AppRoute, NUMBER_OF_SIMILAR_FILMS } from '../../const';
@@ -20,7 +20,7 @@ class FilmPage extends Component {
 
   render() {
     const {
-      films, selectedFilm, history, comments,
+      films, selectedFilm, history, comments, isAuthorized,
     } = this.props;
     const {
       title, posterImage, genre, released, id, backgroundImage, backgroundColor,
@@ -68,9 +68,8 @@ class FilmPage extends Component {
                     </svg>
                     <span>My list</span>
                   </button>
-                  <a className="btn movie-card__button">
-                    Add review
-                  </a>
+                  {isAuthorized && <Link to={`${AppRoute.FILM + id}/review`}
+                                         className="btn movie-card__button">Add review</Link>}
                 </div>
               </div>
             </div>
@@ -126,6 +125,7 @@ FilmPage.propTypes = {
   history: PropTypes.object.isRequired,
   comments: PropTypes.array.isRequired,
   loadComments: PropTypes.func.isRequired,
+  isAuthorized: PropTypes.bool.isRequired,
 };
 
 export default withRouter(FilmPage);

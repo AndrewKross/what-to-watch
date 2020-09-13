@@ -2,7 +2,7 @@ import { userAdapter } from '../../adapters/user-adapter';
 
 const initialState = {
   isAuthorized: false,
-  userInfo: null,
+  userInfo: {},
 };
 
 const ActionType = {
