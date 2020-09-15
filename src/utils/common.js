@@ -34,3 +34,8 @@ export const getFormatedRunTime = (duration) => {
 
   return `${durationInMinutes.hours()}h ${durationInMinutes.minutes()}m`;
 };
+
+export const getEmailValidation = (emailValue) => {
+  const re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+  return re.test(String(emailValue).toLowerCase());
+};

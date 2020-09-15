@@ -42,18 +42,6 @@ export const GENRES = [
   `Thrillers`,
 ];
 
-export const GenresForFilms = {
-  [`Comedies`]: `comedy`,
-  [`Crime`]: `crime`,
-  [`Documentary`]: `documentary`,
-  [`Dramas`]: `drama`,
-  [`Horror`]: `horror`,
-  [`Kids & Family`]: `kids & family`,
-  [`Romance`]: `romance`,
-  [`Sci-Fi`]: `sci-fi`,
-  [`Thrillers`]: `thriller`,
-};
-
 export const TabsNames = {
   OVERVIEW: `overview`,
   DETAILS: `details`,
@@ -71,5 +59,24 @@ export const TabsData = [{
 {
   name: TabsNames.REVIEWS,
   content: `Reviews`,
-},
-];
+}];
+
+export const LoadingStatus = {
+  PENDING: `PENDING`,
+  SENDING: `SENDING`,
+  OK: `OK`,
+  ERROR: `ERROR`,
+};
+
+export const LoaderData = {
+  TYPE: `Circles`,
+  COLOR: `#a071bb`,
+  WIDTH: 250,
+  HEIGHT: 250,
+  STYLE: {
+    position: `fixed`,
+    top: `50%`,
+    left: `50%`,
+    transform: `translate(-50%, -50%)`,
+  },
+};

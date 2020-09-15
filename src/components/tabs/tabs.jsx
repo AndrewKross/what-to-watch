@@ -137,7 +137,7 @@ export default class Tabs extends Component {
       const reviewDateInServiceFormat = moment(date).format(REVIEW_DATE_SERVICE_FORMAT);
 
       return (
-        <div key={id} className="review">
+        <div key={id} className="review" style={{ overflowWrap: `break-word` }}>
           <blockquote className="review__quote">
             <p className="review__text">{text}</p>
             <footer className="review__details">

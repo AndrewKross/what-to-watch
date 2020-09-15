@@ -1,19 +1,35 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import { Operation as UserOperation } from '../../reducer/user/user';
-import { getAuthorizationStatus } from '../../reducer/user/selectors';
+import { getAuthorizationLoadingStatus, getAuthorizationStatus } from '../../reducer/user/selectors';
+import { LoadingStatus } from '../../const';
+import { getEmailValidation } from '../../utils/common';
 
-const SignIn = ({ history, loginUser, isAuthorized }) => {
+const SignIn = ({
+  history, loginUser, isAuthorized, authorizationLoadingStatus,
+}) => {
   const loginInputRef = useRef(``);
   const passwordInputRef = useRef(``);
+
+  const [login, setLogin] = useState(``);
+  const [isInvalid, setIsInvalid] = useState(false);
 
   useEffect(() => {
     if (isAuthorized) {
       history.goBack();
     }
   });
+
+  const formSubmitHandler = (evt) => {
+    evt.preventDefault();
+    if (getEmailValidation(login)) {
+      loginUser(login, passwordInputRef.current.value);
+    } else {
+      setIsInvalid(true);
+    }
+  };
 
   return (
       <div className="user-page">
@@ -30,25 +46,41 @@ const SignIn = ({ history, loginUser, isAuthorized }) => {
         </header>
 
         <div className="sign-in user-page__content">
-          <form action="#" className="sign-in__form">
+          <form action="#" className="sign-in__form" onSubmit={formSubmitHandler}>
+
+            {authorizationLoadingStatus === LoadingStatus.ERROR
+             && <div className="sign-in__message">
+               <p style={{ whiteSpace: `pre-wrap` }}>{`We can’t recognize this email `}{<br />}
+                 {`and password combination. Please try again.`}</p>
+             </div>}
+
+            {isInvalid === true
+             && <div className="sign-in__message">
+               <p style={{ whiteSpace: `pre-wrap` }}>{`Please enter a valid email address`}</p>
+             </div>}
+
             <div className="sign-in__fields">
-              <div className="sign-in__field">
+              <div className={isInvalid ? `sign-in__field sign-in__field--error` : `sign-in__field`}>
                 <input className="sign-in__input" type="email" placeholder="Email address"
-                       name="user-email" id="user-email" ref={loginInputRef} required/>
+                       name="user-email" id="user-email" ref={loginInputRef} onChange={
+                  (evt) => {
+                    setLogin(evt.target.value);
+                    setIsInvalid(false);
+                  }
+                } />
                 <label className="sign-in__label visually-hidden" htmlFor="user-email">Email
                   address</label>
               </div>
               <div className="sign-in__field">
                 <input className="sign-in__input" type="password" placeholder="Password"
-                       name="user-password" id="user-password" ref={passwordInputRef} required/>
+                       name="user-password" id="user-password" ref={passwordInputRef} />
                 <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
               </div>
             </div>
             <div className="sign-in__submit">
-              <button className="sign-in__btn" type="submit" onClick={((evt) => {
-                loginUser(loginInputRef.current.value, passwordInputRef.current.value);
-                evt.preventDefault();
-              })}>Sign in</button>
+              <button className="sign-in__btn" type="submit" disabled={authorizationLoadingStatus === LoadingStatus.SENDING}>
+                {authorizationLoadingStatus === LoadingStatus.SENDING ? `Sending...` : `Sign In`}
+              </button>
             </div>
           </form>
         </div>
@@ -72,6 +104,7 @@ const SignIn = ({ history, loginUser, isAuthorized }) => {
 
 const mapStateToProps = (state) => ({
   isAuthorized: getAuthorizationStatus(state),
+  authorizationLoadingStatus: getAuthorizationLoadingStatus(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -82,6 +115,7 @@ SignIn.propTypes = {
   history: PropTypes.object.isRequired,
   isAuthorized: PropTypes.bool.isRequired,
   loginUser: PropTypes.func.isRequired,
+  authorizationLoadingStatus: PropTypes.string.isRequired,
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignIn));

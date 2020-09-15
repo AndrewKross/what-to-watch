@@ -9,3 +9,11 @@ export const getAuthorizationStatus = (state) => {
 export const getUserInfo = (state) => {
   return state[NAME_SPACE].userInfo;
 };
+
+export const getReviewLoadingStatus = (state) => {
+  return state[NAME_SPACE].reviewLoadingStatus;
+};
+
+export const getAuthorizationLoadingStatus = (state) => {
+  return state[NAME_SPACE].authorizationLoadingStatus;
+};
