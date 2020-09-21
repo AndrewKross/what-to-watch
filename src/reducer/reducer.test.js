@@ -5,7 +5,7 @@ import {
 describe(`Reducer should work correctly`, () => {
   const emptyState = {
     currentGenre: `All genres`,
-    allFilms: [],
+    films: [],
     filteredFilms: [],
     filmsOnScreen: 8,
   };
@@ -28,14 +28,14 @@ describe(`Reducer should work correctly`, () => {
     expect(reducer({
       ...emptyState,
       currentGenre: `Comedies`,
-      allFilms: [{ genre: `drama` }],
+      films: [{ genre: `drama` }],
     }, {
       type: ActionType.CHANGE_CURRENT_GENRE,
       payload: `Dramas`,
     })).toEqual({
       ...emptyState,
       currentGenre: `Dramas`,
-      allFilms: [{ genre: `drama` }],
+      films: [{ genre: `drama` }],
       filteredFilms: [{ genre: `drama` }],
     });
   });

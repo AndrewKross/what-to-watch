@@ -1,9 +1,10 @@
-import { filmsAdapter } from '../../adapters/film-adapter';
+import history from "../../history";
+import { filmAdapter, filmsAdapter } from '../../adapters/film-adapter';
 import { convertCommentsFromServer } from '../../adapters/comments-adapter';
+import { AppRoute, HttpStatus } from '../../const';
 
 const initialState = {
-  allFilms: [],
-  promoFilm: {},
+  films: [],
   comments: [],
   isFilmsLoaded: false,
   isCommentsLoaded: false,
@@ -14,6 +15,7 @@ const ActionType = {
   LOAD_COMMENTS: `LOAD_COMMENTS`,
   CHANGE_COMMENTS_LOAD_STATE: `CHANGE_COMMENTS_LOAD_STATE`,
   CHANGE_FILMS_LOAD_STATE: `CHANGE_FILMS_LOAD_STATE`,
+  UPDATE_FILMS: `UPDATE_FILMS`,
 };
 
 const ActionCreator = {
@@ -31,6 +33,10 @@ const ActionCreator = {
   }),
   changeFilmsLoadState: () => ({
     type: ActionType.CHANGE_FILMS_LOAD_STATE,
+  }),
+  updateFilms: (films) => ({
+    type: ActionType.UPDATE_FILMS,
+    payload: films,
   }),
 };
 
@@ -51,6 +57,22 @@ const Operation = {
         dispatch(ActionCreator.changeCommentsLoadState(true));
       });
   },
+  changeFavoriteStatus: (filmId, status) => (dispatch, getState, api) => {
+    return api.post(`/favorite/${filmId}/${status}`)
+      .then((response) => {
+        const adaptedFilm = filmAdapter(response.data);
+        const { DATA: { films } } = getState();
+        const updatedFilmIndex = films.findIndex((film) => film.id === filmId);
+
+        films[updatedFilmIndex] = adaptedFilm;
+        dispatch(ActionCreator.updateFilms([...films]));
+      })
+      .catch((error) => {
+        if (error.response.status === HttpStatus.UNAUTHORIZED) {
+          history.push(AppRoute.LOGIN);
+        }
+      });
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -58,8 +80,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_FILMS:
       return {
         ...state,
-        allFilms: action.payload,
-        promoFilm: action.payload[0],
+        films: action.payload,
       };
     case ActionType.LOAD_COMMENTS:
       return {
@@ -75,6 +96,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isFilmsLoaded: true,
+      };
+    case ActionType.UPDATE_FILMS:
+      return {
+        ...state,
+        films: action.payload,
       };
     default: return state;
   }

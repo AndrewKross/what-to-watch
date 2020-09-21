@@ -1,13 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom";
+import history from '../../history';
 import { AppRoute } from '../../const';
 
 const PromoFilm = ({
-  promoFilmData: {
+  promoFilm: {
     title, genre, released, id, posterImage,
-  },
-  history,
+  }, renderMyListButton,
 }) => (
   <div className="movie-card__wrap">
     <div className="movie-card__info">
@@ -35,12 +34,7 @@ const PromoFilm = ({
               <use href="#play-s"/>
             </svg>
             <span>Play</span></button>
-          <button className="btn btn--list movie-card__button" type="button">
-            <svg viewBox="0 0 19 20" width="19" height="20">
-              <use href="#add"/>
-            </svg>
-            <span>My list</span>
-          </button>
+          {renderMyListButton()}
         </div>
       </div>
     </div>
@@ -48,14 +42,14 @@ const PromoFilm = ({
 );
 
 PromoFilm.propTypes = {
-  promoFilmData: PropTypes.shape({
+  promoFilm: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     released: PropTypes.number.isRequired,
     id: PropTypes.number.isRequired,
     posterImage: PropTypes.string.isRequired,
   }).isRequired,
-  history: PropTypes.object.isRequired,
+  renderMyListButton: PropTypes.func.isRequired,
 };
 
-export default withRouter(PromoFilm);
+export default PromoFilm;

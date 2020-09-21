@@ -68,6 +68,13 @@ export const LoadingStatus = {
   ERROR: `ERROR`,
 };
 
+export const HttpStatus = {
+  SUCCESS: 200,
+  REDIRECT: 300,
+  UNAUTHORIZED: 401,
+  NOT_FOUND: 404,
+};
+
 export const LoaderData = {
   TYPE: `Circles`,
   COLOR: `#a071bb`,

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom";
+import history from '../../history';
 import PreviewPlayer from "../preview-player/preview-player.jsx";
 import { PREVIEW_DELAY } from "../../const";
 
@@ -23,9 +23,9 @@ class FilmCard extends Component {
     return (
       <article
         className="small-movie-card catalog__movies-card"
-        onMouseEnter={this._onMouseEnterHandler}
-        onMouseLeave={this._onMouseLeaveHandler}
-        onClick={this._filmCardClickHandler}
+        onMouseEnter={this._handleMouseEnter}
+        onMouseLeave={this._handleMouseLeave}
+        onClick={this._handleFilmCardClick}
       >
         <div className="small-movie-card__image">
 
@@ -41,7 +41,7 @@ class FilmCard extends Component {
           className="small-movie-card__title"
           onClick={(evt) => {
             evt.preventDefault();
-            this._filmCardClickHandler();
+            this._handleFilmCardClick();
           }}
         >
           <a className="small-movie-card__link">
@@ -52,20 +52,20 @@ class FilmCard extends Component {
     );
   }
 
-  _filmCardClickHandler = () => {
-    this.props.history.push(`/film/${this.props.filmData.id}`);
+  _handleFilmCardClick = () => {
+    history.push(`/film/${this.props.filmData.id}`);
   }
 
   componentWillUnmount() {
     clearTimeout(this._playerTimeout);
   }
 
-  _onMouseEnterHandler = () => {
+  _handleMouseEnter = () => {
     this._isCardHovered = true;
     this._startPlaying();
   };
 
-  _onMouseLeaveHandler = () => {
+  _handleMouseLeave = () => {
     this._isCardHovered = false;
     this._stopPlaying();
   };
@@ -95,7 +95,6 @@ FilmCard.propTypes = {
     previewImage: PropTypes.string.isRequired,
     previewVideo: PropTypes.string.isRequired,
   }).isRequired,
-  history: PropTypes.object.isRequired,
 };
 
-export default withRouter(FilmCard);
+export default FilmCard;

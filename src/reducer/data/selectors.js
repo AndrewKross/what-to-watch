@@ -3,7 +3,7 @@ import { NameSpace } from "../reducer";
 const NAME_SPACE = NameSpace.DATA;
 
 export const getFilms = (state) => {
-  return state[NAME_SPACE].allFilms;
+  return state[NAME_SPACE].films;
 };
 
 export const getPromoFilm = (state) => {
