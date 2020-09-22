@@ -1,20 +1,18 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import history from '../../history';
 import Tabs from '../tabs/tabs.jsx';
 import FilmsList from '../films-list/films-list.jsx';
 import { AppRoute, NUMBER_OF_SIMILAR_FILMS } from '../../const';
 import Header from '../header/header.jsx';
 import Footer from '../footer/footer.jsx';
-import { Operation } from '../../reducer/data/data';
 
 const FilmPage = ({
-  films, selectedFilm, comments, isAuthorized, loadComments, changeFavoriteStatus,
+  films, selectedFilm, comments, isAuthorized, loadComments, renderMyListButton,
 }) => {
   const {
-    title, posterImage, genre, released, id, backgroundImage, backgroundColor, isFavorite,
+    title, posterImage, genre, released, id, backgroundImage, backgroundColor,
   } = selectedFilm;
   const similarFilms = films.filter(
     (film) => selectedFilm.genre === film.genre && selectedFilm !== film,
@@ -23,36 +21,6 @@ const FilmPage = ({
   useEffect(() => {
     loadComments(id);
   }, [selectedFilm, films]);
-
-  const handleMyListClick = () => {
-    return isAuthorized
-      ? changeFavoriteStatus(id, Number(!isFavorite))
-      : history.push(AppRoute.LOGIN);
-  };
-
-  const renderMyListButton = () => {
-    return (
-      <button
-        className="btn btn--list movie-card__button"
-        type="button"
-        onClick={handleMyListClick}
-      >
-
-        {
-          isFavorite && isAuthorized ? (
-            <svg viewBox="0 0 18 14" width="18" height="14">
-              <use xlinkHref="#in-list"/>
-            </svg>
-          ) : (
-            <svg viewBox="0 0 19 20" width="19" height="20">
-              <use href="#add"/>
-            </svg>)
-        }
-
-        <span>My list</span>
-      </button>
-    );
-  };
 
   return (
     <React.Fragment>
@@ -87,7 +55,7 @@ const FilmPage = ({
                   <span>Play</span>
                 </button>
 
-                {renderMyListButton()}
+                {renderMyListButton && renderMyListButton()}
 
                 {isAuthorized && <Link to={`${AppRoute.FILM + id}/review`}
                                        className="btn movie-card__button">Add review</Link>}
@@ -131,10 +99,6 @@ const FilmPage = ({
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  changeFavoriteStatus: (id, status) => dispatch(Operation.changeFavoriteStatus(id, status)),
-});
-
 FilmPage.propTypes = {
   selectedFilm: PropTypes.shape({
     title: PropTypes.string.isRequired,
@@ -150,6 +114,7 @@ FilmPage.propTypes = {
   comments: PropTypes.array.isRequired,
   loadComments: PropTypes.func.isRequired,
   isAuthorized: PropTypes.bool.isRequired,
+  renderMyListButton: PropTypes.func,
 };
 
-export default connect(null, mapDispatchToProps)(FilmPage);
+export default FilmPage;

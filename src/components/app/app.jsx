@@ -20,6 +20,9 @@ import { getFilmFromRoute } from '../../utils/films';
 import AddReview from "../add-review/add-review.jsx";
 import { getAuthorizationStatus } from '../../reducer/user/selectors';
 import history from '../../history';
+import WithMyListButton from "../../hocs/withMyListButton.jsx";
+
+const FilmPageWrapped = WithMyListButton(FilmPage);
 
 const App = ({
   filteredFilms, filmsOnScreen, comments, loadComments,
@@ -46,13 +49,12 @@ const App = ({
               filteredFilms={filteredFilms}
               films={films}
               filmsOnScreen={filmsOnScreen}
-              promoFilm={promoFilm}
             />);
           }}
         />
         <Route exact path={`${AppRoute.FILM}:id`}
           render={({ match }) => {
-            return (<FilmPage
+            return (<FilmPageWrapped
               selectedFilm={getFilmFromRoute(films, match)}
               comments={comments}
               loadComments={loadComments}

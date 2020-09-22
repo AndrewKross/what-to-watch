@@ -4,9 +4,9 @@ import Header from "../header/header.jsx";
 import PromoFilm from "../promo-film/promo-film.jsx";
 import Catalog from "../catalog/catalog.jsx";
 import Footer from "../footer/footer.jsx";
-import WithFavoriteButton from '../../hocs/withFavoriteButton.jsx';
+import WithMyListButton from "../../hocs/withMyListButton.jsx";
 
-const PromoFilmWrapped = WithFavoriteButton(PromoFilm);
+const PromoFilmWrapped = WithMyListButton(PromoFilm);
 
 const MainPage = ({ films, filteredFilms, filmsOnScreen }) => {
   const promoFilm = films[0];

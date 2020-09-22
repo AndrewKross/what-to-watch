@@ -34,7 +34,9 @@ const PromoFilm = ({
               <use href="#play-s"/>
             </svg>
             <span>Play</span></button>
-          {renderMyListButton()}
+
+          {renderMyListButton && renderMyListButton()}
+
         </div>
       </div>
     </div>
@@ -49,7 +51,7 @@ PromoFilm.propTypes = {
     id: PropTypes.number.isRequired,
     posterImage: PropTypes.string.isRequired,
   }).isRequired,
-  renderMyListButton: PropTypes.func.isRequired,
+  renderMyListButton: PropTypes.func,
 };
 
 export default PromoFilm;
