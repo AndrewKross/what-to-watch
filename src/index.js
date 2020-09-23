@@ -6,10 +6,17 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from 'redux-thunk';
 import { createAPI } from './api';
 import { Operation as DataOperation } from './reducer/data/data';
+import { Operation as UserOperation, ActionCreator as UserActionCreator } from './reducer/user/user';
 import reducer from './reducer/reducer';
 import App from "./components/app/app.jsx";
+import { AuthorizationStatus } from './const';
 
-const api = createAPI(() => {});
+const onUnauthorized = () => {
+  store.dispatch(UserActionCreator
+    .changeAuthorizationLoadingStatus(AuthorizationStatus.NOT_AUTHORIZED));
+};
+
+const api = createAPI(onUnauthorized);
 
 const store = createStore(
   reducer,
@@ -19,6 +26,7 @@ const store = createStore(
 );
 
 store.dispatch(DataOperation.loadFilms());
+store.dispatch(UserOperation.checkAuthorizationStatus());
 
 ReactDOM.render(
   <Provider store={store}>

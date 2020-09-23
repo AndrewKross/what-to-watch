@@ -68,6 +68,11 @@ export const LoadingStatus = {
   ERROR: `ERROR`,
 };
 
+export const AuthorizationStatus = {
+  AUTHORIZED: true,
+  NOT_AUTHORIZED: false,
+};
+
 export const HttpStatus = {
   SUCCESS: 200,
   REDIRECT: 300,

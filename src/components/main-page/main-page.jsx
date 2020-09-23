@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from "prop-types";
 import Header from "../header/header.jsx";
 import PromoFilm from "../promo-film/promo-film.jsx";
@@ -9,7 +9,9 @@ import WithMyListButton from "../../hocs/withMyListButton.jsx";
 const PromoFilmWrapped = WithMyListButton(PromoFilm);
 
 const MainPage = ({ films, filteredFilms, filmsOnScreen }) => {
-  const promoFilm = films[0];
+  const [randomPromo] = useState(Math.floor(Math.random() * films.length));
+  const promoFilm = films[randomPromo];
+
   return (
   <React.Fragment>
     <section className="movie-card">

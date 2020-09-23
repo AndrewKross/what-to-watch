@@ -1,10 +1,10 @@
 import { userAdapter } from '../../adapters/user-adapter';
-import { LoadingStatus } from '../../const';
+import { AuthorizationStatus, LoadingStatus } from '../../const';
 import { convertCommentsFromServer } from '../../adapters/comments-adapter';
 import { ActionCreator as DataActionCreator } from '../data/data';
 
 const initialState = {
-  isAuthorized: false,
+  isAuthorized: AuthorizationStatus.NOT_AUTHORIZED,
   userInfo: {},
   reviewLoadingStatus: LoadingStatus.PENDING,
   authorizationLoadingStatus: LoadingStatus.PENDING,
@@ -18,8 +18,9 @@ const ActionType = {
 };
 
 const ActionCreator = {
-  authorizeUser: () => ({
+  authorizeUser: (status) => ({
     type: ActionType.AUTHORIZE_USER,
+    payload: status,
   }),
   setUserInfo: (user) => ({
     type: ActionType.SET_USER_INFO,
@@ -29,7 +30,7 @@ const ActionCreator = {
     type: ActionType.CHANGE_REVIEW_STATUS,
     payload: status,
   }),
-  changeAuthorizationStatus: (status) => ({
+  changeAuthorizationLoadingStatus: (status) => ({
     type: ActionType.CHANGE_AUTH_STATUS,
     payload: status,
   }),
@@ -37,7 +38,7 @@ const ActionCreator = {
 
 const Operation = {
   loginUser: (userEmail, userPassword) => (dispatch, getState, api) => {
-    dispatch(ActionCreator.changeAuthorizationStatus(LoadingStatus.SENDING));
+    dispatch(ActionCreator.changeAuthorizationLoadingStatus(LoadingStatus.SENDING));
 
     return api.post(`/login`, {
       email: userEmail,
@@ -46,12 +47,27 @@ const Operation = {
       .then((response) => {
         const user = userAdapter(response.data);
 
-        dispatch(ActionCreator.changeAuthorizationStatus(LoadingStatus.OK));
+        dispatch(ActionCreator.changeAuthorizationLoadingStatus(LoadingStatus.OK));
         dispatch(ActionCreator.setUserInfo(user));
-        dispatch(ActionCreator.authorizeUser());
+        dispatch(ActionCreator.authorizeUser(AuthorizationStatus.AUTHORIZED));
       })
       .catch(() => {
-        dispatch(ActionCreator.changeAuthorizationStatus(LoadingStatus.ERROR));
+        dispatch(ActionCreator.changeAuthorizationLoadingStatus(LoadingStatus.ERROR));
+      });
+  },
+  checkAuthorizationStatus: () => (dispatch, getState, api) => {
+    dispatch(ActionCreator.changeAuthorizationLoadingStatus(LoadingStatus.SENDING));
+
+    return api.get(`/login`)
+      .then((response) => {
+        const user = userAdapter(response.data);
+
+        dispatch(ActionCreator.changeAuthorizationLoadingStatus(LoadingStatus.OK));
+        dispatch(ActionCreator.setUserInfo(user));
+        dispatch(ActionCreator.authorizeUser(AuthorizationStatus.AUTHORIZED));
+      })
+      .catch(() => {
+        dispatch(ActionCreator.changeAuthorizationLoadingStatus(LoadingStatus.ERROR));
       });
   },
   sendReview: (review, filmId) => (dispatch, getState, api) => {
@@ -78,7 +94,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.AUTHORIZE_USER:
       return {
         ...state,
-        isAuthorized: true,
+        isAuthorized: action.payload,
       };
     case ActionType.SET_USER_INFO:
       return {
