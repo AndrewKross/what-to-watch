@@ -1,9 +1,9 @@
 import axios from "axios";
-import { HttpStatus } from './const';
+import { HttpStatus, URL } from './const';
 
 export const createAPI = (onUnauthorized) => {
   const api = axios.create({
-    baseURL: `https://4.react.pages.academy/wtw`,
+    baseURL: URL,
     timeout: 1000 * 5,
     withCredentials: true,
   });

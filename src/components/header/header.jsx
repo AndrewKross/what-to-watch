@@ -4,12 +4,15 @@ import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
 import { getAuthorizationStatus, getUserInfo } from '../../reducer/user/selectors';
 import { AppRoute } from '../../const';
+import history from '../../history';
 
 const Header = ({ isAuthorized, userInfo, children }) => {
   const userBlockMarkup = (isUserAuthorized) => {
     if (isUserAuthorized) {
       return (
-        <div className="user-block__avatar">
+        <div className="user-block__avatar"
+             onClick={() => history.push(AppRoute.MY_LIST)}
+        style={{ cursor: `pointer` }}>
           <img src={userInfo.avatar} alt="User avatar" width="63" height="63" />
         </div>
       );

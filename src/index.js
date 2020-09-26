@@ -13,7 +13,7 @@ import { AuthorizationStatus } from './const';
 
 const onUnauthorized = () => {
   store.dispatch(UserActionCreator
-    .changeAuthorizationLoadingStatus(AuthorizationStatus.NOT_AUTHORIZED));
+    .authorizeUser(AuthorizationStatus.NOT_AUTHORIZED));
 };
 
 const api = createAPI(onUnauthorized);

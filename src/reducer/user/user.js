@@ -1,5 +1,5 @@
 import { userAdapter } from '../../adapters/user-adapter';
-import { AuthorizationStatus, LoadingStatus } from '../../const';
+import { AuthorizationStatus, HttpStatus, LoadingStatus } from '../../const';
 import { convertCommentsFromServer } from '../../adapters/comments-adapter';
 import { ActionCreator as DataActionCreator } from '../data/data';
 
@@ -30,7 +30,7 @@ const ActionCreator = {
     type: ActionType.CHANGE_REVIEW_STATUS,
     payload: status,
   }),
-  changeAuthorizationLoadingStatus: (status) => ({
+  changeAuthLoadingStatus: (status) => ({
     type: ActionType.CHANGE_AUTH_STATUS,
     payload: status,
   }),
@@ -38,7 +38,7 @@ const ActionCreator = {
 
 const Operation = {
   loginUser: (userEmail, userPassword) => (dispatch, getState, api) => {
-    dispatch(ActionCreator.changeAuthorizationLoadingStatus(LoadingStatus.SENDING));
+    dispatch(ActionCreator.changeAuthLoadingStatus(LoadingStatus.SENDING));
 
     return api.post(`/login`, {
       email: userEmail,
@@ -47,27 +47,45 @@ const Operation = {
       .then((response) => {
         const user = userAdapter(response.data);
 
-        dispatch(ActionCreator.changeAuthorizationLoadingStatus(LoadingStatus.OK));
+        dispatch(ActionCreator.changeAuthLoadingStatus(LoadingStatus.OK));
         dispatch(ActionCreator.setUserInfo(user));
         dispatch(ActionCreator.authorizeUser(AuthorizationStatus.AUTHORIZED));
       })
       .catch(() => {
-        dispatch(ActionCreator.changeAuthorizationLoadingStatus(LoadingStatus.ERROR));
+        dispatch(ActionCreator.changeAuthLoadingStatus(LoadingStatus.ERROR));
       });
   },
   checkAuthorizationStatus: () => (dispatch, getState, api) => {
-    dispatch(ActionCreator.changeAuthorizationLoadingStatus(LoadingStatus.SENDING));
+    dispatch(ActionCreator.changeAuthLoadingStatus(LoadingStatus.SENDING));
 
     return api.get(`/login`)
       .then((response) => {
         const user = userAdapter(response.data);
 
-        dispatch(ActionCreator.changeAuthorizationLoadingStatus(LoadingStatus.OK));
+        dispatch(ActionCreator.changeAuthLoadingStatus(LoadingStatus.OK));
         dispatch(ActionCreator.setUserInfo(user));
         dispatch(ActionCreator.authorizeUser(AuthorizationStatus.AUTHORIZED));
       })
-      .catch(() => {
-        dispatch(ActionCreator.changeAuthorizationLoadingStatus(LoadingStatus.ERROR));
+      .catch((err) => {
+        if (err.response.status !== HttpStatus.UNAUTHORIZED) {
+          dispatch(ActionCreator.changeAuthLoadingStatus(LoadingStatus.ERROR));
+        }
+        dispatch(ActionCreator.changeAuthLoadingStatus(LoadingStatus.OK));
+      });
+  },
+  logoutUser: () => (dispatch, getState, api) => {
+    dispatch(ActionCreator.changeAuthLoadingStatus(LoadingStatus.SENDING));
+
+    return api.get(`/logout`)
+      .then(() => {
+        dispatch(ActionCreator.changeAuthLoadingStatus(LoadingStatus.OK));
+        dispatch(ActionCreator.authorizeUser(AuthorizationStatus.NOT_AUTHORIZED));
+      })
+      .catch((err) => {
+        if (err.response.status !== HttpStatus.UNAUTHORIZED) {
+          dispatch(ActionCreator.changeAuthLoadingStatus(LoadingStatus.ERROR));
+        }
+        dispatch(ActionCreator.changeAuthLoadingStatus(LoadingStatus.OK));
       });
   },
   sendReview: (review, filmId) => (dispatch, getState, api) => {

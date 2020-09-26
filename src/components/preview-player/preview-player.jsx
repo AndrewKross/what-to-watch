@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { nanoid } from 'nanoid';
 
 export default class PreviewPlayer extends Component {
   constructor(props) {
@@ -11,10 +12,6 @@ export default class PreviewPlayer extends Component {
   componentDidMount() {
     const { isPlaying } = this.props;
     const video = this._videoRef.current;
-
-    video.onpause = () => {
-      video.load();
-    };
 
     if (isPlaying) {
       video.play();
@@ -45,7 +42,7 @@ export default class PreviewPlayer extends Component {
 
     return (
       <video
-        key={Math.random()}
+        key={nanoid(5)}
         ref={this._videoRef}
         src={previewVideo}
         width={280}

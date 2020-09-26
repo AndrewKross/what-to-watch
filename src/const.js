@@ -5,6 +5,8 @@ export const FILMS_COUNT_ON_START = 8;
 export const FILMS_ON_SHOW_MORE_BUTTON = 20;
 export const REVIEW_DATE_HUMAN_FORMAT = `MMMM D, YYYY`;
 export const REVIEW_DATE_SERVICE_FORMAT = `YYYY-MM-DD`;
+// es31-server.appspot.com/wtw/
+export const URL = `https://5.react.pages.academy/wtw`;
 
 export const RatingRange = {
   MIN: 0,
@@ -27,6 +29,7 @@ export const AppRoute = {
   FILM: `/film/`,
   PLAYER: `/player/`,
   LOGIN: `/login`,
+  MY_LIST: `/mylist`,
 };
 
 export const GENRES = [

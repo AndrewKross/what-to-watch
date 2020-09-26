@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Switch, Route, Router } from "react-router-dom";
+import {
+  Switch, Route, Router, Link,
+} from 'react-router-dom';
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 import { AppRoute, LoaderData } from '../../const';
@@ -21,6 +23,7 @@ import AddReview from "../add-review/add-review.jsx";
 import { getAuthorizationStatus } from '../../reducer/user/selectors';
 import history from '../../history';
 import WithMyListButton from "../../hocs/withMyListButton.jsx";
+import UserPage from '../user-page/user-page.jsx';
 
 const FilmPageWrapped = WithMyListButton(FilmPage);
 
@@ -65,17 +68,29 @@ const App = ({
           }}
         />
         <Route exact path={`${AppRoute.FILM}:id/review`}
-          render={({ match }) => {
-            if (isAuthorized) {
-              return <AddReview film={getFilmFromRoute(filteredFilms, match)} />;
-            }
-            return <SignIn />;
-          }}
+          render={({ match }) => (isAuthorized
+            ? <AddReview film={getFilmFromRoute(filteredFilms, match)} />
+            : <SignIn />)
+          }
         />
         <Route exact path={`${AppRoute.PLAYER}:id`}
           render={({ match }) => <MainPlayer film={getFilmFromRoute(filteredFilms, match)} />}
         />
         <Route exact path={AppRoute.LOGIN} component={SignIn} />
+        <Route exact path={AppRoute.MY_LIST}
+               render={() => (isAuthorized
+                 ? <UserPage />
+                 : <SignIn />)} />
+        <Route
+          render={() => (
+            <React.Fragment>
+              <h1>
+                Error: 404. Page not found.
+              </h1>
+              <Link to={AppRoute.MAIN}>Go to main page</Link>
+            </React.Fragment>
+          )}
+        />
       </Switch>
     </Router>
   );

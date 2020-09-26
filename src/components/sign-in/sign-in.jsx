@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import { Operation as UserOperation } from '../../reducer/user/user';
 import { getAuthorizationLoadingStatus, getAuthorizationStatus } from '../../reducer/user/selectors';
 import { LoadingStatus } from '../../const';
 import { getEmailValidation } from '../../utils/common';
+import Footer from '../footer/footer.jsx';
+import history from '../../history';
 
 const SignIn = ({
-  history, loginUser, isAuthorized, authorizationLoadingStatus,
+  loginUser, isAuthorized, authorizationLoadingStatus,
 }) => {
   const loginInputRef = useRef(``);
   const passwordInputRef = useRef(``);
@@ -85,19 +86,8 @@ const SignIn = ({
           </form>
         </div>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a href="#" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+        <Footer />
 
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
       </div>
   );
 };
@@ -112,10 +102,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 SignIn.propTypes = {
-  history: PropTypes.object.isRequired,
   isAuthorized: PropTypes.bool.isRequired,
   loginUser: PropTypes.func.isRequired,
   authorizationLoadingStatus: PropTypes.string.isRequired,
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignIn));
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
