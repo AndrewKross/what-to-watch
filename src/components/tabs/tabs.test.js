@@ -1,17 +1,16 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import { films } from "../../mocks/test-mocks";
-import Tabs from "./tabs.jsx";
+import React from 'react';
+import renderer from 'react-test-renderer';
+import { comments, films } from '../../mocks/test-mocks';
+import Tabs from './tabs.jsx';
 
 const [film] = films;
 
 test(`Tabs should render correctly all tabs`, () => {
-  const component = renderer
-    .create(
-      <Tabs
-          film={film}
-      />,
-    );
+  const component = renderer.create(
+    <Tabs
+      film={film}
+      comments={comments}/>,
+  );
 
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();

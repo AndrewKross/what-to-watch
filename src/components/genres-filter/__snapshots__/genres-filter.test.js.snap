@@ -23,7 +23,7 @@ exports[`GenresFilter should render correctly 1`] = `
       className="catalog__genres-link"
       href="#"
     >
-      Comedies
+      comedy
     </a>
   </li>
   <li
@@ -34,7 +34,7 @@ exports[`GenresFilter should render correctly 1`] = `
       className="catalog__genres-link"
       href="#"
     >
-      Crime
+      drama
     </a>
   </li>
   <li
@@ -45,7 +45,7 @@ exports[`GenresFilter should render correctly 1`] = `
       className="catalog__genres-link"
       href="#"
     >
-      Documentary
+      melodrama
     </a>
   </li>
   <li
@@ -56,7 +56,7 @@ exports[`GenresFilter should render correctly 1`] = `
       className="catalog__genres-link"
       href="#"
     >
-      Dramas
+      horror
     </a>
   </li>
   <li
@@ -67,7 +67,7 @@ exports[`GenresFilter should render correctly 1`] = `
       className="catalog__genres-link"
       href="#"
     >
-      Horror
+      crime
     </a>
   </li>
   <li
@@ -78,7 +78,7 @@ exports[`GenresFilter should render correctly 1`] = `
       className="catalog__genres-link"
       href="#"
     >
-      Kids & Family
+      documentary
     </a>
   </li>
   <li
@@ -89,7 +89,7 @@ exports[`GenresFilter should render correctly 1`] = `
       className="catalog__genres-link"
       href="#"
     >
-      Romance
+      romance
     </a>
   </li>
   <li
@@ -100,18 +100,7 @@ exports[`GenresFilter should render correctly 1`] = `
       className="catalog__genres-link"
       href="#"
     >
-      Sci-Fi
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item "
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-    >
-      Thrillers
+      thriller
     </a>
   </li>
 </ul>

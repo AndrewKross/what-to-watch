@@ -3,22 +3,17 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
-import { defaultMockStore, films } from '../../mocks/test-mocks';
-import MainPage from './main-page.jsx';
-import { FILMS_COUNT_ON_START } from '../../const';
+import { defaultMockStore } from '../../mocks/test-mocks';
+import UserPage from './user-page.jsx';
 import history from '../../history';
 
-test(`MainPage should render correctly`, () => {
+test(`UserPage should render correctly`, () => {
   const mockStoreConfig = configureStore([]);
   const store = mockStoreConfig(defaultMockStore);
   const tree = renderer.create(
     <Provider store={store}>
       <Router history={history}>
-        <MainPage
-          films={films}
-          filteredFilms={films}
-          filmsOnScreen={FILMS_COUNT_ON_START}
-        />
+        <UserPage />
       </Router>
     </Provider>, {
       createNodeMock: () => ({}),

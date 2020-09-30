@@ -1,18 +1,13 @@
-import { GENRES } from '../const';
+import { NameSpace } from '../reducer/reducer';
+import { DEFAULT_GENRE, LoadingStatus } from '../const';
 
-export const PromoFilmData = {
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  date: `2014`,
-};
-
-const GENRE = `drama`;
-const RELEASE = `2020`;
+const RELEASE = 2020;
 const RATING = 9;
-const ratingsCount = 228;
+const RATINGS_COUNT = 228;
 const DIRECTOR = `Otto Bathurst`;
-const PREVIEW = `https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm`;
+const PREVIEW = `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`;
 const RUN_TIME = 140;
+const COMMENTS_COUNT = 6;
 
 const DESCRIPTION = `In the 1930s, the Grand Budapest Hotel is a popular European ski resort,
 presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's
@@ -52,40 +47,92 @@ const ACTORS = [
   `Iddo Goldberg`,
 ];
 
-const review = {
-  id: `0`,
-  text: `I didn't find it amusing, and while I can appreciate the creativity,
-  it's an hour and 40 minutes I wish I could take back.`,
-  rating: 8,
-  userName: `Kate Muir`,
-  date: new Date(),
-};
-
-export const films = TITLES.map((title, index) => ({
-  id: index.toString(),
-  title,
-  cover: COVERS[index],
-  poster: COVERS[index],
-  preview: PREVIEW,
-  genre: GENRE,
-  release: RELEASE,
-  rating: RATING,
-  ratingsCount,
-  description: DESCRIPTION,
-  director: DIRECTOR,
-  actors: ACTORS,
-  runTime: RUN_TIME,
-  reviews: [review],
-}));
-
-export const mockStore = {
-  filteredFilms: films,
-  filmsOnScreen: 8,
-  currentGenre: GENRES[0],
-};
+export const GENRES = [
+  `all genres`,
+  `comedy`,
+  `drama`,
+  `melodrama`,
+  `horror`,
+  `crime`,
+  `documentary`,
+  `romance`,
+  `thriller`,
+];
 
 export const TABS_DATA = [
   `overview`,
   `details`,
   `reviews`,
 ];
+
+const comment = {
+  id: 0,
+  text: `I didn't find it amusing, and while I can appreciate the creativity,
+  it's an hour and 40 minutes I wish I could take back.`,
+  rating: 8,
+  userName: `Kate Muir`,
+  date: new Date(`December 25, 2019 01:00:00`),
+};
+
+export const comments = Array(COMMENTS_COUNT)
+  .fill(``)
+  .map(() => comment);
+
+export const films = TITLES.map((title, index) => {
+  return ({
+    id: index,
+    title,
+    cover: COVERS[index],
+    posterImage: COVERS[index],
+    previewImage: COVERS[index],
+    backgroundImage: COVERS[index],
+    previewVideo: PREVIEW,
+    videoMain: PREVIEW,
+    genre: GENRES[index + 1] || GENRES[1],
+    released: RELEASE,
+    rating: RATING,
+    ratingsCount: RATINGS_COUNT,
+    description: DESCRIPTION,
+    director: DIRECTOR,
+    starring: ACTORS,
+    runTime: RUN_TIME,
+    isFavorite: false,
+    backgroundColor: `black`,
+  });
+});
+
+export const userData = {
+  id: 1,
+  email: `Andrew@gmail.com`,
+  name: `Andrew`,
+  avatar: `img/1.png`,
+};
+
+export const loginData = {
+  email: `Andrew@gmail.com`,
+  password: `1234`,
+};
+
+export const reviewToPost = {
+  rating: 8,
+  comment: `Great!`,
+};
+
+export const defaultMockStore = {
+  [NameSpace.DATA]: {
+    films,
+    comments,
+    isFilmsLoaded: true,
+    isCommentsLoaded: true,
+  },
+  [NameSpace.APP_STATE]: {
+    filmsOnScreen: 8,
+    currentGenre: DEFAULT_GENRE,
+  },
+  [NameSpace.USER]: {
+    isAuthorized: true,
+    userInfo: userData,
+    reviewLoadingStatus: LoadingStatus.PENDING,
+    authorizationLoadingStatus: LoadingStatus.PENDING,
+  },
+};

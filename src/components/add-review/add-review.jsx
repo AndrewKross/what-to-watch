@@ -103,7 +103,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   sendReview: (review, filmId) => dispatch(UserOperation.sendReview(review, filmId)),
   resetReviewLoadingStatus() {
-    return dispatch(UserActionCreator.changeReviewStatus(LoadingStatus.PENDING));
+    return dispatch(UserActionCreator.changeReviewLoadingStatus(LoadingStatus.PENDING));
   },
 });
 
@@ -121,4 +121,5 @@ AddReview.propTypes = {
   resetReviewLoadingStatus: PropTypes.func.isRequired,
 };
 
+export { AddReview as AddReviewComponent };
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddReview));

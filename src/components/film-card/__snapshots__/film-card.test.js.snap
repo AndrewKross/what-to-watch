@@ -14,7 +14,7 @@ exports[`FilmCard should render correctly 1`] = `
       height={175}
       muted={true}
       poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-      src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+      src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
       width={280}
     />
   </div>
@@ -24,7 +24,6 @@ exports[`FilmCard should render correctly 1`] = `
   >
     <a
       className="small-movie-card__link"
-      href="film-page.html"
     >
       Fantastic Beasts: The Crimes of Grindelwald
     </a>

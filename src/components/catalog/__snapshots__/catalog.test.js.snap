@@ -31,7 +31,7 @@ exports[`Catalog should render correctly 1`] = `
         className="catalog__genres-link"
         href="#"
       >
-        Comedies
+        comedy
       </a>
     </li>
     <li
@@ -42,7 +42,7 @@ exports[`Catalog should render correctly 1`] = `
         className="catalog__genres-link"
         href="#"
       >
-        Crime
+        drama
       </a>
     </li>
     <li
@@ -53,7 +53,7 @@ exports[`Catalog should render correctly 1`] = `
         className="catalog__genres-link"
         href="#"
       >
-        Documentary
+        melodrama
       </a>
     </li>
     <li
@@ -64,7 +64,7 @@ exports[`Catalog should render correctly 1`] = `
         className="catalog__genres-link"
         href="#"
       >
-        Dramas
+        horror
       </a>
     </li>
     <li
@@ -75,7 +75,7 @@ exports[`Catalog should render correctly 1`] = `
         className="catalog__genres-link"
         href="#"
       >
-        Horror
+        crime
       </a>
     </li>
     <li
@@ -86,7 +86,7 @@ exports[`Catalog should render correctly 1`] = `
         className="catalog__genres-link"
         href="#"
       >
-        Kids & Family
+        documentary
       </a>
     </li>
     <li
@@ -97,7 +97,7 @@ exports[`Catalog should render correctly 1`] = `
         className="catalog__genres-link"
         href="#"
       >
-        Romance
+        romance
       </a>
     </li>
     <li
@@ -108,18 +108,7 @@ exports[`Catalog should render correctly 1`] = `
         className="catalog__genres-link"
         href="#"
       >
-        Sci-Fi
-      </a>
-    </li>
-    <li
-      className="catalog__genres-item "
-      onClick={[Function]}
-    >
-      <a
-        className="catalog__genres-link"
-        href="#"
-      >
-        Thrillers
+        thriller
       </a>
     </li>
   </ul>
@@ -139,7 +128,7 @@ exports[`Catalog should render correctly 1`] = `
           height={175}
           muted={true}
           poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-          src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
       </div>
@@ -149,7 +138,6 @@ exports[`Catalog should render correctly 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="film-page.html"
         >
           Fantastic Beasts: The Crimes of Grindelwald
         </a>
@@ -168,7 +156,7 @@ exports[`Catalog should render correctly 1`] = `
           height={175}
           muted={true}
           poster="img/bohemian-rhapsody.jpg"
-          src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
       </div>
@@ -178,7 +166,6 @@ exports[`Catalog should render correctly 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="film-page.html"
         >
           Bohemian Rhapsody
         </a>
@@ -197,7 +184,7 @@ exports[`Catalog should render correctly 1`] = `
           height={175}
           muted={true}
           poster="img/macbeth.jpg"
-          src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
       </div>
@@ -207,7 +194,6 @@ exports[`Catalog should render correctly 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="film-page.html"
         >
           Macbeth
         </a>
@@ -226,7 +212,7 @@ exports[`Catalog should render correctly 1`] = `
           height={175}
           muted={true}
           poster="img/aviator.jpg"
-          src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
       </div>
@@ -236,7 +222,6 @@ exports[`Catalog should render correctly 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="film-page.html"
         >
           Aviator
         </a>
@@ -255,7 +240,7 @@ exports[`Catalog should render correctly 1`] = `
           height={175}
           muted={true}
           poster="img/we-need-to-talk-about-kevin.jpg"
-          src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
       </div>
@@ -265,7 +250,6 @@ exports[`Catalog should render correctly 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="film-page.html"
         >
           We need to talk about Kevin
         </a>
@@ -284,7 +268,7 @@ exports[`Catalog should render correctly 1`] = `
           height={175}
           muted={true}
           poster="img/what-we-do-in-the-shadows.jpg"
-          src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
       </div>
@@ -294,7 +278,6 @@ exports[`Catalog should render correctly 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="film-page.html"
         >
           What We Do in the Shadows
         </a>
@@ -313,7 +296,7 @@ exports[`Catalog should render correctly 1`] = `
           height={175}
           muted={true}
           poster="img/revenant.jpg"
-          src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
       </div>
@@ -323,7 +306,6 @@ exports[`Catalog should render correctly 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="film-page.html"
         >
           Revenant
         </a>
@@ -342,7 +324,7 @@ exports[`Catalog should render correctly 1`] = `
           height={175}
           muted={true}
           poster="img/johnny-english.jpg"
-          src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
           width={280}
         />
       </div>
@@ -352,7 +334,6 @@ exports[`Catalog should render correctly 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="film-page.html"
         >
           Johnny English
         </a>

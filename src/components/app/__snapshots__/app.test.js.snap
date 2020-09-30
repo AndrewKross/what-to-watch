@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App should render correctly 1`] = `
+exports[`App Component App should render correctly 1`] = `
 Array [
   <section
     className="movie-card"
@@ -9,8 +9,8 @@ Array [
       className="movie-card__bg"
     >
       <img
-        alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        alt="Johnny English"
+        src="img/johnny-english.jpg"
       />
     </div>
     <h1
@@ -27,6 +27,7 @@ Array [
         <a
           className="logo__link"
           href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -50,11 +51,17 @@ Array [
       >
         <div
           className="user-block__avatar"
+          onClick={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }
         >
           <img
             alt="User avatar"
             height="63"
-            src="img/avatar.jpg"
+            src="img/1.png"
             width="63"
           />
         </div>
@@ -70,9 +77,9 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="Johnny English"
             height={327}
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="img/johnny-english.jpg"
             width={218}
           />
         </div>
@@ -82,7 +89,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            The Grand Budapest Hotel
+            Johnny English
           </h2>
           <p
             className="movie-card__meta"
@@ -90,12 +97,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Drama
+              thriller
             </span>
             <span
               className="movie-card__year"
             >
-              2014
+              2020
             </span>
           </p>
           <div
@@ -103,6 +110,7 @@ Array [
           >
             <button
               className="btn btn--play movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -120,6 +128,7 @@ Array [
             </button>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -173,7 +182,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Comedies
+            comedy
           </a>
         </li>
         <li
@@ -184,7 +193,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Crime
+            drama
           </a>
         </li>
         <li
@@ -195,7 +204,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Documentary
+            melodrama
           </a>
         </li>
         <li
@@ -206,7 +215,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Dramas
+            horror
           </a>
         </li>
         <li
@@ -217,7 +226,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Horror
+            crime
           </a>
         </li>
         <li
@@ -228,7 +237,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Kids & Family
+            documentary
           </a>
         </li>
         <li
@@ -239,7 +248,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Romance
+            romance
           </a>
         </li>
         <li
@@ -250,18 +259,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Sci-Fi
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item "
-          onClick={[Function]}
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Thrillers
+            thriller
           </a>
         </li>
       </ul>
@@ -281,7 +279,7 @@ Array [
               height={175}
               muted={true}
               poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
           </div>
@@ -291,7 +289,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="film-page.html"
             >
               Fantastic Beasts: The Crimes of Grindelwald
             </a>
@@ -310,7 +307,7 @@ Array [
               height={175}
               muted={true}
               poster="img/bohemian-rhapsody.jpg"
-              src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
           </div>
@@ -320,7 +317,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="film-page.html"
             >
               Bohemian Rhapsody
             </a>
@@ -339,7 +335,7 @@ Array [
               height={175}
               muted={true}
               poster="img/macbeth.jpg"
-              src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
           </div>
@@ -349,7 +345,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="film-page.html"
             >
               Macbeth
             </a>
@@ -368,7 +363,7 @@ Array [
               height={175}
               muted={true}
               poster="img/aviator.jpg"
-              src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
           </div>
@@ -378,7 +373,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="film-page.html"
             >
               Aviator
             </a>
@@ -397,7 +391,7 @@ Array [
               height={175}
               muted={true}
               poster="img/we-need-to-talk-about-kevin.jpg"
-              src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
           </div>
@@ -407,7 +401,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="film-page.html"
             >
               We need to talk about Kevin
             </a>
@@ -426,7 +419,7 @@ Array [
               height={175}
               muted={true}
               poster="img/what-we-do-in-the-shadows.jpg"
-              src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
           </div>
@@ -436,7 +429,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="film-page.html"
             >
               What We Do in the Shadows
             </a>
@@ -455,7 +447,7 @@ Array [
               height={175}
               muted={true}
               poster="img/revenant.jpg"
-              src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
           </div>
@@ -465,7 +457,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="film-page.html"
             >
               Revenant
             </a>
@@ -484,7 +475,7 @@ Array [
               height={175}
               muted={true}
               poster="img/johnny-english.jpg"
-              src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
           </div>
@@ -494,7 +485,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="film-page.html"
             >
               Johnny English
             </a>
@@ -510,7 +500,7 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
-          href="main.html"
+          href="#"
         >
           <span
             className="logo__letter logo__letter--1"
@@ -539,4 +529,57 @@ Array [
     </footer>
   </div>,
 ]
+`;
+
+exports[`App Component App should render spinner, when loading films 1`] = `
+<div
+  style={
+    Object {
+      "left": "50%",
+      "position": "fixed",
+      "top": "50%",
+      "transform": "translate(-50%, -50%)",
+    }
+  }
+>
+  <div
+    aria-busy="true"
+    className=""
+    style={Object {}}
+  >
+    <svg
+      aria-label="audio-loading"
+      fill="#a071bb"
+      height={250}
+      viewBox="0 0 135 135"
+      width={250}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M67.447 58c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zm9.448 9.447c0 5.523 4.477 10 10 10 5.522 0 10-4.477 10-10s-4.478-10-10-10c-5.523 0-10 4.477-10 10zm-9.448 9.448c-5.523 0-10 4.477-10 10 0 5.522 4.477 10 10 10s10-4.478 10-10c0-5.523-4.477-10-10-10zM58 67.447c0-5.523-4.477-10-10-10s-10 4.477-10 10 4.477 10 10 10 10-4.477 10-10z"
+      >
+        <animateTransform
+          attributeName="transform"
+          dur="2.5s"
+          from="0 67 67"
+          repeatCount="indefinite"
+          to="-360 67 67"
+          type="rotate"
+        />
+      </path>
+      <path
+        d="M28.19 40.31c6.627 0 12-5.374 12-12 0-6.628-5.373-12-12-12-6.628 0-12 5.372-12 12 0 6.626 5.372 12 12 12zm30.72-19.825c4.686 4.687 12.284 4.687 16.97 0 4.686-4.686 4.686-12.284 0-16.97-4.686-4.687-12.284-4.687-16.97 0-4.687 4.686-4.687 12.284 0 16.97zm35.74 7.705c0 6.627 5.37 12 12 12 6.626 0 12-5.373 12-12 0-6.628-5.374-12-12-12-6.63 0-12 5.372-12 12zm19.822 30.72c-4.686 4.686-4.686 12.284 0 16.97 4.687 4.686 12.285 4.686 16.97 0 4.687-4.686 4.687-12.284 0-16.97-4.685-4.687-12.283-4.687-16.97 0zm-7.704 35.74c-6.627 0-12 5.37-12 12 0 6.626 5.373 12 12 12s12-5.374 12-12c0-6.63-5.373-12-12-12zm-30.72 19.822c-4.686-4.686-12.284-4.686-16.97 0-4.686 4.687-4.686 12.285 0 16.97 4.686 4.687 12.284 4.687 16.97 0 4.687-4.685 4.687-12.283 0-16.97zm-35.74-7.704c0-6.627-5.372-12-12-12-6.626 0-12 5.373-12 12s5.374 12 12 12c6.628 0 12-5.373 12-12zm-19.823-30.72c4.687-4.686 4.687-12.284 0-16.97-4.686-4.686-12.284-4.686-16.97 0-4.687 4.686-4.687 12.284 0 16.97 4.686 4.687 12.284 4.687 16.97 0z"
+      >
+        <animateTransform
+          attributeName="transform"
+          dur="8s"
+          from="0 67 67"
+          repeatCount="indefinite"
+          to="360 67 67"
+          type="rotate"
+        />
+      </path>
+    </svg>
+  </div>
+</div>
 `;

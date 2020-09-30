@@ -1,8 +1,8 @@
 import React from "react";
 import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import { GENRES } from "../../const";
 import { GenresFilterComponent } from "./genres-filter.jsx";
+import { films, GENRES } from '../../mocks/test-mocks';
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -14,6 +14,7 @@ test(`Click to genres filter should change films genre`, () => {
   const genresFilter = shallow(
       <GenresFilterComponent
           currentGenre={GENRES[0]}
+          films={films}
           onGenreChangeClick={onGenreChangeClick}
       />,
   );

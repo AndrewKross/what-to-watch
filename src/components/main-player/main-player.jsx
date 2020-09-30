@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { formatVideoElapsed } from "../../utils/films";
 import { AppRoute } from '../../const';
+import history from '../../history';
 
 class MainPlayer extends Component {
   constructor(props) {
@@ -20,6 +21,9 @@ class MainPlayer extends Component {
 
   componentDidMount() {
     this._video = this._videoRef.current;
+    if (this._video.play) {
+      this._video.play();
+    }
 
     this._video.onpause = () => {
       this._video.load();
@@ -33,7 +37,6 @@ class MainPlayer extends Component {
       });
     };
 
-    this._video.play();
     this._video.oncanplaythrough = () => {
       this._duration = this._video.duration;
     };
@@ -83,7 +86,7 @@ class MainPlayer extends Component {
         <video className="player__video" ref={this._videoRef} src={videoMain} poster={backgroundImage}/>
 
         <button type="button" className="player__exit" onClick={
-          () => this.props.history.push(AppRoute.FILM + id)
+          () => history.push(AppRoute.FILM + id)
         }>Exit</button>
 
         <div className="player__controls">
@@ -137,7 +140,6 @@ MainPlayer.propTypes = {
     videoMain: PropTypes.string.isRequired,
     backgroundImage: PropTypes.string.isRequired,
   }).isRequired,
-  history: PropTypes.object.isRequired,
 };
 
 export default withRouter(MainPlayer);

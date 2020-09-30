@@ -1,13 +1,11 @@
-import { URL } from "../const";
-
-const imgUrl = URL.slice(0, -4);
+import { imgURL } from "../const";
 
 const userAdapter = (user) => {
   return {
     id: user.id,
     email: user.email,
     name: user.name,
-    avatar: imgUrl + user.avatar_url,
+    avatar: imgURL + user.avatar_url,
   };
 };
 

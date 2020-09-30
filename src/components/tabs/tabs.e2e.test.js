@@ -1,7 +1,7 @@
 import React from "react";
 import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import { films, TABS_DATA } from "../../mocks/test-mocks";
+import { comments, films, TABS_DATA } from '../../mocks/test-mocks';
 import Tabs from "./tabs.jsx";
 
 Enzyme.configure({
@@ -12,7 +12,7 @@ const [film] = films;
 
 test(`Tabs state should change by the click on tab`, () => {
   const tabs = shallow(
-      <Tabs film={film} />,
+      <Tabs film={film} comments={comments} />,
   );
 
   TABS_DATA.forEach((tab, index) => {

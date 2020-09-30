@@ -10,6 +10,7 @@ exports[`Header should render correctly 1`] = `
     <a
       className="logo__link"
       href="/"
+      onClick={[Function]}
     >
       <span
         className="logo__letter logo__letter--1"
@@ -33,11 +34,17 @@ exports[`Header should render correctly 1`] = `
   >
     <div
       className="user-block__avatar"
+      onClick={[Function]}
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
     >
       <img
         alt="User avatar"
         height="63"
-        src="img/avatar.jpg"
+        src="img/1.png"
         width="63"
       />
     </div>

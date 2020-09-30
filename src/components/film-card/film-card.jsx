@@ -16,6 +16,10 @@ class FilmCard extends Component {
     this._playerTimeout = null;
   }
 
+  componentWillUnmount() {
+    clearTimeout(this._playerTimeout);
+  }
+
   render() {
     const { filmData } = this.props;
     const { title, previewImage, previewVideo } = filmData;
@@ -54,10 +58,6 @@ class FilmCard extends Component {
 
   _handleFilmCardClick = () => {
     history.push(`/film/${this.props.filmData.id}`);
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this._playerTimeout);
   }
 
   _handleMouseEnter = () => {

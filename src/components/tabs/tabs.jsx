@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
+import { nanoid } from 'nanoid';
 import {
   REVIEWS_IN_COLUMN_COUNT,
   REVIEW_DATE_HUMAN_FORMAT,
@@ -131,13 +132,13 @@ export default class Tabs extends Component {
 
     const getReviewMarkup = (review) => {
       const {
-        id, text, rating, userName, date,
+        text, rating, userName, date,
       } = review;
       const reviewDateInHumanFormat = moment(date).format(REVIEW_DATE_HUMAN_FORMAT);
       const reviewDateInServiceFormat = moment(date).format(REVIEW_DATE_SERVICE_FORMAT);
 
       return (
-        <div key={id} className="review" style={{ overflowWrap: `break-word` }}>
+        <div key={nanoid()} className="review" style={{ overflowWrap: `break-word` }}>
           <blockquote className="review__quote">
             <p className="review__text">{text}</p>
             <footer className="review__details">

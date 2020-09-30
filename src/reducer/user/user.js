@@ -13,8 +13,8 @@ const initialState = {
 const ActionType = {
   AUTHORIZE_USER: `AUTHORIZE_USER`,
   SET_USER_INFO: `SET_USER_INFO`,
-  CHANGE_REVIEW_STATUS: `CHANGE_REVIEW_STATUS`,
-  CHANGE_AUTH_STATUS: `CHANGE_AUTH_STATUS`,
+  CHANGE_REVIEW_LOADING_STATUS: `CHANGE_REVIEW_LOADING_STATUS`,
+  CHANGE_AUTH_LOADING_STATUS: `CHANGE_AUTH_LOADING_STATUS`,
 };
 
 const ActionCreator = {
@@ -26,12 +26,12 @@ const ActionCreator = {
     type: ActionType.SET_USER_INFO,
     payload: user,
   }),
-  changeReviewStatus: (status) => ({
-    type: ActionType.CHANGE_REVIEW_STATUS,
+  changeReviewLoadingStatus: (status) => ({
+    type: ActionType.CHANGE_REVIEW_LOADING_STATUS,
     payload: status,
   }),
   changeAuthLoadingStatus: (status) => ({
-    type: ActionType.CHANGE_AUTH_STATUS,
+    type: ActionType.CHANGE_AUTH_LOADING_STATUS,
     payload: status,
   }),
 };
@@ -89,7 +89,7 @@ const Operation = {
       });
   },
   sendReview: (review, filmId) => (dispatch, getState, api) => {
-    dispatch(ActionCreator.changeReviewStatus(LoadingStatus.SENDING));
+    dispatch(ActionCreator.changeReviewLoadingStatus(LoadingStatus.SENDING));
 
     return api.post(`/comments/${filmId}`, {
       rating: review.rating,
@@ -98,11 +98,11 @@ const Operation = {
       .then((response) => {
         const adaptedComments = convertCommentsFromServer(response.data);
 
-        dispatch(ActionCreator.changeReviewStatus(LoadingStatus.OK));
+        dispatch(ActionCreator.changeReviewLoadingStatus(LoadingStatus.OK));
         dispatch(DataActionCreator.loadComments(adaptedComments));
       })
       .catch(() => {
-        dispatch(ActionCreator.changeReviewStatus(LoadingStatus.ERROR));
+        dispatch(ActionCreator.changeReviewLoadingStatus(LoadingStatus.ERROR));
       });
   },
 };
@@ -119,12 +119,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         userInfo: action.payload,
       };
-    case ActionType.CHANGE_REVIEW_STATUS:
+    case ActionType.CHANGE_REVIEW_LOADING_STATUS:
       return {
         ...state,
         reviewLoadingStatus: action.payload,
       };
-    case ActionType.CHANGE_AUTH_STATUS:
+    case ActionType.CHANGE_AUTH_LOADING_STATUS:
       return {
         ...state,
         authorizationLoadingStatus: action.payload,
@@ -134,5 +134,5 @@ const reducer = (state = initialState, action) => {
 };
 
 export {
-  reducer, ActionType, ActionCreator, Operation,
+  reducer, ActionType, ActionCreator, Operation, initialState,
 };

@@ -5,8 +5,10 @@ export const FILMS_COUNT_ON_START = 8;
 export const FILMS_ON_SHOW_MORE_BUTTON = 20;
 export const REVIEW_DATE_HUMAN_FORMAT = `MMMM D, YYYY`;
 export const REVIEW_DATE_SERVICE_FORMAT = `YYYY-MM-DD`;
+export const DEFAULT_GENRE = `All genres`;
 // es31-server.appspot.com/wtw/
 export const URL = `https://5.react.pages.academy/wtw`;
+export const imgURL = `https://5.react.pages.academy`;
 
 export const RatingRange = {
   MIN: 0,
@@ -31,19 +33,6 @@ export const AppRoute = {
   LOGIN: `/login`,
   MY_LIST: `/mylist`,
 };
-
-export const GENRES = [
-  `All genres`,
-  `Comedies`,
-  `Crime`,
-  `Documentary`,
-  `Dramas`,
-  `Horror`,
-  `Kids & Family`,
-  `Romance`,
-  `Sci-Fi`,
-  `Thrillers`,
-];
 
 export const TabsNames = {
   OVERVIEW: `overview`,

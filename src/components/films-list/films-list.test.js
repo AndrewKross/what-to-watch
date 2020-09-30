@@ -8,9 +8,8 @@ test(`FilmsList should render correctly`, () => {
   const tree = renderer
     .create(
       <FilmsList
-          filteredFilms={films}
+          films={films}
           filmsOnScreen={FILMS_COUNT_ON_START}
-          onFilmCardClick={() => {}}
       />, {
         createNodeMock: () => ({}),
       },

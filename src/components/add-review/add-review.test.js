@@ -1,24 +1,22 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import { Router } from 'react-router-dom';
-import { defaultMockStore, films } from '../../mocks/test-mocks';
-import MainPage from './main-page.jsx';
-import { FILMS_COUNT_ON_START } from '../../const';
+import { AddReviewComponent } from './add-review.jsx';
+import { noop } from '../../utils/common';
 import history from '../../history';
+import { films, defaultMockStore } from '../../mocks/test-mocks';
+import { LoadingStatus } from '../../const';
 
-test(`MainPage should render correctly`, () => {
+test(`AddReview should render correctly`, () => {
   const mockStoreConfig = configureStore([]);
   const store = mockStoreConfig(defaultMockStore);
   const tree = renderer.create(
     <Provider store={store}>
       <Router history={history}>
-        <MainPage
-          films={films}
-          filteredFilms={films}
-          filmsOnScreen={FILMS_COUNT_ON_START}
-        />
+        <AddReviewComponent sendReview={noop} history={history} film={films[0]}
+                          resetReviewLoadingStatus={noop} reviewStatus={LoadingStatus.PENDING}/>
       </Router>
     </Provider>, {
       createNodeMock: () => ({}),

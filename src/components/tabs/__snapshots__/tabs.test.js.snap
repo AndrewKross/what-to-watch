@@ -213,7 +213,7 @@ Array [
         <span
           className="movie-card__details-value"
         >
-          drama
+          comedy
         </span>
       </p>
       <p
@@ -286,6 +286,11 @@ Array [
     >
       <div
         className="review"
+        style={
+          Object {
+            "overflowWrap": "break-word",
+          }
+        }
       >
         <blockquote
           className="review__quote"
@@ -306,9 +311,87 @@ Array [
             </cite>
             <time
               className="review__date"
-              dateTime="2020-08-27"
+              dateTime="2019-12-25"
             >
-              August 27, 2020
+              December 25, 2019
+            </time>
+          </footer>
+        </blockquote>
+        <div
+          className="review__rating"
+        >
+          8
+        </div>
+      </div>
+      <div
+        className="review"
+        style={
+          Object {
+            "overflowWrap": "break-word",
+          }
+        }
+      >
+        <blockquote
+          className="review__quote"
+        >
+          <p
+            className="review__text"
+          >
+            I didn't find it amusing, and while I can appreciate the creativity,
+  it's an hour and 40 minutes I wish I could take back.
+          </p>
+          <footer
+            className="review__details"
+          >
+            <cite
+              className="review__author"
+            >
+              Kate Muir
+            </cite>
+            <time
+              className="review__date"
+              dateTime="2019-12-25"
+            >
+              December 25, 2019
+            </time>
+          </footer>
+        </blockquote>
+        <div
+          className="review__rating"
+        >
+          8
+        </div>
+      </div>
+      <div
+        className="review"
+        style={
+          Object {
+            "overflowWrap": "break-word",
+          }
+        }
+      >
+        <blockquote
+          className="review__quote"
+        >
+          <p
+            className="review__text"
+          >
+            I didn't find it amusing, and while I can appreciate the creativity,
+  it's an hour and 40 minutes I wish I could take back.
+          </p>
+          <footer
+            className="review__details"
+          >
+            <cite
+              className="review__author"
+            >
+              Kate Muir
+            </cite>
+            <time
+              className="review__date"
+              dateTime="2019-12-25"
+            >
+              December 25, 2019
             </time>
           </footer>
         </blockquote>
@@ -321,7 +404,125 @@ Array [
     </div>
     <div
       className="movie-card__reviews-col"
-    />
+    >
+      <div
+        className="review"
+        style={
+          Object {
+            "overflowWrap": "break-word",
+          }
+        }
+      >
+        <blockquote
+          className="review__quote"
+        >
+          <p
+            className="review__text"
+          >
+            I didn't find it amusing, and while I can appreciate the creativity,
+  it's an hour and 40 minutes I wish I could take back.
+          </p>
+          <footer
+            className="review__details"
+          >
+            <cite
+              className="review__author"
+            >
+              Kate Muir
+            </cite>
+            <time
+              className="review__date"
+              dateTime="2019-12-25"
+            >
+              December 25, 2019
+            </time>
+          </footer>
+        </blockquote>
+        <div
+          className="review__rating"
+        >
+          8
+        </div>
+      </div>
+      <div
+        className="review"
+        style={
+          Object {
+            "overflowWrap": "break-word",
+          }
+        }
+      >
+        <blockquote
+          className="review__quote"
+        >
+          <p
+            className="review__text"
+          >
+            I didn't find it amusing, and while I can appreciate the creativity,
+  it's an hour and 40 minutes I wish I could take back.
+          </p>
+          <footer
+            className="review__details"
+          >
+            <cite
+              className="review__author"
+            >
+              Kate Muir
+            </cite>
+            <time
+              className="review__date"
+              dateTime="2019-12-25"
+            >
+              December 25, 2019
+            </time>
+          </footer>
+        </blockquote>
+        <div
+          className="review__rating"
+        >
+          8
+        </div>
+      </div>
+      <div
+        className="review"
+        style={
+          Object {
+            "overflowWrap": "break-word",
+          }
+        }
+      >
+        <blockquote
+          className="review__quote"
+        >
+          <p
+            className="review__text"
+          >
+            I didn't find it amusing, and while I can appreciate the creativity,
+  it's an hour and 40 minutes I wish I could take back.
+          </p>
+          <footer
+            className="review__details"
+          >
+            <cite
+              className="review__author"
+            >
+              Kate Muir
+            </cite>
+            <time
+              className="review__date"
+              dateTime="2019-12-25"
+            >
+              December 25, 2019
+            </time>
+          </footer>
+        </blockquote>
+        <div
+          className="review__rating"
+        >
+          8
+        </div>
+      </div>
+    </div>
   </div>,
 ]
 `;

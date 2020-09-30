@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main should render correctly 1`] = `
+exports[`MainPage should render correctly 1`] = `
 Array [
   <section
     className="movie-card"
@@ -9,8 +9,8 @@ Array [
       className="movie-card__bg"
     >
       <img
-        alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        alt="We need to talk about Kevin"
+        src="img/we-need-to-talk-about-kevin.jpg"
       />
     </div>
     <h1
@@ -27,6 +27,7 @@ Array [
         <a
           className="logo__link"
           href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -50,11 +51,17 @@ Array [
       >
         <div
           className="user-block__avatar"
+          onClick={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }
         >
           <img
             alt="User avatar"
             height="63"
-            src="img/avatar.jpg"
+            src="img/1.png"
             width="63"
           />
         </div>
@@ -70,9 +77,9 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="We need to talk about Kevin"
             height={327}
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="img/we-need-to-talk-about-kevin.jpg"
             width={218}
           />
         </div>
@@ -82,7 +89,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            The Grand Budapest Hotel
+            We need to talk about Kevin
           </h2>
           <p
             className="movie-card__meta"
@@ -90,12 +97,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Drama
+              crime
             </span>
             <span
               className="movie-card__year"
             >
-              2014
+              2020
             </span>
           </p>
           <div
@@ -103,6 +110,7 @@ Array [
           >
             <button
               className="btn btn--play movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -120,6 +128,7 @@ Array [
             </button>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -173,7 +182,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Comedies
+            comedy
           </a>
         </li>
         <li
@@ -184,7 +193,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Crime
+            drama
           </a>
         </li>
         <li
@@ -195,7 +204,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Documentary
+            melodrama
           </a>
         </li>
         <li
@@ -206,7 +215,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Dramas
+            horror
           </a>
         </li>
         <li
@@ -217,7 +226,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Horror
+            crime
           </a>
         </li>
         <li
@@ -228,7 +237,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Kids & Family
+            documentary
           </a>
         </li>
         <li
@@ -239,7 +248,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Romance
+            romance
           </a>
         </li>
         <li
@@ -250,18 +259,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Sci-Fi
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item "
-          onClick={[Function]}
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Thrillers
+            thriller
           </a>
         </li>
       </ul>
@@ -281,7 +279,7 @@ Array [
               height={175}
               muted={true}
               poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
           </div>
@@ -291,7 +289,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="film-page.html"
             >
               Fantastic Beasts: The Crimes of Grindelwald
             </a>
@@ -310,7 +307,7 @@ Array [
               height={175}
               muted={true}
               poster="img/bohemian-rhapsody.jpg"
-              src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
           </div>
@@ -320,7 +317,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="film-page.html"
             >
               Bohemian Rhapsody
             </a>
@@ -339,7 +335,7 @@ Array [
               height={175}
               muted={true}
               poster="img/macbeth.jpg"
-              src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
           </div>
@@ -349,7 +345,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="film-page.html"
             >
               Macbeth
             </a>
@@ -368,7 +363,7 @@ Array [
               height={175}
               muted={true}
               poster="img/aviator.jpg"
-              src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
           </div>
@@ -378,7 +373,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="film-page.html"
             >
               Aviator
             </a>
@@ -397,7 +391,7 @@ Array [
               height={175}
               muted={true}
               poster="img/we-need-to-talk-about-kevin.jpg"
-              src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
           </div>
@@ -407,7 +401,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="film-page.html"
             >
               We need to talk about Kevin
             </a>
@@ -426,7 +419,7 @@ Array [
               height={175}
               muted={true}
               poster="img/what-we-do-in-the-shadows.jpg"
-              src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
           </div>
@@ -436,7 +429,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="film-page.html"
             >
               What We Do in the Shadows
             </a>
@@ -455,7 +447,7 @@ Array [
               height={175}
               muted={true}
               poster="img/revenant.jpg"
-              src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
           </div>
@@ -465,7 +457,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="film-page.html"
             >
               Revenant
             </a>
@@ -484,7 +475,7 @@ Array [
               height={175}
               muted={true}
               poster="img/johnny-english.jpg"
-              src="https://cdn.videvo.net/videvo_files/video/free/2019-09/small_watermarked/190828_07_MarinaBayatNightDrone_UHD_02_preview.webm"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width={280}
             />
           </div>
@@ -494,7 +485,6 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="film-page.html"
             >
               Johnny English
             </a>
@@ -510,7 +500,7 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
-          href="main.html"
+          href="#"
         >
           <span
             className="logo__letter logo__letter--1"

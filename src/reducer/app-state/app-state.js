@@ -1,8 +1,8 @@
-import { FILMS_ON_SHOW_MORE_BUTTON, FILMS_COUNT_ON_START } from '../../const';
+import { FILMS_ON_SHOW_MORE_BUTTON, FILMS_COUNT_ON_START, DEFAULT_GENRE } from '../../const';
 
 const initialState = {
   filmsOnScreen: FILMS_COUNT_ON_START,
-  currentGenre: `All genres`,
+  currentGenre: DEFAULT_GENRE,
 };
 
 const ActionType = {
@@ -46,4 +46,6 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export { ActionType, ActionCreator, reducer };
+export {
+  ActionType, ActionCreator, reducer, initialState,
+};

@@ -107,5 +107,5 @@ const reducer = (state = initialState, action) => {
 };
 
 export {
-  ActionCreator, ActionType, reducer, Operation,
+  ActionCreator, ActionType, reducer, Operation, initialState,
 };
