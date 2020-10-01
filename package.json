@@ -1,6 +1,7 @@
 {
   "name": "what-to-watch",
   "version": "1.0.0",
+  "homepage": "https://andrewkross.github.io/what-to-watch/",
   "private": true,
   "description": "Личный проект «Что посмотреть» от HTML Academy",
   "scripts": {

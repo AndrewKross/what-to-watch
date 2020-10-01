@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-  Switch, Route, Router, Link,
+  Switch, Route, Router, Link, HashRouter,
 } from 'react-router-dom';
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
@@ -44,7 +44,8 @@ const App = ({
     );
   }
   return (
-    <Router history={history} basename="/what-to-watch">
+    <HashRouter>
+    <Router history={history}>
       <Switch>
         <Route exact path={AppRoute.MAIN}
           render={() => {
@@ -93,6 +94,7 @@ const App = ({
         />
       </Switch>
     </Router>
+    </HashRouter>
   );
 };
 
