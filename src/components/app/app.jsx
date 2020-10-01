@@ -44,7 +44,7 @@ const App = ({
     );
   }
   return (
-    <HashRouter>
+    <HashRouter basename="/what-to-watch">
     <Router history={history}>
       <Switch>
         <Route exact path={AppRoute.MAIN}
