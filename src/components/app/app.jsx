@@ -44,7 +44,7 @@ const App = ({
     );
   }
   return (
-    <Router history={history}>
+    <Router history={history} basename="/what-to-watch">
       <Switch>
         <Route exact path={AppRoute.MAIN}
           render={() => {

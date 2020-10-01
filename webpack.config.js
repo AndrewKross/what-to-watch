@@ -1,12 +1,14 @@
 const path = require(`path`);
 
 module.exports = {
-  entry: `./src/index.js`,
+  entry: {
+    index: `./src/index.js`,
+  },
   output: {
     filename: `bundle.js`,
     chunkFilename: `[name].bundle.js`,
     path: path.join(__dirname, `public`),
-    publicPath: `/`,
+    publicPath: `/what-to-watch/`,
   },
   devServer: {
     contentBase: path.join(__dirname, `public`),
@@ -25,6 +27,9 @@ module.exports = {
         },
       },
     ],
+  },
+  resolve: {
+    extensions: [`.js`, `.jsx`],
   },
   devtool: `source-map`,
 };
