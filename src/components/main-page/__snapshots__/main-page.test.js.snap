@@ -9,8 +9,8 @@ Array [
       className="movie-card__bg"
     >
       <img
-        alt="We need to talk about Kevin"
-        src="img/we-need-to-talk-about-kevin.jpg"
+        alt="Fantastic Beasts: The Crimes of Grindelwald"
+        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
       />
     </div>
     <h1
@@ -77,9 +77,9 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="We need to talk about Kevin"
+            alt="Fantastic Beasts: The Crimes of Grindelwald"
             height={327}
-            src="img/we-need-to-talk-about-kevin.jpg"
+            src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
             width={218}
           />
         </div>
@@ -89,7 +89,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            We need to talk about Kevin
+            Fantastic Beasts: The Crimes of Grindelwald
           </h2>
           <p
             className="movie-card__meta"
@@ -97,7 +97,7 @@ Array [
             <span
               className="movie-card__genre"
             >
-              crime
+              comedy
             </span>
             <span
               className="movie-card__year"

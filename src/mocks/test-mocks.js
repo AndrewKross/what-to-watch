@@ -121,9 +121,11 @@ export const reviewToPost = {
 export const defaultMockStore = {
   [NameSpace.DATA]: {
     films,
+    promoFilm: films[0],
     comments,
     isFilmsLoaded: true,
     isCommentsLoaded: true,
+    isPromoFilmLoaded: true,
   },
   [NameSpace.APP_STATE]: {
     filmsOnScreen: 8,

@@ -26,6 +26,14 @@ export const RatingGrade = {
   AWESOME: `Awesome`,
 };
 
+// export const AppRoute = {
+//   MAIN: `/what-to-watch/`,
+//   FILM: `/what-to-watch/film/`,
+//   PLAYER: `/what-to-watch/player/`,
+//   LOGIN: `/what-to-watch/login`,
+//   MY_LIST: `/what-to-watch/mylist`,
+// };
+
 export const AppRoute = {
   MAIN: `/`,
   FILM: `/film/`,

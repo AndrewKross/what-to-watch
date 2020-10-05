@@ -16,6 +16,7 @@ test(`MainPage should render correctly`, () => {
       <Router history={history}>
         <MainPage
           films={films}
+          promoFilm={films[0]}
           filteredFilms={films}
           filmsOnScreen={FILMS_COUNT_ON_START}
         />

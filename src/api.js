@@ -1,7 +1,7 @@
 import axios from "axios";
 import { HttpStatus, URL } from './const';
 
-export const createAPI = (onUnauthorized) => {
+export const createAPI = (onUnauthorized, onError) => {
   const api = axios.create({
     baseURL: URL,
     timeout: 1000 * 5,
@@ -19,6 +19,8 @@ export const createAPI = (onUnauthorized) => {
       onUnauthorized();
       throw err;
     }
+
+    onError(err);
 
     throw err;
   };

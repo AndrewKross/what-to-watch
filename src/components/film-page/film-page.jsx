@@ -7,9 +7,10 @@ import FilmsList from '../films-list/films-list.jsx';
 import { AppRoute, NUMBER_OF_SIMILAR_FILMS } from '../../const';
 import Header from '../header/header.jsx';
 import Footer from '../footer/footer.jsx';
+import MyListButton from '../mylist-button/mylist-button.jsx';
 
 const FilmPage = ({
-  films, selectedFilm, comments, isAuthorized, loadComments, renderMyListButton,
+  films, selectedFilm, comments, isAuthorized, loadComments,
 }) => {
   const {
     title, posterImage, genre, released, id, backgroundImage, backgroundColor,
@@ -55,7 +56,7 @@ const FilmPage = ({
                   <span>Play</span>
                 </button>
 
-                {renderMyListButton && renderMyListButton()}
+                <MyListButton film={selectedFilm} />
 
                 {isAuthorized && <Link to={`${AppRoute.FILM + id}/review`}
                                        className="btn movie-card__button">Add review</Link>}

@@ -6,7 +6,6 @@ module.exports = {
   },
   output: {
     filename: `bundle.js`,
-    chunkFilename: `[name].bundle.js`,
     path: path.join(__dirname, `public`),
     publicPath: `/what-to-watch/`,
   },

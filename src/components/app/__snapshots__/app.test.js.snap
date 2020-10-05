@@ -9,8 +9,8 @@ Array [
       className="movie-card__bg"
     >
       <img
-        alt="Johnny English"
-        src="img/johnny-english.jpg"
+        alt="Fantastic Beasts: The Crimes of Grindelwald"
+        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
       />
     </div>
     <h1
@@ -77,9 +77,9 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="Johnny English"
+            alt="Fantastic Beasts: The Crimes of Grindelwald"
             height={327}
-            src="img/johnny-english.jpg"
+            src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
             width={218}
           />
         </div>
@@ -89,7 +89,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Johnny English
+            Fantastic Beasts: The Crimes of Grindelwald
           </h2>
           <p
             className="movie-card__meta"
@@ -97,7 +97,7 @@ Array [
             <span
               className="movie-card__genre"
             >
-              thriller
+              comedy
             </span>
             <span
               className="movie-card__year"
@@ -529,6 +529,13 @@ Array [
     </footer>
   </div>,
 ]
+`;
+
+exports[`App Component App should render error, if loading was failed 1`] = `
+<h1>
+  Error: 
+  404
+</h1>
 `;
 
 exports[`App Component App should render spinner, when loading films 1`] = `

@@ -1,18 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from "prop-types";
 import Header from "../header/header.jsx";
 import PromoFilm from "../promo-film/promo-film.jsx";
 import Catalog from "../catalog/catalog.jsx";
 import Footer from "../footer/footer.jsx";
-import WithMyListButton from "../../hocs/withMyListButton.jsx";
 
-const PromoFilmWrapped = WithMyListButton(PromoFilm);
-
-const MainPage = ({ films, filteredFilms, filmsOnScreen }) => {
-  const [randomPromo] = useState(Math.floor(Math.random() * films.length));
-  const promoFilm = films[randomPromo];
-
-  return (
+const MainPage = ({
+  filteredFilms, filmsOnScreen, promoFilm,
+}) => (
   <React.Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -23,7 +18,7 @@ const MainPage = ({ films, filteredFilms, filmsOnScreen }) => {
       </div>
       <h1 className="visually-hidden">WTW</h1>
       <Header />
-      <PromoFilmWrapped promoFilm={promoFilm}/>
+      <PromoFilm promoFilm={promoFilm}/>
     </section>
 
     <div className="page-content">
@@ -31,11 +26,13 @@ const MainPage = ({ films, filteredFilms, filmsOnScreen }) => {
       <Footer />
     </div>
   </React.Fragment>
-  );
-};
+);
 
 MainPage.propTypes = {
-  films: PropTypes.array.isRequired,
+  promoFilm: PropTypes.shape({
+    backgroundImage: PropTypes.string,
+    title: PropTypes.string,
+  }).isRequired,
   filmsOnScreen: PropTypes.number.isRequired,
   filteredFilms: PropTypes.array.isRequired,
 };

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import history from '../../history';
 import PreviewPlayer from "../preview-player/preview-player.jsx";
-import { PREVIEW_DELAY } from "../../const";
+import { AppRoute, PREVIEW_DELAY } from '../../const';
 
 class FilmCard extends Component {
   constructor(props) {
@@ -57,7 +57,7 @@ class FilmCard extends Component {
   }
 
   _handleFilmCardClick = () => {
-    history.push(`/film/${this.props.filmData.id}`);
+    history.push(`${AppRoute.FILM + this.props.filmData.id}`);
   }
 
   _handleMouseEnter = () => {

@@ -55,7 +55,7 @@ const SignIn = ({
                  {`and password combination. Please try again.`}</p>
              </div>}
 
-            {isInvalid === true
+            {isInvalid
              && <div className="sign-in__message">
                <p style={{ whiteSpace: `pre-wrap` }}>{`Please enter a valid email address`}</p>
              </div>}
