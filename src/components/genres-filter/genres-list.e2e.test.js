@@ -1,8 +1,8 @@
-import React from "react";
-import Enzyme, { shallow } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-import { GenresFilterComponent } from "./genres-filter.jsx";
-import { films, GENRES } from '../../mocks/test-mocks';
+import * as React from 'react';
+import Enzyme, { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import { GenresFilterComponent } from './genres-filter.tsx';
+import { films, GENRES } from '../../test-mocks';
 
 Enzyme.configure({
   adapter: new Adapter(),

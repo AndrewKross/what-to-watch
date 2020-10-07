@@ -1,6 +1,6 @@
-import React from "react";
+import * as React from 'react';
 
-const Footer = () => (
+const Footer: React.FunctionComponent = () => (
   <footer className="page-footer">
     <div className="logo">
       <a href="#" className="logo__link logo__link--light">

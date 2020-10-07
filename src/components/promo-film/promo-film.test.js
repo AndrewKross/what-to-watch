@@ -1,9 +1,9 @@
-import React from "react";
-import renderer from "react-test-renderer";
+import * as React from 'react';
+import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { defaultMockStore, films } from '../../mocks/test-mocks';
-import PromoFilm from "./promo-film.jsx";
+import { defaultMockStore, films } from '../../test-mocks';
+import PromoFilm from './promo-film.tsx';
 
 test(`PromoCard should render correctly`, () => {
   const mockStoreConfig = configureStore([]);

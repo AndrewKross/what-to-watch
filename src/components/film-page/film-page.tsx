@@ -1,17 +1,26 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import history from '../../history';
-import Tabs from '../tabs/tabs.jsx';
-import FilmsList from '../films-list/films-list.jsx';
+import Tabs from '../tabs/tabs';
+import FilmsList from '../films-list/films-list';
 import { AppRoute, NUMBER_OF_SIMILAR_FILMS } from '../../const';
-import Header from '../header/header.jsx';
-import Footer from '../footer/footer.jsx';
-import MyListButton from '../mylist-button/mylist-button.jsx';
+import Header from '../header/header';
+import Footer from '../footer/footer';
+import MyListButton from '../mylist-button/mylist-button';
+import { Comment, Film } from '../../types';
 
-const FilmPage = ({
+interface Props {
+  selectedFilm: Film;
+  films: Film[];
+  comments: Comment[];
+  loadComments: (id: number) => void;
+  isAuthorized: boolean;
+}
+
+const FilmPage: React.FunctionComponent<Props> = ({
   films, selectedFilm, comments, isAuthorized, loadComments,
-}) => {
+}: Props) => {
   const {
     title, posterImage, genre, released, id, backgroundImage, backgroundColor,
   } = selectedFilm;
@@ -56,7 +65,7 @@ const FilmPage = ({
                   <span>Play</span>
                 </button>
 
-                <MyListButton film={selectedFilm} />
+                <MyListButton film={selectedFilm}/>
 
                 {isAuthorized && <Link to={`${AppRoute.FILM + id}/review`}
                                        className="btn movie-card__button">Add review</Link>}
@@ -98,24 +107,6 @@ const FilmPage = ({
       </div>
     </React.Fragment>
   );
-};
-
-FilmPage.propTypes = {
-  selectedFilm: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    posterImage: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-    id: PropTypes.number.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-  }).isRequired,
-  films: PropTypes.array.isRequired,
-  comments: PropTypes.array.isRequired,
-  loadComments: PropTypes.func.isRequired,
-  isAuthorized: PropTypes.bool.isRequired,
-  renderMyListButton: PropTypes.func,
 };
 
 export default FilmPage;

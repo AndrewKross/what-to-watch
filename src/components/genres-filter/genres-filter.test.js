@@ -1,8 +1,8 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import { GenresFilterComponent } from "./genres-filter.jsx";
+import * as React from 'react';
+import renderer from 'react-test-renderer';
+import { GenresFilterComponent } from './genres-filter.tsx';
 import { DEFAULT_GENRE } from '../../const';
-import { films } from '../../mocks/test-mocks';
+import { films } from '../../test-mocks';
 import { noop } from '../../utils/common';
 
 test(`GenresFilter should render correctly`, () => {

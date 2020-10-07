@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
-import { defaultMockStore } from '../../mocks/test-mocks';
-import UserPage from './user-page.jsx';
+import { defaultMockStore } from '../../test-mocks';
+import UserPage from './user-page.tsx';
 import history from '../../history';
 
 test(`UserPage should render correctly`, () => {

@@ -2,7 +2,7 @@ import MockAdapter from 'axios-mock-adapter';
 import {
   initialState, reducer, ActionType, ActionCreator, Operation,
 } from './data';
-import { comments, films } from '../../mocks/test-mocks';
+import { comments, films } from '../../test-mocks';
 import { createAPI } from '../../api';
 
 const api = createAPI(() => {});

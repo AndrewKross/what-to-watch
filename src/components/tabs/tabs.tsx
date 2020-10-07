@@ -1,19 +1,29 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import moment from "moment";
+import * as React from 'react';
+import { Component } from 'react';
+import * as moment from 'moment';
 import { nanoid } from 'nanoid';
 import {
-  REVIEWS_IN_COLUMN_COUNT,
   REVIEW_DATE_HUMAN_FORMAT,
   REVIEW_DATE_SERVICE_FORMAT,
-  TabsNames,
+  REVIEWS_IN_COLUMN_COUNT,
   TabsData,
-} from "../../const";
-import { getFormatedRunTime } from "../../utils/common";
-import { getRatingGrade } from "../../utils/films";
+  TabsNames,
+} from '../../const';
+import { getFormattedRunTime } from '../../utils/common.js';
+import { getRatingGrade } from '../../utils/films.js';
+import { Comment, Film } from '../../types';
 
-export default class Tabs extends Component {
-  constructor(props) {
+interface Props {
+  film: Film;
+  comments: Comment[];
+}
+
+interface State {
+  activeTab: string;
+}
+
+export default class Tabs extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -21,7 +31,7 @@ export default class Tabs extends Component {
     };
   }
 
-  render() {
+  render(): React.ReactNode {
     return (
       <React.Fragment>
         <nav className="movie-nav movie-card__nav">
@@ -51,12 +61,12 @@ export default class Tabs extends Component {
           </ul>
         </nav>
 
-        {this._renderTabContent(this.state.activeTab)}
+        {this._renderTabContent()}
       </React.Fragment>
     );
   }
 
-  _getOverviewTab = () => {
+  _getOverviewTab = (): React.ReactNode => {
     const {
       rating, ratingsCount, director, starring, description,
     } = this.props.film;
@@ -84,7 +94,7 @@ export default class Tabs extends Component {
     );
   };
 
-  _getDetailsTab = () => {
+  _getDetailsTab = (): React.ReactNode => {
     const {
       director, starring, runTime, genre, released,
     } = this.props.film;
@@ -102,7 +112,7 @@ export default class Tabs extends Component {
               {starring.map((actor) => (
                 <React.Fragment key={actor}>
                   {actor}
-                  <br />
+                  <br/>
                 </React.Fragment>
               ))}
             </span>
@@ -112,7 +122,7 @@ export default class Tabs extends Component {
         <div className="movie-card__text-col">
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Run Time</strong>
-            <span className="movie-card__details-value">{getFormatedRunTime(runTime)}</span>
+            <span className="movie-card__details-value">{getFormattedRunTime(runTime)}</span>
           </p>
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Genre</strong>
@@ -127,7 +137,7 @@ export default class Tabs extends Component {
     );
   };
 
-  _getReviewsTab() {
+  _getReviewsTab = (): React.ReactNode => {
     const { comments } = this.props;
 
     const getReviewMarkup = (review) => {
@@ -163,9 +173,9 @@ export default class Tabs extends Component {
         </div>
       </div>
     );
-  }
+  };
 
-  _renderTabContent() {
+  _renderTabContent = (): React.ReactNode => {
     switch (this.state.activeTab) {
       case TabsNames.OVERVIEW:
         return this._getOverviewTab();
@@ -179,27 +189,5 @@ export default class Tabs extends Component {
       default:
         return this._getOverviewTab();
     }
-  }
+  };
 }
-
-Tabs.propTypes = {
-  film: PropTypes.shape({
-    rating: PropTypes.number.isRequired,
-    ratingsCount: PropTypes.number.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    description: PropTypes.string.isRequired,
-    runTime: PropTypes.number.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-  }).isRequired,
-  comments: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      text: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
-      userName: PropTypes.string.isRequired,
-      date: PropTypes.instanceOf(Date).isRequired,
-    }),
-  ).isRequired,
-};

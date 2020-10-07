@@ -1,10 +1,10 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import configureStore from "redux-mock-store";
+import * as React from 'react';
+import renderer from 'react-test-renderer';
+import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { Router } from "react-router-dom";
-import { defaultMockStore } from '../../mocks/test-mocks';
-import SignIn from "./sign-in.jsx";
+import { Router } from 'react-router-dom';
+import { defaultMockStore } from '../../test-mocks';
+import SignIn from './sign-in.tsx';
 import history from '../../history';
 
 test(`SignIn should render correctly`, () => {

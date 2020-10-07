@@ -1,11 +1,23 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import * as React from 'react';
+import { Component } from 'react';
 import history from '../../history';
-import PreviewPlayer from "../preview-player/preview-player.jsx";
+import PreviewPlayer from '../preview-player/preview-player';
 import { AppRoute, PREVIEW_DELAY } from '../../const';
+import { Film } from '../../types';
 
-class FilmCard extends Component {
-  constructor(props) {
+interface Props {
+  filmData: Film;
+}
+
+interface State {
+  isPlaying: boolean;
+}
+
+class FilmCard extends Component<Props, State> {
+  private _isCardHovered: boolean;
+  private _playerTimeout: NodeJS.Timeout;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -16,11 +28,11 @@ class FilmCard extends Component {
     this._playerTimeout = null;
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     clearTimeout(this._playerTimeout);
   }
 
-  render() {
+  render(): React.ReactNode {
     const { filmData } = this.props;
     const { title, previewImage, previewVideo } = filmData;
 
@@ -34,9 +46,9 @@ class FilmCard extends Component {
         <div className="small-movie-card__image">
 
           <PreviewPlayer
-              previewImage={previewImage}
-              previewVideo={previewVideo}
-              isPlaying={this.state.isPlaying}
+            previewImage={previewImage}
+            previewVideo={previewVideo}
+            isPlaying={this.state.isPlaying}
           />
 
         </div>
@@ -48,7 +60,7 @@ class FilmCard extends Component {
             this._handleFilmCardClick();
           }}
         >
-          <a className="small-movie-card__link">
+          <a href="#" className="small-movie-card__link">
             {title}
           </a>
         </h3>
@@ -56,21 +68,21 @@ class FilmCard extends Component {
     );
   }
 
-  _handleFilmCardClick = () => {
+  _handleFilmCardClick = (): void => {
     history.push(`${AppRoute.FILM + this.props.filmData.id}`);
-  }
+  };
 
-  _handleMouseEnter = () => {
+  _handleMouseEnter = (): void => {
     this._isCardHovered = true;
     this._startPlaying();
   };
 
-  _handleMouseLeave = () => {
+  _handleMouseLeave = (): void => {
     this._isCardHovered = false;
     this._stopPlaying();
   };
 
-  _startPlaying() {
+  _startPlaying(): void {
     this._playerTimeout = setTimeout(() => {
       if (this._isCardHovered === true) {
         this.setState({
@@ -80,21 +92,12 @@ class FilmCard extends Component {
     }, PREVIEW_DELAY);
   }
 
-  _stopPlaying() {
+  _stopPlaying(): void {
     clearTimeout(this._playerTimeout);
     this.setState({
       isPlaying: false,
     });
   }
 }
-
-FilmCard.propTypes = {
-  filmData: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    previewImage: PropTypes.string.isRequired,
-    previewVideo: PropTypes.string.isRequired,
-  }).isRequired,
-};
 
 export default FilmCard;

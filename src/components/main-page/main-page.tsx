@@ -1,13 +1,19 @@
-import React from 'react';
-import PropTypes from "prop-types";
-import Header from "../header/header.jsx";
-import PromoFilm from "../promo-film/promo-film.jsx";
-import Catalog from "../catalog/catalog.jsx";
-import Footer from "../footer/footer.jsx";
+import * as React from 'react';
+import Header from '../header/header';
+import PromoFilm from '../promo-film/promo-film';
+import Catalog from '../catalog/catalog';
+import Footer from '../footer/footer';
+import { Film } from '../../types';
 
-const MainPage = ({
+interface Props {
+  promoFilm: Film
+  filmsOnScreen: number
+  filteredFilms: Film[]
+}
+
+const MainPage:React.FunctionComponent<Props> = ({
   filteredFilms, filmsOnScreen, promoFilm,
-}) => (
+}:Props) => (
   <React.Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -27,14 +33,5 @@ const MainPage = ({
     </div>
   </React.Fragment>
 );
-
-MainPage.propTypes = {
-  promoFilm: PropTypes.shape({
-    backgroundImage: PropTypes.string,
-    title: PropTypes.string,
-  }).isRequired,
-  filmsOnScreen: PropTypes.number.isRequired,
-  filteredFilms: PropTypes.array.isRequired,
-};
 
 export default MainPage;

@@ -1,9 +1,12 @@
-import React from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import * as React from 'react';
+import { connect } from 'react-redux';
 import { ActionCreator as AppStateActionCreator } from '../../reducer/app-state/app-state';
 
-const ShowMore = ({ onShowMoreButtonClick }) => (
+interface Props {
+  onShowMoreButtonClick: () => void
+}
+
+const ShowMore: React.FunctionComponent<Props> = ({ onShowMoreButtonClick }: Props) => (
   <div className="catalog__more">
     <button className="catalog__button"
       type="button"
@@ -16,10 +19,6 @@ const ShowMore = ({ onShowMoreButtonClick }) => (
 const mapDispatchToProps = (dispatch) => ({
   onShowMoreButtonClick: () => dispatch(AppStateActionCreator.showMoreFilms()),
 });
-
-ShowMore.propTypes = {
-  onShowMoreButtonClick: PropTypes.func.isRequired,
-};
 
 export { ShowMore as ShowMoreComponent };
 export default connect(null, mapDispatchToProps)(ShowMore);

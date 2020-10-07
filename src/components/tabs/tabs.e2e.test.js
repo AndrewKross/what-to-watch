@@ -1,8 +1,8 @@
-import React from "react";
-import Enzyme, { shallow } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-import { comments, films, TABS_DATA } from '../../mocks/test-mocks';
-import Tabs from "./tabs.jsx";
+import * as React from 'react';
+import Enzyme, { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import { comments, films, TABS_DATA } from '../../test-mocks';
+import Tabs from './tabs.tsx';
 
 Enzyme.configure({
   adapter: new Adapter(),

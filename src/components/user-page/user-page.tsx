@@ -1,14 +1,20 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from "prop-types";
-import FilmsList from '../films-list/films-list.jsx';
-import Footer from '../footer/footer.jsx';
+import FilmsList from '../films-list/films-list';
+import Footer from '../footer/footer';
 import history from '../../history';
 import { Operation as UserOperation } from '../../reducer/user/user';
 import { getFilms } from '../../reducer/data/selectors';
 import { getUserInfo } from '../../reducer/user/selectors';
+import { Film, UserData } from '../../types';
 
-const UserPage = ({ userInfo, films, logoutUser }) => {
+interface Props {
+  userInfo: UserData
+  films: Film[]
+  logoutUser: () => void
+}
+
+const UserPage: React.FunctionComponent<Props> = ({ userInfo, films, logoutUser }: Props) => {
   const favoriteFilms = films.filter((film) => film.isFavorite);
   const { avatar, name } = userInfo;
 
@@ -55,14 +61,5 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   logoutUser: () => dispatch(UserOperation.logoutUser()),
 });
-
-UserPage.propTypes = {
-  userInfo: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    avatar: PropTypes.string.isRequired,
-  }).isRequired,
-  films: PropTypes.array.isRequired,
-  logoutUser: PropTypes.func.isRequired,
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPage);

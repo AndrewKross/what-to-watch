@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
-import { defaultMockStore, films } from '../../mocks/test-mocks';
-import MainPage from './main-page.jsx';
+import { defaultMockStore, films } from '../../test-mocks';
+import MainPage from './main-page.tsx';
 import { FILMS_COUNT_ON_START } from '../../const';
 import history from '../../history';
 

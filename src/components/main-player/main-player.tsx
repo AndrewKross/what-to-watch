@@ -1,11 +1,25 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom";
-import { formatVideoElapsed } from "../../utils/films";
+import * as React from 'react';
+import { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { formatVideoElapsed } from '../../utils/films';
 import { AppRoute } from '../../const';
 import history from '../../history';
+import { Film } from '../../types';
 
-class MainPlayer extends Component {
+interface Props {
+  film: Film
+}
+
+interface State {
+  isPlaying: boolean
+  time: number
+}
+
+class MainPlayer extends Component<Props, State> {
+  private readonly videoRef: React.RefObject<HTMLVideoElement>;
+  private progress: number;
+  private duration: number;
+  private video: HTMLVideoElement;
   constructor(props) {
     super(props);
 
@@ -14,45 +28,45 @@ class MainPlayer extends Component {
       time: 0,
     };
 
-    this._videoRef = React.createRef();
-    this._progress = 0;
-    this._duration = 0;
+    this.videoRef = React.createRef();
+    this.progress = 0;
+    this.duration = 0;
   }
 
   componentDidMount() {
-    this._video = this._videoRef.current;
-    if (this._video.play) {
-      this._video.play();
+    this.video = this.videoRef.current;
+    if (this.video.play) {
+      this.video.play();
     }
 
-    this._video.onpause = () => {
-      this._video.load();
+    this.video.onpause = () => {
+      this.video.load();
       this.setState({ isPlaying: false });
-      this._progress = 0;
+      this.progress = 0;
     };
 
-    this._video.onplay = () => {
+    this.video.onplay = () => {
       this.setState({
         isPlaying: true,
       });
     };
 
-    this._video.oncanplaythrough = () => {
-      this._duration = this._video.duration;
+    this.video.oncanplaythrough = () => {
+      this.duration = this.video.duration;
     };
 
-    this._video.ontimeupdate = () => {
-      this._progress = Math.ceil((this._video.currentTime / this._duration) * 100);
-      this.setState({ time: Math.floor(this._video.currentTime) });
+    this.video.ontimeupdate = () => {
+      this.progress = Math.ceil((this.video.currentTime / this.duration) * 100);
+      this.setState({ time: Math.floor(this.video.currentTime) });
     };
   }
 
   componentWillUnmount() {
-    this._video.onpause = null;
-    this._video.src = ``;
-    this._video.oncanplaythrough = null;
-    this._video.onplay = null;
-    this._video.ontimeupdate = null;
+    this.video.onpause = null;
+    this.video.src = ``;
+    this.video.oncanplaythrough = null;
+    this.video.onplay = null;
+    this.video.ontimeupdate = null;
   }
 
   render() {
@@ -83,7 +97,8 @@ class MainPlayer extends Component {
 
     return (
       <div className="player">
-        <video className="player__video" ref={this._videoRef} src={videoMain} poster={backgroundImage}/>
+        <video className="player__video" ref={this.videoRef}
+               src={videoMain} poster={backgroundImage}/>
 
         <button type="button" className="player__exit" onClick={
           () => history.push(AppRoute.FILM + id)
@@ -92,8 +107,8 @@ class MainPlayer extends Component {
         <div className="player__controls">
           <div className="player__controls-row">
             <div className="player__time">
-              <progress className="player__progress" value={this._progress} max="100"/>
-              <div className="player__toggler" style={{ left: `${this._progress}%` }}>Toggler</div>
+              <progress className="player__progress" value={this.progress} max="100"/>
+              <div className="player__toggler" style={{ left: `${this.progress}%` }}>Toggler</div>
             </div>
             <div className="player__time-value">{formatVideoElapsed(this.state.time)}</div>
           </div>
@@ -105,7 +120,7 @@ class MainPlayer extends Component {
             <div className="player__name">{title}</div>
 
             <button type="button" className="player__full-screen" onClick={() => {
-              this._video.requestFullscreen();
+              this.video.requestFullscreen();
             }}>
               <svg viewBox="0 0 27 27" width="27" height="27">
                 <use xlinkHref="#full-screen"/>
@@ -120,26 +135,17 @@ class MainPlayer extends Component {
 
   _playVideo = () => {
     if (!this.state.isPlaying) {
-      this._video.play();
+      this.video.play();
       this.setState({ isPlaying: true });
     }
   }
 
   _pauseVideo = () => {
     if (this.state.isPlaying) {
-      this._video.pause();
+      this.video.pause();
       this.setState({ isPlaying: false });
     }
   }
 }
-
-MainPlayer.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    videoMain: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-  }).isRequired,
-};
 
 export default withRouter(MainPlayer);

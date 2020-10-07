@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { comments, defaultMockStore, films } from '../../mocks/test-mocks';
-import { AppComponent } from './app.jsx';
+import { comments, defaultMockStore, films } from '../../test-mocks';
+import { AppComponent } from './app.tsx';
 import { noop } from '../../utils/common';
 import { FILMS_COUNT_ON_START, HttpStatus } from '../../const';
 

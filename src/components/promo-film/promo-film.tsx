@@ -1,10 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from 'react';
 import history from '../../history';
 import { AppRoute } from '../../const';
-import MyListButton from "../mylist-button/mylist-button.jsx";
+import MyListButton from '../mylist-button/mylist-button';
+import { Film } from '../../types';
 
-const PromoFilm = (props) => {
+interface Props {
+  promoFilm: Film
+}
+
+const PromoFilm: React.FunctionComponent<Props> = (props: Props) => {
   const {
     title, genre, released, id, posterImage,
   } = props.promoFilm;
@@ -43,17 +47,6 @@ const PromoFilm = (props) => {
       </div>
     </div>
   );
-};
-
-PromoFilm.propTypes = {
-  promoFilm: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-    id: PropTypes.number.isRequired,
-    posterImage: PropTypes.string.isRequired,
-  }).isRequired,
-  renderMyListButton: PropTypes.func,
 };
 
 export default PromoFilm;

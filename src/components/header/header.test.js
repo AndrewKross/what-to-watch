@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { Router } from "react-router-dom";
-import Header from './header.jsx';
-import { defaultMockStore } from '../../mocks/test-mocks';
+import { Router } from 'react-router-dom';
+import Header from './header.tsx';
+import { defaultMockStore } from '../../test-mocks';
 import history from '../../history';
 
 test(`Header should render correctly`, () => {

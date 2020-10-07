@@ -1,19 +1,17 @@
 const path = require(`path`);
+const MomentLocalesPlugin = require(`moment-locales-webpack-plugin`);
 
 module.exports = {
-  entry: {
-    index: `./src/index.js`,
-  },
+  entry: `./src/index.tsx`,
   output: {
     filename: `bundle.js`,
+    // eslint-disable-next-line no-undef
     path: path.join(__dirname, `public`),
-    publicPath: `/what-to-watch/`,
   },
   devServer: {
+    // eslint-disable-next-line no-undef
     contentBase: path.join(__dirname, `public`),
     open: true,
-    inline: true,
-    port: 8080,
     historyApiFallback: true,
   },
   module: {
@@ -24,11 +22,19 @@ module.exports = {
         use: {
           loader: `babel-loader`,
         },
+      }, {
+        test: /\.(tsx|ts)?$/,
+        loader: `ts-loader`,
       },
     ],
   },
   resolve: {
-    extensions: [`.js`, `.jsx`],
+    extensions: [`.ts`, `.tsx`, `.js`, `json`],
   },
   devtool: `source-map`,
+  plugins: [
+    new MomentLocalesPlugin({
+      localesToKeep: [`es-us`],
+    }),
+  ],
 };

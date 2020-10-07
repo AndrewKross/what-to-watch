@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import renderer from 'react-test-renderer';
-import { comments, films } from '../../mocks/test-mocks';
-import Tabs from './tabs.jsx';
+import { comments, films } from '../../test-mocks';
+import Tabs from './tabs.tsx';
 
 const [film] = films;
 

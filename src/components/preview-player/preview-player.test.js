@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import renderer from 'react-test-renderer';
-import PreviewPlayer from './preview-player.jsx';
-import { films } from '../../mocks/test-mocks';
+import PreviewPlayer from './preview-player.tsx';
+import { films } from '../../test-mocks';
 
 const [film] = films;
 const { previewVideo, previewImage } = film;

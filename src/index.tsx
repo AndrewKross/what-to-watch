@@ -1,19 +1,24 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { createAPI } from './api';
-import { ActionCreator as DataActionCreator, Operation as DataOperation } from './reducer/data/data';
-import { Operation as UserOperation, ActionCreator as UserActionCreator } from './reducer/user/user';
+import {
+  ActionCreator as DataActionCreator,
+  Operation as DataOperation,
+} from './reducer/data/data';
+import {
+  ActionCreator as UserActionCreator,
+  Operation as UserOperation,
+} from './reducer/user/user';
 import reducer from './reducer/reducer';
-import App from "./components/app/app.jsx";
+import App from './components/app/app';
 import { AuthorizationStatus } from './const';
 
 const onUnauthorized = () => {
-  store.dispatch(UserActionCreator
-    .authorizeUser(AuthorizationStatus.NOT_AUTHORIZED));
+  store.dispatch(UserActionCreator.authorizeUser(AuthorizationStatus.NOT_AUTHORIZED));
 };
 
 const onError = (error) => {
@@ -36,7 +41,7 @@ store.dispatch(UserOperation.checkAuthorizationStatus());
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <App />
+      <App/>
     </React.StrictMode>
   </Provider>,
   document.querySelector(`#root`),

@@ -6,7 +6,7 @@ import {
 import { imgURL, LoadingStatus } from '../../const';
 import {
   loginData, userData,
-} from '../../mocks/test-mocks';
+} from '../../test-mocks';
 
 const api = createAPI(() => {});
 

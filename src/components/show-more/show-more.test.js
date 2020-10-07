@@ -1,6 +1,6 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import { ShowMoreComponent } from "./show-more.jsx";
+import * as React from 'react';
+import renderer from 'react-test-renderer';
+import { ShowMoreComponent } from './show-more.tsx';
 import { noop } from '../../utils/common';
 
 test(`ShowMore should render correctly`, () => {

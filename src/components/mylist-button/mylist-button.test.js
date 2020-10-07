@@ -1,7 +1,7 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import { MyListButtonComponent } from "./mylist-button.jsx";
-import { films } from '../../mocks/test-mocks';
+import * as React from 'react';
+import renderer from 'react-test-renderer';
+import { MyListButtonComponent } from './mylist-button.tsx';
+import { films } from '../../test-mocks';
 import { noop } from '../../utils/common';
 
 test(`MyListButton should render correctly`, () => {
