@@ -1,4 +1,4 @@
-# React Приложение «Что посмотреть» [![Build status][travis-image]][travis-url]
+# React Приложение «Что посмотреть»
+Приложение для просмотра и обсуждения любимых фильмов.
 
-[travis-image]: https://travis-ci.org/AndrewKross/what-to-watch.svg?branch=master
-[travis-url]: https://travis-ci.org/AndrewKross/what-to-watch
+Хостинг на гитхабе прикреплен ниже, но он не поддерживает react-router в SPA в полной мере (прямые переходы по вложенным маршрутам не будут работать), для тестирования этой функции есть хостинг на https://what-to-watch-721e8.firebaseapp.com (нужен VPN)
