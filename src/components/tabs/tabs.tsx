@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { Component } from 'react';
 import * as moment from 'moment';
 import { nanoid } from 'nanoid';
+import * as React from 'react';
+import { Component } from 'react';
 import {
   REVIEW_DATE_HUMAN_FORMAT,
   REVIEW_DATE_SERVICE_FORMAT,
@@ -9,9 +9,9 @@ import {
   TabsData,
   TabsNames,
 } from '../../const';
-import { getFormattedRunTime } from '../../utils/common.js';
-import { getRatingGrade } from '../../utils/films.js';
 import { Comment, Film } from '../../types';
+import { getFormattedRunTime } from '../../utils/common';
+import { getRatingGrade } from '../../utils/films';
 
 interface Props {
   film: Film;

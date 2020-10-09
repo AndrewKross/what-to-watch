@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Component } from 'react';
-import history from '../../history';
-import PreviewPlayer from '../preview-player/preview-player';
 import { AppRoute, PREVIEW_DELAY } from '../../const';
+import history from '../../history';
 import { Film } from '../../types';
+import PreviewPlayer from '../preview-player/preview-player';
 
 interface Props {
   filmData: Film;

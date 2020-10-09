@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 import { HttpStatus, URL } from './const';
 
 export const createAPI = (onUnauthorized, onError) => {

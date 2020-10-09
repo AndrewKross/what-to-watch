@@ -1,7 +1,5 @@
 import MockAdapter from 'axios-mock-adapter';
-import {
-  initialState, reducer, ActionType, ActionCreator, Operation,
-} from './data';
+import { ActionCreator, ActionType, initialState, Operation, reducer } from './data';
 import { comments, films } from '../../test-mocks';
 import { createAPI } from '../../api';
 
@@ -119,21 +117,18 @@ describe(`Data Operation`, () => {
     const dispatch = jest.fn();
     const filmsLoader = Operation.loadFilms();
 
-    apiMock
-      .onGet(`/films`)
-      .reply(200, []);
+    apiMock.onGet(`/films`).reply(200, []);
 
-    return filmsLoader(dispatch, () => {}, api)
-      .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.LOAD_FILMS,
-          payload: [],
-        });
-        expect(dispatch).toHaveBeenNthCalledWith(2, {
-          type: ActionType.CHANGE_FILMS_LOAD_STATE,
-        });
+    return filmsLoader(dispatch, () => {}, api).then(() => {
+      expect(dispatch).toHaveBeenCalledTimes(2);
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: ActionType.LOAD_FILMS,
+        payload: [],
       });
+      expect(dispatch).toHaveBeenNthCalledWith(2, {
+        type: ActionType.CHANGE_FILMS_LOAD_STATE,
+      });
+    });
   });
 
   test(`should make a correct API call to /comments:id`, () => {
@@ -141,21 +136,18 @@ describe(`Data Operation`, () => {
     const dispatch = jest.fn();
     const commentsLoader = Operation.loadComments(films[0].id);
 
-    apiMock
-      .onGet(`/comments/0`)
-      .reply(200, []);
+    apiMock.onGet(`/comments/0`).reply(200, []);
 
-    return commentsLoader(dispatch, () => {}, api)
-      .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(2);
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.LOAD_COMMENTS,
-          payload: [],
-        });
-        expect(dispatch).toHaveBeenNthCalledWith(2, {
-          type: ActionType.CHANGE_COMMENTS_LOAD_STATE,
-          payload: true,
-        });
+    return commentsLoader(dispatch, () => {}, api).then(() => {
+      expect(dispatch).toHaveBeenCalledTimes(2);
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: ActionType.LOAD_COMMENTS,
+        payload: [],
       });
+      expect(dispatch).toHaveBeenNthCalledWith(2, {
+        type: ActionType.CHANGE_COMMENTS_LOAD_STATE,
+        payload: true,
+      });
+    });
   });
 });

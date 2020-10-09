@@ -1,12 +1,8 @@
 import MockAdapter from 'axios-mock-adapter';
 import { createAPI } from '../../api';
-import {
-  initialState, reducer, ActionType, ActionCreator, Operation,
-} from "./user";
+import { ActionCreator, ActionType, initialState, Operation, reducer } from './user';
 import { imgURL, LoadingStatus } from '../../const';
-import {
-  loginData, userData,
-} from '../../test-mocks';
+import { loginData, userData } from '../../test-mocks';
 
 const api = createAPI(() => {});
 
@@ -118,7 +114,10 @@ describe(`User Operation`, () => {
       });
       expect(dispatch).toHaveBeenNthCalledWith(3, {
         type: ActionType.SET_USER_INFO,
-        payload: { ...userData, avatar: `${imgURL}undefined` },
+        payload: {
+          ...userData,
+          avatar: `${imgURL}undefined`,
+        },
       });
       expect(dispatch).toHaveBeenNthCalledWith(4, {
         type: ActionType.AUTHORIZE_USER,

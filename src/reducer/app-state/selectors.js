@@ -1,6 +1,6 @@
-import { createSelector } from "reselect";
-import { NameSpace } from "../reducer";
-import { getFilms } from "../data/selectors";
+import { createSelector } from 'reselect';
+import { NameSpace } from '../reducer';
+import { getFilms } from '../data/selectors';
 import { getFilmsFilteredByGenre } from '../../utils/films';
 
 const NAME_SPACE = NameSpace.APP_STATE;

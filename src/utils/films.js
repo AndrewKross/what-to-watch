@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { RatingRange, RatingGrade } from "../const";
+import { RatingGrade, RatingRange } from '../const';
 
 export const getRatingGrade = (rating) => {
   switch (true) {

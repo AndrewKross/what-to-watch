@@ -1,6 +1,6 @@
-import { NameSpace } from './reducer/reducer';
 import { DEFAULT_GENRE, LoadingStatus } from './const';
-import { UserData, Film, Comment } from "./types";
+import { NameSpace } from './reducer/reducer';
+import { Comment, Film, UserData } from './types';
 
 const RELEASE = 2020;
 const RATING = 9;
@@ -75,9 +75,7 @@ const comment = {
   date: new Date(`December 25, 2019 01:00:00`),
 };
 
-export const comments: Comment[] = Array(COMMENTS_COUNT)
-  .fill(``)
-  .map(() => comment);
+export const comments: Comment[] = Array(COMMENTS_COUNT).fill(``).map(() => comment);
 
 export const films: Film[] = TITLES.map((title, index) => {
   return ({

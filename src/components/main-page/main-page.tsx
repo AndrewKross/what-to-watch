@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Header from '../header/header';
-import PromoFilm from '../promo-film/promo-film';
+import { Film } from '../../types';
 import Catalog from '../catalog/catalog';
 import Footer from '../footer/footer';
-import { Film } from '../../types';
+import Header from '../header/header';
+import PromoFilm from '../promo-film/promo-film';
 
 interface Props {
   promoFilm: Film
@@ -11,9 +11,9 @@ interface Props {
   filteredFilms: Film[]
 }
 
-const MainPage:React.FunctionComponent<Props> = ({
+const MainPage: React.FunctionComponent<Props> = ({
   filteredFilms, filmsOnScreen, promoFilm,
-}:Props) => (
+}: Props) => (
   <React.Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -23,13 +23,13 @@ const MainPage:React.FunctionComponent<Props> = ({
         />
       </div>
       <h1 className="visually-hidden">WTW</h1>
-      <Header />
+      <Header/>
       <PromoFilm promoFilm={promoFilm}/>
     </section>
 
     <div className="page-content">
-      <Catalog films={filteredFilms} filmsOnScreen={filmsOnScreen} />
-      <Footer />
+      <Catalog films={filteredFilms} filmsOnScreen={filmsOnScreen}/>
+      <Footer/>
     </div>
   </React.Fragment>
 );

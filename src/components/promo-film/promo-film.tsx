@@ -1,8 +1,8 @@
 import * as React from 'react';
-import history from '../../history';
 import { AppRoute } from '../../const';
-import MyListButton from '../mylist-button/mylist-button';
+import history from '../../history';
 import { Film } from '../../types';
+import MyListButton from '../mylist-button/mylist-button';
 
 interface Props {
   promoFilm: Film

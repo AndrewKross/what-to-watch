@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { AppRoute, LoadingStatus } from '../../const';
-import Header from '../header/header';
+import history from '../../history';
 import { getReviewLoadingStatus } from '../../reducer/user/selectors';
 import {
   ActionCreator as UserActionCreator,
   Operation as UserOperation,
-} from '../../reducer/user/user.js';
-import history from 'history';
-import { Film } from '../../types.js';
+} from '../../reducer/user/user';
+import { Film } from '../../types';
+import Header from '../header/header';
 
 interface Props {
   film: Film

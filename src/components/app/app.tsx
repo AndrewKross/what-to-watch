@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { Link, Route, Router, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
+import { connect } from 'react-redux';
+import { Link, Route, Router, Switch } from 'react-router-dom';
 import { AppRoute, HttpStatus, LoaderData } from '../../const';
-import MainPage from '../main-page/main-page';
-import FilmPage from '../film-page/film-page';
-import MainPlayer from '../main-player/main-player';
+import history from '../../history';
+import { getFilmsOnScreen, getFilteredFilms } from '../../reducer/app-state/selectors';
 import {
   ActionCreator as DataActionCreator,
   Operation as DataOperation,
@@ -18,14 +17,15 @@ import {
   getPromoFilmLoadState,
   getRequestStatus,
 } from '../../reducer/data/selectors';
-import { getFilmsOnScreen, getFilteredFilms } from '../../reducer/app-state/selectors';
-import SignIn from '../sign-in/sign-in';
-import { getFilmFromRoute } from '../../utils/films.js';
-import AddReview from '../add-review/add-review';
 import { getAuthorizationStatus } from '../../reducer/user/selectors';
-import history from '../../history.js';
+import { Comment, Film } from '../../types';
+import { getFilmFromRoute } from '../../utils/films';
+import AddReview from '../add-review/add-review';
+import FilmPage from '../film-page/film-page';
+import MainPage from '../main-page/main-page';
+import MainPlayer from '../main-player/main-player';
+import SignIn from '../sign-in/sign-in';
 import UserPage from '../user-page/user-page';
-import { Comment, Film } from '../../types.js';
 
 interface Props {
   films: Film[],

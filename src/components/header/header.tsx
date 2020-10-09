@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getAuthorizationStatus, getUserInfo } from '../../reducer/user/selectors';
 import { AppRoute } from '../../const';
 import history from '../../history';
+import { getAuthorizationStatus, getUserInfo } from '../../reducer/user/selectors';
 import { UserData } from '../../types';
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 }
 
 const Header: React.FunctionComponent<Props> = ({
-  isAuthorized, userInfo, children
+  isAuthorized, userInfo, children,
 }: Props) => {
   const userBlockMarkup = (isUserAuthorized) => {
     if (isUserAuthorized) {
@@ -50,9 +50,9 @@ const Header: React.FunctionComponent<Props> = ({
   );
 };
 
-const mapStateToProps = (state) => ( {
+const mapStateToProps = (state) => ({
   isAuthorized: getAuthorizationStatus(state),
   userInfo: getUserInfo(state),
-} );
+});
 
 export default connect(mapStateToProps)(Header);

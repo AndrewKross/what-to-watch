@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import FilmsList from '../films-list/films-list';
-import Footer from '../footer/footer';
 import history from '../../history';
-import { Operation as UserOperation } from '../../reducer/user/user';
 import { getFilms } from '../../reducer/data/selectors';
 import { getUserInfo } from '../../reducer/user/selectors';
+import { Operation as UserOperation } from '../../reducer/user/user';
 import { Film, UserData } from '../../types';
+import FilmsList from '../films-list/films-list';
+import Footer from '../footer/footer';
 
 interface Props {
   userInfo: UserData
@@ -37,17 +37,20 @@ const UserPage: React.FunctionComponent<Props> = ({ userInfo, films, logoutUser 
           </div>
         </div>
         <p style={{ marginLeft: `20px` }}>{name}</p>
-        <p onClick={logoutUser} style={{ marginLeft: `20px`, cursor: `pointer` }}>Logout</p>
+        <p onClick={logoutUser} style={{
+          marginLeft: `20px`,
+          cursor: `pointer`,
+        }}>Logout</p>
       </header>
 
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <FilmsList films={favoriteFilms} />
+        <FilmsList films={favoriteFilms}/>
 
       </section>
 
-      <Footer />
+      <Footer/>
 
     </div>
   );

@@ -1,4 +1,4 @@
-import { FILMS_ON_SHOW_MORE_BUTTON, FILMS_COUNT_ON_START, DEFAULT_GENRE } from '../../const';
+import { DEFAULT_GENRE, FILMS_COUNT_ON_START, FILMS_ON_SHOW_MORE_BUTTON } from '../../const';
 
 const initialState = {
   filmsOnScreen: FILMS_COUNT_ON_START,
@@ -12,16 +12,16 @@ const ActionType = {
 };
 
 const ActionCreator = {
-  changeCurrentGenre: (genre) => ({
+  changeCurrentGenre: (genre) => ( {
     type: ActionType.CHANGE_CURRENT_GENRE,
     payload: genre,
-  }),
-  showMoreFilms: () => ({
+  } ),
+  showMoreFilms: () => ( {
     type: ActionType.SHOW_MORE_FILMS,
-  }),
-  resetShowingFilmsCount: () => ({
+  } ),
+  resetShowingFilmsCount: () => ( {
     type: ActionType.RESET_SHOWING_FILMS_COUNT,
-  }),
+  } ),
 };
 
 const reducer = (state = initialState, action) => {

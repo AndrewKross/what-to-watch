@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { formatVideoElapsed } from '../../utils/films';
 import { AppRoute } from '../../const';
 import history from '../../history';
 import { Film } from '../../types';
+import { formatVideoElapsed } from '../../utils/films';
 
 interface Props {
   film: Film
@@ -20,6 +20,7 @@ class MainPlayer extends Component<Props, State> {
   private progress: number;
   private duration: number;
   private video: HTMLVideoElement;
+
   constructor(props) {
     super(props);
 
@@ -77,21 +78,21 @@ class MainPlayer extends Component<Props, State> {
     const renderPlayButton = () => {
       if (this.state.isPlaying) {
         return (
-            <button type="button" className="player__play" onClick={this._pauseVideo}>
-              <svg viewBox="0 0 14 21" width="14" height="21">
-                <use xlinkHref="#pause"/>
-              </svg>
-              <span>Pause</span>
-            </button>
+          <button type="button" className="player__play" onClick={this._pauseVideo}>
+            <svg viewBox="0 0 14 21" width="14" height="21">
+              <use xlinkHref="#pause"/>
+            </svg>
+            <span>Pause</span>
+          </button>
         );
       }
       return (
-            <button type="button" className="player__play" onClick={this._playVideo}>
-              <svg viewBox="0 0 19 19" width="19" height="19">
-                <use xlinkHref="#play-s"/>
-              </svg>
-              <span>Play</span>
-            </button>
+        <button type="button" className="player__play" onClick={this._playVideo}>
+          <svg viewBox="0 0 19 19" width="19" height="19">
+            <use xlinkHref="#play-s"/>
+          </svg>
+          <span>Play</span>
+        </button>
       );
     };
 
@@ -102,7 +103,8 @@ class MainPlayer extends Component<Props, State> {
 
         <button type="button" className="player__exit" onClick={
           () => history.push(AppRoute.FILM + id)
-        }>Exit</button>
+        }>Exit
+        </button>
 
         <div className="player__controls">
           <div className="player__controls-row">
@@ -138,14 +140,14 @@ class MainPlayer extends Component<Props, State> {
       this.video.play();
       this.setState({ isPlaying: true });
     }
-  }
+  };
 
   _pauseVideo = () => {
     if (this.state.isPlaying) {
       this.video.pause();
       this.setState({ isPlaying: false });
     }
-  }
+  };
 }
 
 export default withRouter(MainPlayer);

@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { Film } from '../../types';
 import FilmCard from '../film-card/film-card';
 import ShowMore from '../show-more/show-more';
-import { Film } from '../../types';
 
 interface Props {
   filmsOnScreen?: number;

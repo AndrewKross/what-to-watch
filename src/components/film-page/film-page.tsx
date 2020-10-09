@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import history from '../../history';
-import Tabs from '../tabs/tabs';
-import FilmsList from '../films-list/films-list';
 import { AppRoute, NUMBER_OF_SIMILAR_FILMS } from '../../const';
-import Header from '../header/header';
-import Footer from '../footer/footer';
-import MyListButton from '../mylist-button/mylist-button';
+import history from '../../history';
 import { Comment, Film } from '../../types';
+import FilmsList from '../films-list/films-list';
+import Footer from '../footer/footer';
+import Header from '../header/header';
+import MyListButton from '../mylist-button/mylist-button';
+import Tabs from '../tabs/tabs';
 
 interface Props {
   selectedFilm: Film;

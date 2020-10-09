@@ -1,4 +1,4 @@
-import { NameSpace } from "../reducer";
+import { NameSpace } from '../reducer';
 
 const NAME_SPACE = NameSpace.DATA;
 

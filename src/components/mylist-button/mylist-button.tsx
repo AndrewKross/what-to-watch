@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import history from '../../history';
 import { AppRoute } from '../../const';
+import history from '../../history';
 import { Operation as DataOperation } from '../../reducer/data/data';
 import { getAuthorizationStatus } from '../../reducer/user/selectors';
 import { Film } from '../../types';
@@ -12,7 +12,7 @@ interface Props {
   changeFavoriteStatus: (id: number, isFavorite: number) => void
 }
 
-const MyListButton:React.FunctionComponent<Props> = (props: Props) => {
+const MyListButton: React.FunctionComponent<Props> = (props: Props) => {
   const {
     film, isAuthorized, changeFavoriteStatus,
   } = props;

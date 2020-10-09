@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { Film } from '../../types';
 import FilmsList from '../films-list/films-list';
 import GenresFilter from '../genres-filter/genres-filter';
-import { Film } from '../../types';
 
 interface Props {
   films: Film[],
@@ -11,9 +11,9 @@ interface Props {
 const Catalog: React.FunctionComponent<Props> = ({ films, filmsOnScreen }: Props) => (
   <section className="catalog">
     <h2 className="catalog__title visually-hidden">Catalog</h2>
-    <GenresFilter />
+    <GenresFilter/>
     <FilmsList films={films}
-      filmsOnScreen={filmsOnScreen} />
+               filmsOnScreen={filmsOnScreen}/>
   </section>
 );
 

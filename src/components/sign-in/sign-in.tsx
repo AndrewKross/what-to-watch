@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
-import { Operation as UserOperation } from '../../reducer/user/user';
+import { LoadingStatus } from '../../const';
+import history from '../../history';
 import {
   getAuthorizationLoadingStatus,
   getAuthorizationStatus,
 } from '../../reducer/user/selectors';
-import { LoadingStatus } from '../../const.js';
-import { getEmailValidation } from '../../utils/common.js';
+import { Operation as UserOperation } from '../../reducer/user/user';
+import { getEmailValidation } from '../../utils/common';
 import Footer from '../footer/footer';
-import history from '../../history';
 
 interface Props {
   isAuthorized: boolean
@@ -72,7 +72,7 @@ const SignIn: React.FunctionComponent<Props> = ({
           <div className="sign-in__fields">
             <div className={isInvalid ? `sign-in__field sign-in__field--error` : `sign-in__field`}>
               <input className="sign-in__input" type="email" placeholder="Email address"
-                     name="user-email" id="user-email" ref={loginInputRef} onChange={
+                     name="user-email" id="user-email" required ref={loginInputRef} onChange={
                 (evt) => {
                   setLogin(evt.target.value);
                   setIsInvalid(false);
@@ -83,7 +83,7 @@ const SignIn: React.FunctionComponent<Props> = ({
             </div>
             <div className="sign-in__field">
               <input className="sign-in__input" type="password" placeholder="Password"
-                     name="user-password" id="user-password" ref={passwordInputRef}/>
+                     name="user-password" id="user-password" required ref={passwordInputRef}/>
               <label className="sign-in__label visually-hidden"
                      htmlFor="user-password">Password</label>
             </div>
@@ -103,13 +103,13 @@ const SignIn: React.FunctionComponent<Props> = ({
   );
 };
 
-const mapStateToProps = (state) => ( {
+const mapStateToProps = (state) => ({
   isAuthorized: getAuthorizationStatus(state),
   authorizationLoadingStatus: getAuthorizationLoadingStatus(state),
-} );
+});
 
-const mapDispatchToProps = (dispatch) => ( {
+const mapDispatchToProps = (dispatch) => ({
   loginUser: (name, password) => dispatch(UserOperation.loginUser(name, password)),
-} );
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

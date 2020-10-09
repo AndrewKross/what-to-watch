@@ -1,4 +1,4 @@
-import { imgURL } from "../const";
+import { imgURL } from '../const';
 
 const userAdapter = (user) => {
   return {

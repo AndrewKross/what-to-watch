@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { ActionCreator as AppStateActionCreator } from '../../reducer/app-state/app-state';
-import { getFilms } from '../../reducer/data/selectors';
 import { getCurrentGenre } from '../../reducer/app-state/selectors';
+import { getFilms } from '../../reducer/data/selectors';
 import { Film } from '../../types';
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const GenresFilter: React.FunctionComponent<Props> = ({
-  films, currentGenre, onGenreChangeClick
+  films, currentGenre, onGenreChangeClick,
 }: Props) => {
   const allGenres = films.map((film) => film.genre);
   const genres = [].concat(`All genres`, Array.from(new Set(allGenres)));
@@ -34,17 +34,17 @@ const GenresFilter: React.FunctionComponent<Props> = ({
   );
 };
 
-const mapStateToProps = (state) => ( {
+const mapStateToProps = (state) => ({
   currentGenre: getCurrentGenre(state),
   films: getFilms(state),
-} );
+});
 
-const mapDispatchToProps = (dispatch) => ( {
+const mapDispatchToProps = (dispatch) => ({
   onGenreChangeClick: (genre) => {
     dispatch(AppStateActionCreator.changeCurrentGenre(genre));
     dispatch(AppStateActionCreator.resetShowingFilmsCount());
   },
-} );
+});
 
 export { GenresFilter as GenresFilterComponent };
 export default connect(mapStateToProps, mapDispatchToProps)(GenresFilter);

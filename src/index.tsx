@@ -5,17 +5,17 @@ import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { createAPI } from './api';
+import App from './components/app/app';
+import { AuthorizationStatus } from './const';
 import {
   ActionCreator as DataActionCreator,
   Operation as DataOperation,
 } from './reducer/data/data';
+import reducer from './reducer/reducer';
 import {
   ActionCreator as UserActionCreator,
   Operation as UserOperation,
 } from './reducer/user/user';
-import reducer from './reducer/reducer';
-import App from './components/app/app';
-import { AuthorizationStatus } from './const';
 
 const onUnauthorized = () => {
   store.dispatch(UserActionCreator.authorizeUser(AuthorizationStatus.NOT_AUTHORIZED));

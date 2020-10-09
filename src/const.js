@@ -48,18 +48,20 @@ export const TabsNames = {
   REVIEWS: `reviews`,
 };
 
-export const TabsData = [{
-  name: TabsNames.OVERVIEW,
-  content: `Overview`,
-},
-{
-  name: TabsNames.DETAILS,
-  content: `Details`,
-},
-{
-  name: TabsNames.REVIEWS,
-  content: `Reviews`,
-}];
+export const TabsData = [
+  {
+    name: TabsNames.OVERVIEW,
+    content: `Overview`,
+  },
+  {
+    name: TabsNames.DETAILS,
+    content: `Details`,
+  },
+  {
+    name: TabsNames.REVIEWS,
+    content: `Reviews`,
+  },
+];
 
 export const LoadingStatus = {
   PENDING: `PENDING`,

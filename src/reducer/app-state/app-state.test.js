@@ -1,6 +1,4 @@
-import {
-  reducer, initialState, ActionType, ActionCreator,
-} from "./app-state";
+import { ActionCreator, ActionType, initialState, reducer } from './app-state';
 import { FILMS_COUNT_ON_START } from '../../const';
 
 describe(`App-state Reducer`, () => {

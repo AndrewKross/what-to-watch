@@ -1,6 +1,6 @@
+import { nanoid } from 'nanoid';
 import * as React from 'react';
 import { Component } from 'react';
-import { nanoid } from 'nanoid';
 
 interface Props {
   previewVideo: string;
@@ -10,6 +10,7 @@ interface Props {
 
 export default class PreviewPlayer extends Component<Props, null> {
   private readonly videoRef: React.RefObject<HTMLVideoElement>;
+
   constructor(props: Props) {
     super(props);
 

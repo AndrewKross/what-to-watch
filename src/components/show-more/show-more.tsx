@@ -9,8 +9,8 @@ interface Props {
 const ShowMore: React.FunctionComponent<Props> = ({ onShowMoreButtonClick }: Props) => (
   <div className="catalog__more">
     <button className="catalog__button"
-      type="button"
-      onClick={onShowMoreButtonClick}>
+            type="button"
+            onClick={onShowMoreButtonClick}>
       Show more
     </button>
   </div>
